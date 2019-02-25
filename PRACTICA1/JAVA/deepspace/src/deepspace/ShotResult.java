@@ -10,5 +10,5 @@ package deepspace;
  * @author celia
  */
 public enum ShotResult {
-    
+    DONOTRESIST, RESIST
 }

@@ -9,6 +9,30 @@ package deepspace;
  *
  * @author celia
  */
-public class SuppliesPackage {
+class SuppliesPackage {
+    private float ammoPower;
+    private float fuelUnits;
+    private float shieldPower;
     
+    SuppliesPackage(float ammo, float fuel, float shield){
+        ammoPower = ammo;
+        fuelUnits = fuel;
+        shieldPower = shield;
+    }
+    
+    SuppliesPackage(SuppliesPackage otro){
+        ammoPower = otro.ammoPower;
+        fuelUnits = otro.fuelUnits;
+        shieldPower = otro.shieldPower;
+    }
+    
+    float getAmmoPower(){
+        return ammoPower;
+    }
+    float getFuelUnits(){
+        return fuelUnits;
+    }
+    float getShieldPower(){
+        return shieldPower;
+    }
 }

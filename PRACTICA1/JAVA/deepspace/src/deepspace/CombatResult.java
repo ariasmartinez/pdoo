@@ -10,5 +10,5 @@ package deepspace;
  * @author celia
  */
 public enum CombatResult {
-    
+    ENEMYWINS, NOCOMBAT, STATIONESCAPES, STATIONWINS
 }

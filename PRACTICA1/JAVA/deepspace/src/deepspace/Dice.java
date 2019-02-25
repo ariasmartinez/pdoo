@@ -9,6 +9,19 @@ package deepspace;
  *
  * @author celia
  */
-public class Dice {
+class Dice {
+    private final float NHANGARSPROB;
+    private final float NSHIELDSPROB;
+    private final float NWEAPONSPROB;
+    private final float FIRSTSHOTPROB;
+    private Random generator;
+    
+    Dice(){
+        // inicializar?? generator = 
+        NHANGARSPROB=0.25f;
+        NSHIELDSPROB=0.25f;
+        NWEAPONSPROB=0.33f;
+        FIRSTSHOTPROB=0.5f;
+    }
     
 }

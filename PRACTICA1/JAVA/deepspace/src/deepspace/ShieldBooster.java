@@ -9,6 +9,36 @@ package deepspace;
  *
  * @author celia
  */
-public class ShieldBooster {
+class ShieldBooster {
+    private String name;
+    private float boost;
+    private int uses;
     
+    ShieldBooster(String nom, float b, int us){
+        name = nom;
+        boost = b;
+        uses = us;
+    }
+    
+    ShieldBooster(ShieldBooster otro){
+        name = otro.name;
+        boost = otro.boost;
+        uses = otro.uses;
+    }
+    
+    float getBoost(){
+        return boost;
+    }
+    
+    int getUses(){
+        return uses;
+    }
+    
+    public float useIt(){
+        if (uses > 0){
+            uses--;
+            return boost;
+        }
+        return 1.0f;            
+    }
 }
