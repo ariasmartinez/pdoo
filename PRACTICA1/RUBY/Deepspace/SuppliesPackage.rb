@@ -18,7 +18,8 @@ class SuppliesPackage
   end
   # ni puta idea de si es así
   def self.newCopy
-    
-
+    copy=SuppliesPackage.new(self.ammoPower, self.fuelUnits, self.shieldPower)
+    return copy
   end
+  
 end
