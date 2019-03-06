@@ -18,8 +18,7 @@ class ShieldBooster
   end
 
   def self.newCopy
-    copy=ShieldBooster.new(self.name, self.boost, self.uses)
-    return copy
+    new(self.name, self.boost, self.uses)
   end
 
   # Esto lo he mirado en las diapositivas del profesor pero ni idea
@@ -27,7 +26,7 @@ class ShieldBooster
     @uses=usos
   end
 
-  #ni puta idea hulio 
+  #ni puta idea hulio
   def useIt
 
     if (uses > 0)

@@ -19,13 +19,12 @@ class Weapon
   end
 
   def self.newCopy
-    copy=Weapon.new(self.name, self.type, self.uses)
-    return copy
+    new(self.name, self.type, self.uses)
   end
 
-  # No se si está bien pero gueno
+  # PREGUNTAR AL PROFESOR SI NO FUNCIONA
   def power
-    return Deepspace::WeaponType::type.power()
+    Deepspace::WeaponType::type.power()
   end
 
   def uses=usos
