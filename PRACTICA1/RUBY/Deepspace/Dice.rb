@@ -23,12 +23,15 @@ attr_reader :NHANGARSPROB, :NSHIELDSPROB, :NWEAPONSPROB, :FIRSTSHOTPROB, :genera
  end
 
  def initWithNWeapons
-   if (generator > NWEAPONSPROB)
-     return 1
-
+   if (generator > 2*NWEAPONSPROB)
+     return 3
    else
+     if (generator < NWEAPONSPROB)
+       return 1
+     else
+       return 2
+     end
    end
-
  end
 
  def initWithNShields
@@ -54,7 +57,7 @@ attr_reader :NHANGARSPROB, :NSHIELDSPROB, :NWEAPONSPROB, :FIRSTSHOTPROB, :genera
 
  def spaceStationMoves(speed)
    if (generator > speed)
-     return false 
+     return false
    else
      return true
    end
