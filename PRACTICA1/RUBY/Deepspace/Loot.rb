@@ -28,4 +28,5 @@ class Loot
     @nMedals
   end
 
+
 end

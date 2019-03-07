@@ -13,20 +13,20 @@ class Dice
 # Si no funciona el fallo está aquí
 attr_reader :NHANGARSPROB, :NSHIELDSPROB, :NWEAPONSPROB, :FIRSTSHOTPROB, :generator
 
+#he puesto el @ antes de los atributos, son de instancia no??
  def initWithNHangars
-   if (generator > NHANGARSPROB )
+   if (@generator > @NHANGARSPROB )
      return 1
    else
      return 0
    end
-
  end
 
  def initWithNWeapons
-   if (generator > 2*NWEAPONSPROB)
+   if (@generator > 2*@NWEAPONSPROB)
      return 3
    else
-     if (generator < NWEAPONSPROB)
+     if (@generator < @NWEAPONSPROB)
        return 1
      else
        return 2
@@ -35,7 +35,7 @@ attr_reader :NHANGARSPROB, :NSHIELDSPROB, :NWEAPONSPROB, :FIRSTSHOTPROB, :genera
  end
 
  def initWithNShields
-   if (generator > NSHIELDSPROB )
+   if (@generator > @NSHIELDSPROB )
      return 1
    else
      return 0
@@ -46,17 +46,18 @@ attr_reader :NHANGARSPROB, :NSHIELDSPROB, :NWEAPONSPROB, :FIRSTSHOTPROB, :genera
    rand(nPlayers)
  end
 
+#le he quitado el Deepspace:: porque daba error
  def firstShot
-   if (generator > FIRSTSHOTPROB )
-     return Deepspace::GameCharacter::ENEMYSTARSHIP
+   if (@generator > @FIRSTSHOTPROB )
+     return GameCharacter::ENEMYSTARSHIP
    else
-     return Deepspace::GameCharacter::SPACESTATION
+     return GameCharacter::SPACESTATION
    end
 
  end
 
  def spaceStationMoves(speed)
-   if (generator > speed)
+   if (@generator > speed)
      return false
    else
      return true

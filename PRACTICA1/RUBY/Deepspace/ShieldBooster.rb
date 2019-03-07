@@ -27,11 +27,12 @@ class ShieldBooster
   end
 
   #ni puta idea hulio
+  #pongo el @ antes de los atributos
   def useIt
 
-    if (uses > 0)
-      uses=uses-1
-      return boost
+    if (@uses > 0)
+      @uses = @uses-1
+      return @boost
     else
       return 1.0
     end
