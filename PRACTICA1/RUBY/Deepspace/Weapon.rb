@@ -1,9 +1,9 @@
 class Weapon
 
   def initialize(name,type,uses)
-    @name=name
-    @type=type
-    @uses=uses
+    @name=name #string
+    @type=type #WeaponType
+    @uses=uses #int
   end
 
   def name
@@ -18,23 +18,21 @@ class Weapon
     @uses
   end
 
-  def self.newCopy
-    new(self.name, self.type, self.uses)
+  def self.newCopy(orig)
+    new(orig.name, orig.type, orig.uses)
   end
 
-  # PREGUNTAR AL PROFESOR SI NO FUNCIONA
+
   def power
-    Deepspace::WeaponType::type.power()
+    @type.power()
   end
 
-  def uses=usos
-    @uses=usos
-  end
+
 
   def useIt
 
-    if (uses > 0)
-      uses=uses-1
+    if (@uses > 0)
+      @uses=@uses-1
       return power
     else
       return 1.0

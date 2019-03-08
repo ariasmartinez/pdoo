@@ -15,6 +15,7 @@ attr_reader :NHANGARSPROB, :NSHIELDSPROB, :NWEAPONSPROB, :FIRSTSHOTPROB, :genera
 
 #he puesto el @ antes de los atributos, son de instancia no??
  def initWithNHangars
+   @generator=rand
    if (@generator > @NHANGARSPROB )
      return 1
    else
@@ -23,6 +24,7 @@ attr_reader :NHANGARSPROB, :NSHIELDSPROB, :NWEAPONSPROB, :FIRSTSHOTPROB, :genera
  end
 
  def initWithNWeapons
+   @generator=rand
    if (@generator > 2*@NWEAPONSPROB)
      return 3
    else
@@ -35,6 +37,7 @@ attr_reader :NHANGARSPROB, :NSHIELDSPROB, :NWEAPONSPROB, :FIRSTSHOTPROB, :genera
  end
 
  def initWithNShields
+   @generator=rand
    if (@generator > @NSHIELDSPROB )
      return 1
    else
@@ -48,6 +51,7 @@ attr_reader :NHANGARSPROB, :NSHIELDSPROB, :NWEAPONSPROB, :FIRSTSHOTPROB, :genera
 
 #le he quitado el Deepspace:: porque daba error
  def firstShot
+   @generator=rand
    if (@generator > @FIRSTSHOTPROB )
      return GameCharacter::ENEMYSTARSHIP
    else
@@ -57,6 +61,7 @@ attr_reader :NHANGARSPROB, :NSHIELDSPROB, :NWEAPONSPROB, :FIRSTSHOTPROB, :genera
  end
 
  def spaceStationMoves(speed)
+   @generator=rand
    if (@generator > speed)
      return false
    else
