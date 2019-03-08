@@ -11,30 +11,58 @@ package deepspace;
  */
 public class TestP1 {
     public static void main(String [] args){
-// Loot
+                // LOOT
 		Loot botin = new Loot(8,4,3,5,6);
 		System.out.println("Botín: ");
-		System.out.println("Suministros: "+botin.getNSupplies);
-		System.out.println("Armas : "+botin.getNWeapons);
-		System.out.println("Escudos: "+botin.getNShields);
-		System.out.println("Hangares: "+botin.getNHangars);
-		System.out.println("Medallas: "+botin.getNMedals);
+		System.out.println("Suministros: "+botin.getNSupplies());
+		System.out.println("Armas : "+botin.getNWeapons());
+		System.out.println("Escudos: "+botin.getNShields());
+		System.out.println("Hangares: "+botin.getNHangars());
+		System.out.println("Medallas: "+botin.getNMedals());
 
-// SupliesPackage
-		SuppliesPackage PaqueteSum = new SuppliesPackage(24.5f,22.5,23.2);
+                // SUPPLIESPACKAGE
+		SuppliesPackage PaqueteSum = new SuppliesPackage(24.5f,22.5f,23.2f);
 		System.out.println("Suministros: ");
-		System.out.println("Municiones: "+PaqueteSum.getAmmoPower);
-		System.out.println("Combustible: "+PaqueteSum.getFuelUnits);
-		System.out.println("Poder de escudo: "+PaqueteSum.getShieldPower);
+		System.out.println("Municiones: "+PaqueteSum.getAmmoPower());
+		System.out.println("Combustible: "+PaqueteSum.getFuelUnits());
+		System.out.println("Poder de escudo: "+PaqueteSum.getShieldPower());
 
 		SuppliesPackage PaqueteSumCopia = new SuppliesPackage(PaqueteSum);
 		System.out.println("Suministros de copia: ");
-		System.out.println("Municiones: "+PaqueteSumCopia.getAmmoPower);
-		System.out.println("Combustible: "+PaqueteSumCopia.getFuelUnits);
-		System.out.println("Poder de escudo: "+PaqueteSumCopia.getShieldPower);
+		System.out.println("Municiones: "+PaqueteSumCopia.getAmmoPower());
+		System.out.println("Combustible: "+PaqueteSumCopia.getFuelUnits());
+		System.out.println("Poder de escudo: "+PaqueteSumCopia.getShieldPower());
 
-// ShieldBooster
+                // SHIELDBOOSTER
 		ShieldBooster escudo = new ShieldBooster("Escudo", 4.5f, 3);
 		System.out.println("ShieldBooster: ");
-		System.out.println("Nombre: "+);
+                System.out.println("Boost: "+escudo.getBoost());
+                System.out.println("Usos: "+escudo.getUses());
+                System.out.println("Boost a partir de la función useIt: "+escudo.useIt());
+                System.out.println("Usos después de useIt: "+escudo.getUses());
+                
+                ShieldBooster escudoCopia = new ShieldBooster(escudo);
+                System.out.println("ShieldBooster de copia: ");
+                System.out.println("Boost: "+escudo.getBoost());
+                System.out.println("Usos: "+escudo.getUses());
+                
+                // WEAPON
+                Weapon arma = new Weapon("armita", WeaponType.LASER,4 );
+                
+                System.out.println("Arma: ");
+                System.out.println("Tipo: "+arma.getType());
+                System.out.println("Usos: "+arma.getUses());
+                System.out.println("Poder: "+arma.useIt());
+                System.out.println("Usos después de useIt: "+arma.useIt());
+                
+                Weapon armaCopia = new Weapon(arma);
+                System.out.println("Arma de copia: ");
+                System.out.println("Tipo: "+armaCopia.getType());
+                System.out.println("Usos: "+armaCopia.getUses());
+                System.out.println("Poder: "+armaCopia.power());
+                
+                // DICE 
+                
+                
+    }           
 }
