@@ -35,4 +35,9 @@ class SuppliesPackage {
     float getShieldPower(){
         return shieldPower;
     }
+    
+    public String toString(){
+        String mensaje = "El SuppliesPackage tiene de municiones de energía: "+ammoPower+", de combustible: "+fuelUnits+" y de poder de escudo: "+shieldPower+".";
+        return mensaje;
+    }
 }

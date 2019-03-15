@@ -41,4 +41,9 @@ class ShieldBooster {
         }
         return 1.0f;            
     }
+    
+    public String toString(){
+        String mensaje = "El ShieldBooster se llama "+name+", tiene de potenciador "+boost+" y tiene "+uses+" usos.";
+        return mensaje;
+    }
 }

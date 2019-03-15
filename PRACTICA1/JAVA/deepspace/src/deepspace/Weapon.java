@@ -45,4 +45,9 @@ class Weapon {
        }
        return 1.0f;
    }
+   
+   public String toString(){
+       String mensaje = "El arma se llama: "+name+", es de tipo: "+type+" y tiene "+uses+" usos.";
+       return mensaje;
+   }
 }

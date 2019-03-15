@@ -70,4 +70,9 @@ class Dice {
         return false;
     }
     
+    public String toString(){
+        String mensaje = "Este dado tiene de probabilidad de Hangar :"+NHANGARSPROB+", de Shield: " +NSHIELDSPROB+", de Weapons: " +NWEAPONSPROB+", de FirstShot: "+ FIRSTSHOTPROB+",  de generator: "+generator+".";
+ 
+        return mensaje;
+    }
 }

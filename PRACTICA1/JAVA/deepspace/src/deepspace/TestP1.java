@@ -72,22 +72,22 @@ public class TestP1 {
                 for (int i=0; i<100; i++){
                     hangars[dado.initWithNHangars()]++;
                 }
-                System.out.println("Probabilidad hangar 0= "+hangars[0]/100);
-                System.out.println("Probabilidad hangar 1= "+hangars[1]/100);
+                System.out.println("Probabilidad hangar 0= "+hangars[0]);
+                System.out.println("Probabilidad hangar 1= "+hangars[1]);
                 int[] weapons = new int[3];
                 for (int i=0; i<100; i++){
                     weapons[dado.initWithNWeapons()-1]++;
                 }
-                System.out.println("Probabilidad weapons 1= "+weapons[0]/100);
-                System.out.println("Probabilidad weapons 2= "+weapons[1]/100);
-                System.out.println("Probabilidad weapons 3= "+weapons[2]/100);
+                System.out.println("Probabilidad weapons 1= "+weapons[0]);
+                System.out.println("Probabilidad weapons 2= "+weapons[1]);
+                System.out.println("Probabilidad weapons 3= "+weapons[2]);
 
                 int[] shields = new int[2];
                 for (int i=0; i<100; i++){
                     shields[dado.initWithNShields()]++;
                 }
-                System.out.println("Probabilidad shields 0= "+shields[0]/100);
-                System.out.println("Probabilidad shields 1= "+shields[1]/100);
+                System.out.println("Probabilidad shields 0= "+shields[0]);
+                System.out.println("Probabilidad shields 1= "+shields[1]);
 
                 int[] character = new int [2];
                 
@@ -100,8 +100,8 @@ public class TestP1 {
                    }   
                 }
                 
-                System.out.println("Probabilidad SPACESTATION= "+character[0]/100);
-                System.out.println("Probabilidad ENEMYSTARSHIP= "+character[1]/100);
+                System.out.println("Probabilidad SPACESTATION= "+character[0]);
+                System.out.println("Probabilidad ENEMYSTARSHIP= "+character[1]);
                 
 
     }           
