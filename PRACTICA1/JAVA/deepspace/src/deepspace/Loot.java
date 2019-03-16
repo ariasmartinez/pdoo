@@ -48,5 +48,7 @@ class Loot {
         String mensaje = "El botín tiene "+nSupplies+" suministros, "+nWeapons+" armas, "+nShields+" escudos, "+nHangars+" hangares y "+nMedals+" medallas";
         return mensaje;
     }
-    
+    EnemyToUI getUIversion(){
+       throw new UnsupportedOperationException(); 
+    }
 }

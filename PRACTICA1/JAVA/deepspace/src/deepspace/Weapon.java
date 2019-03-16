@@ -50,4 +50,7 @@ class Weapon {
        String mensaje = "El arma se llama: "+name+", es de tipo: "+type+" y tiene "+uses+" usos.";
        return mensaje;
    }
+   EnemyToUI getUIversion(){
+       throw new UnsupportedOperationException(); 
+    }
 }

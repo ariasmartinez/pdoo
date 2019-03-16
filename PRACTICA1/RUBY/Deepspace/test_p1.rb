@@ -102,3 +102,6 @@ puts disp_prim[1]
 puts "Probabilidad de que mueve la ss"
 puts mov_esp[0]
 puts mov_esp[1]
+
+puts "Probamos metodo Tostring"
+puts dado1.to_s

@@ -40,5 +40,11 @@ class Weapon
 
   end
 
+  def to_s
+    "El arma se llama: "+@name+", es de tipo: "+@type.to_s+" y tiene "+@uses.to_s+" usos."
+  end
+
+
+
 
 end

@@ -21,4 +21,9 @@ class SuppliesPackage
     new(orig.ammoPower, orig.fuelUnits, orig.shieldPower)
   end
 
+  def to_s
+    "El SuppliesPackage tiene de municiones de energía: "+@ammoPower.to_s+", de combustible: "+@fuelUnits.to_s+" y de poder de escudo: "+@shieldPower.to_s+"."
+  end
+
+
 end

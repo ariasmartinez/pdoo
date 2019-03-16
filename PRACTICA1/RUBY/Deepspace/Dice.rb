@@ -69,6 +69,9 @@ attr_reader :NHANGARSPROB, :NSHIELDSPROB, :NWEAPONSPROB, :FIRSTSHOTPROB, :genera
    end
  end
 
+ def to_s
+   "Este dado tiene de probabilidad de Hangar :"+@NHANGARSPROB.to_s+", de Shield: " +@NSHIELDSPROB.to_s+", de Weapons: " +@NWEAPONSPROB.to_s+", y de FirstShot: "+ @FIRSTSHOTPROB.to_s+"."
+ end
 
 
 

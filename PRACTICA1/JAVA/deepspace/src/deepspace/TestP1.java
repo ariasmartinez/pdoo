@@ -103,6 +103,7 @@ public class TestP1 {
                 System.out.println("Probabilidad SPACESTATION= "+character[0]);
                 System.out.println("Probabilidad ENEMYSTARSHIP= "+character[1]);
                 
-
+                //probamos toString 
+                System.out.println(dado.toString());
     }           
 }

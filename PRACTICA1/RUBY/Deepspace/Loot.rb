@@ -28,5 +28,7 @@ class Loot
     @nMedals
   end
 
-
+  def to_s
+    "El botín tiene "+@nSupplies.to_s+" suministros, "+@nWeapons.to_s+" armas, "+@nShields.to_s+" escudos, "+@nHangars.to_s+" hangares y "+@nMedals.to_s+" medallas"
+  end
 end
