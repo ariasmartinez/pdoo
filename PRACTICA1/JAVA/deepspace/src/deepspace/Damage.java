@@ -5,6 +5,8 @@
  */
 package deepspace;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author celia
@@ -14,7 +16,8 @@ public class Damage {
     private int nWeapons;
     
     public Damage(int w, int s){
-       throw new UnsupportedOperationException(); 
+       nShields = s;
+       nWeapons = w;
     }
     public Damage(WeaponType[] wl, int s ){
         throw new UnsupportedOperationException();
@@ -46,7 +49,7 @@ public class Damage {
     public int getNWeapons(){
         throw new UnsupportedOperationException();
     }
-    public WeaponType[] getWeapons(){
+    public ArrayList<WeaponType> getWeapons(){
         throw new UnsupportedOperationException();
     }
 }
