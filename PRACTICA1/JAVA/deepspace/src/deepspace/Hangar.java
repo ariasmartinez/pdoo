@@ -7,7 +7,8 @@ package deepspace;
 import java.util.ArrayList;
 /**
  *
- * @author celia
+ * @author Lucía Salamanca López
+ *         Celia Arias Martínez
  */
 public class Hangar {
     private int maxElements;
