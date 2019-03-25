@@ -1,8 +1,8 @@
 class ShieldBooster
   def initialize(name,boost,uses)
-    @name = name
-    @boost = boost 
-    @uses = uses
+    @name = name #string
+    @boost = boost #float
+    @uses = uses #int
   end
 
   def name
