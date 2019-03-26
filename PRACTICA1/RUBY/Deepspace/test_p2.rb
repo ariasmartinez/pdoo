@@ -6,6 +6,7 @@ require './GameUniverse'
 require './SpaceStation'
 require './SuppliesPackage'
 require './EnemyStarShip'
+require './Hangar'
 
 puts "Creamos un objeto de la clase Damage"
 array_weap = [Deepspace::WeaponType::LASER,Deepspace::WeaponType::MISSILE]
@@ -14,11 +15,11 @@ daño = Deepspace::Damage.newSpecificWeapons(array_weap,2)
 daño2 = Deepspace::Damage.newCopy(daño)
 puts daño.to_s
 puts daño2.to_s
-arma = Deepspace::Weapon.new("LASER", Deepspace::WeaponType::LASER, 1)
+arma = Deepspace::Weapon.new("PLASMA", Deepspace::WeaponType::PLASMA, 1)
 #daño2.discardWeapon(arma)
 #daño2.discardShieldBooster
 puts daño2.hasNoEffect
-arma2 = Deepspace::Weapon.new("LASER",Deepspace::WeaponType::PLASMA, 2)
+arma2 = Deepspace::Weapon.new("PLASMA",Deepspace::WeaponType::PLASMA, 2)
 array_arma=[arma, arma2]
 pos =  daño.arrayContainsType(array_arma, Deepspace::WeaponType::MISSILE)
 puts pos
@@ -76,8 +77,14 @@ puts estacion.fuelUnits
 puts "cleanPendingDamage:"
 estacion.cleanPendingDamage
 puts estacion.pendingDamage
+puts "probamos cleanUpMountedItems: "
+puts estacion.weapons.to_s
+estacion.cleanUpMountedItems
+puts estacion.weapons.to_s
 #FALTAN COSAS POR PROBAR
 
+
+puts " "
 puts "Probamos EnemyStarShip"
 bot = Deepspace::Loot.new(1,2,3,4,5)
 dan = Deepspace::Damage.newNumericWeapons(2,5)
@@ -87,3 +94,91 @@ enemigo2 = Deepspace::EnemyStarShip.newCopy(enemigo)
 puts enemigo2.to_s
 puts enemigo.receiveShot(2)
 #EnemyStarShip probado y funciona
+
+
+puts " "
+puts "Probamos Hangar:"
+hangar = Deepspace::Hangar.new(20)
+puts "addWeapon"
+arma_hangar = Deepspace::Weapon.new("MISSILE", Deepspace::WeaponType::MISSILE, 2)
+puts hangar.addWeapon(arma_hangar)
+puts hangar.addWeapon(arma_hangar)
+puts hangar.weapons.to_s
+puts "addShieldBooster: "
+esc_hangar = Deepspace::ShieldBooster.new("esc_hangar", 3,4)
+puts hangar.addShieldBooster(esc_hangar)
+puts hangar.addShieldBooster(esc_hangar)
+puts hangar.shieldBoosters.to_s
+puts "spaceAvailable:"
+puts hangar.spaceAvailable
+puts "removeShieldBooster:"
+puts hangar.removeShieldBooster(0)
+puts hangar.shieldBoosters.to_s
+puts "removeWeapon:"
+puts hangar.removeWeapon(2)
+puts hangar.weapons.to_s
+#Hangar probado y funciona
+puts " "
+
+
+puts "Probamos SpaceStation"
+provisiones = Deepspace::SuppliesPackage.new(2,3,4)
+estacion = Deepspace::SpaceStation.new("nave1", provisiones)
+puts estacion.to_s
+puts "assignFuelValue:"
+estacion.assignFuelValue(40)
+puts estacion.fuelUnits
+puts "cleanPendingDamage:"
+estacion.cleanPendingDamage
+puts estacion.pendingDamage
+
+puts "receiveHangar:"
+puts estacion.receiveHangar(hangar)
+puts "receiveShieldBooster: "
+escudo_estacion = Deepspace::ShieldBooster.new("esc_estacion",3,0)
+puts estacion.receiveShieldBooster(escudo_estacion)
+puts estacion.hangar.to_s
+puts "discardShieldBoosterinHangar"
+puts estacion.discardShieldBoosterinHangar(2)
+puts estacion.hangar.to_s
+puts "discardWeaponinHangar"
+puts estacion.discardWeaponinHangar(0)
+puts estacion.hangar.to_s
+puts "getSpeed: "
+puts estacion.getSpeed
+puts "move: "
+puts estacion.fuelUnits
+puts estacion.getSpeed
+estacion.move
+puts estacion.fuelUnits
+puts "receiveSupplies: "
+sum_nuevos = Deepspace::SuppliesPackage.new(34,21,9)
+puts estacion.shieldPower
+estacion.receiveSupplies(sum_nuevos)
+puts estacion.shieldPower
+puts "receiveWeapon: "
+arma_estacion = Deepspace::Weapon.new("PLASMA", Deepspace::WeaponType::PLASMA, 0)
+puts estacion.receiveWeapon(arma_estacion)
+puts estacion.hangar.to_s
+puts "validState: "
+puts estacion.validState
+puts "mountShieldBooster: "
+estacion.mountShieldBooster(1)
+estacion.mountShieldBooster(0)
+puts estacion.shieldBoosters
+puts estacion.hangar
+puts "mountWeapon:"
+estacion.mountWeapon(1)
+puts estacion.hangar
+puts estacion.weapons
+puts "probamos cleanUpMountedItems: "
+puts estacion.shieldBoosters.to_s
+#estacion.cleanUpMountedItems
+puts estacion.shieldBoosters.to_s
+puts "setPendingDamage: "
+puts estacion.weapons.to_s
+#puts estacion.shieldBoosters.to_s
+daño_estacion = Deepspace::Damage.newSpecificWeapons(array_arma,3)
+estacion.setPendingDamage(daño_estacion)
+puts estacion.pendingDamage
+#FALTAN COSAS POR PROBAR

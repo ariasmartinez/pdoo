@@ -17,8 +17,8 @@ class SpaceStation
     @name = n #string
     @nMedals = 0 #int    Lo inicializo a cero pero no se
     @shieldPower = supplies.shieldPower  #float
-    @hangar = Hangar.new(0)       #Hangar 0..1   no lo tengo muy claro
-    @pendingDamage = Damage.newNumericWeapons(0,0) # Damage 0..1   rt
+    @hangar = nil   #Hangar.new(0)       #Hangar 0..1   lo pongo a nil para que funcione receiveHangar
+    @pendingDamage = Damage.newNumericWeapons(3,0) # Damage 0..1   rt
     @shieldBoosters = Array.new   #array de ShieldBooster
     @weapons = Array.new    #array de Weapon
   end
@@ -47,7 +47,7 @@ class SpaceStation
 
     for sb in shieldBoosters do
       if (sb.uses == 0)
-        @shieldBoosters.delete(w)
+        @shieldBoosters.delete(sb)
       end
     end
   end
@@ -113,7 +113,7 @@ class SpaceStation
   end
 
   def getSpeed
-    fuelUnits/@@MAXFUEL
+   return (@fuelUnits.to_f/@@MAXFUEL)
   end
 
   def getUIversion
@@ -143,8 +143,8 @@ class SpaceStation
   end
 
   def move
-    if ((fuelUnits - getSpeed) > 0)
-      @fuelUnits = fuelUnits-getSpeed()
+    if ((fuelUnits - getSpeed*fuelUnits) > 0)
+      @fuelUnits = fuelUnits-getSpeed()*fuelUnits
     else
       @fuelUnits = 0
     end
@@ -155,7 +155,7 @@ class SpaceStation
   end
 
   def receiveHangar(h)
-    if (hangar == nil)
+    if (@hangar == nil)
       @hangar = h
     end
   end
@@ -191,12 +191,11 @@ class SpaceStation
   end
 
   def setPendingDamage(d)
-    @pendingDamage = d.adjust(weapons, shieldBoosters)
+    @pendingDamage = d.adjust(@weapons, @shieldBoosters)
   end
 
   def validState
-    cleanPendingDamage
-    if (@pendingDamage != nil)
+    if (@pendingDamage == nil || @pendingDamage.hasNoEffect)
         return true
     else
       false

@@ -58,7 +58,7 @@ end
 def removeShieldBooster(s)
   if (@shieldBoosters[s] != nil)
     potenEscudo = @shieldBoosters[s]
-    @weapons.delete_at(s)
+    @shieldBoosters.delete_at(s)
     return potenEscudo
   else
     return nil

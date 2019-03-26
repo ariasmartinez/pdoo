@@ -46,16 +46,20 @@ class Damage
   end
 
   def adjust(w,s)  #w es array de Weapons y s array de SHieldbooster
-    danio = Damage.newCopy(self)
-    if (danio.nWeapons == nil)
-      for i in danio.getWeapons #cada i es de tipo WeaponType
-        if (danio.arrayContainsType(w, i) == -1)
-          danio.getWeapons.delete(i)
+
+    if (nWeapons == 0)
+      weapon_prov = Array.new(getWeapons)
+      for i in getWeapons #cada i es de tipo WeaponType
+        puts "borramos arma"
+        if (arrayContainsType(w, i) == -1)
+          weapon_prov.delete(i)
         end
       end
+      danio = Damage.newSpecificWeapons(weapon_prov, @nShields)
     else
-      if (danio.nWeapons > w.length)
-        (danio.nWeapons-w.length).times do
+      danio = Damage.newNumericWeapons(nWeapons, nShields)
+      if (@nWeapons > w.length)
+        (@nWeapons-w.length).times do
           danio.discardWeapon(w[0])    #bastante chapucero pero no se me ocurria otra cosa
         end
       end
