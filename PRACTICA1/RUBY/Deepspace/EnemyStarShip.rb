@@ -1,5 +1,6 @@
 #encoding:utf-8
-
+require './Loot'
+require './Damage'
 module Deepspace
 
 
@@ -7,11 +8,11 @@ module Deepspace
 class EnemyStarShip
 
 def initialize(n,a,s,l,d)
-  @ammoPower = a
-  @name = n
-  @shieldPower = s
-  @loot = l
-  @damage = d
+  @name = n   #string
+  @ammoPower = a   #float
+  @shieldPower = s  #float
+  @loot = Loot.new(l.nSupplies, l.nWeapons, l.nShields, l.nHangars, l.nMedals)  #Loot
+  @damage = Damage.newCopy(d)   #Damage
 end
 
 def self.newCopy(e)

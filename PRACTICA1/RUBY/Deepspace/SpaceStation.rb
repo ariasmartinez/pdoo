@@ -1,4 +1,6 @@
 #encoding:utf-8
+require './Hangar'
+require './Damage'
 
 module Deepspace
 
@@ -9,16 +11,16 @@ class SpaceStation
   @@SHIELDLOSSPERUNITSHOT = 0.1
 
  # las medallas como coño se saben
-  def initialize(n, supplies)
-    @ammoPower = supplies.ammoPower
-    @fuelUnits = supplies.fuelUnits
-    @name = n
-    @nMedals
-    @shieldPower = supplies.shieldPower
-    @hangar = nil # ???
-    @pendingDamage = nil # ???
-    @shieldBoosters = Array.new
-    @weapons = Array.new
+  def initialize(n, supplies)     #string int, supplies SuppliesPackage
+    @ammoPower = supplies.ammoPower  #float
+    @fuelUnits = supplies.fuelUnits #float
+    @name = n #string
+    @nMedals = 0 #int    Lo inicializo a cero pero no se
+    @shieldPower = supplies.shieldPower  #float
+    @hangar = Hangar.new(0)       #Hangar 0..1   no lo tengo muy claro
+    @pendingDamage = Damage.newNumericWeapons(0,0) # Damage 0..1   rt
+    @shieldBoosters = Array.new   #array de ShieldBooster
+    @weapons = Array.new    #array de Weapon
   end
 
   def assignFuelValue(f)
@@ -59,6 +61,7 @@ class SpaceStation
   def discardShieldBoosterinHangar(i)
     if (@hangar != nil)
       @hangar.removeShieldBooster(i)
+    end
   end
 
   def discardWeapon(i)
@@ -68,6 +71,7 @@ class SpaceStation
   def discardWeaponinHangar(i)
     if (@hangar != nil)
       @hangar.removeWeapon(i)
+    end
   end
 
   def fire
@@ -207,5 +211,7 @@ class SpaceStation
     out+="------- end of Space Station >> #{@name} << -------"
     return out
   end
+
 end
+
 end

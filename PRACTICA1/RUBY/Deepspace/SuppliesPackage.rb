@@ -6,9 +6,9 @@ module Deepspace
 # @author Lucía Salamanca López, Celia Arias Martínez
 class SuppliesPackage
   def initialize(ammoPower,fuelUnits,shieldPower)
-    @ammoPower = ammoPower
-    @fuelUnits = fuelUnits
-    @shieldPower = shieldPower
+    @ammoPower = ammoPower  #float
+    @fuelUnits = fuelUnits  #float
+    @shieldPower = shieldPower  #float
   end
 
   def ammoPower

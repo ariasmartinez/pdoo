@@ -10,8 +10,8 @@ class Damage
   def initialize(w,s,t)
     @nShields = s #int
     @nWeapons = w #int
-    #@type = t.dup #Array tipo WeaponType  DUDA !! (hay que poner new?)
-    @type = Array.new(t) #Array tipo WeaponType
+    #@weapons = t.dup #Array tipo WeaponType  DUDA !! (hay que poner new?)
+    @weapons = Array.new(t) #Array tipo WeaponType
   end
 
   def self.newNumericWeapons(w,s)  #le pasamos un int(de weapons) y otro int (de shields)
@@ -60,9 +60,9 @@ class Damage
 
     #danio.each do i
       #if (danio[i].)
-    #  nelem = w.count(@type[i])
+    #  nelem = w.count(@weapons[i])
 #      if (nelem == 0)
-#        @type.remove(@type[i])  #los elimina todos o uno?
+#        @weapons.remove(@weapons[i])  #los elimina todos o uno?
 #        @nWeapons = @nWeapons -1
 #      end
 #    end
@@ -70,9 +70,9 @@ class Damage
   end
 
   def discardWeapon(w)
-    if (@type.length != 0)
-      num = @type.count(w.type)
-      @type.delete(w.type)
+    if (@weapons.length != 0)
+      num = @weapons.count(w.type)
+      @weapons.delete(w.type)
       if ((@nWeapons - num) >= 0)
           @nWeapons = @nWeapons -num
       else
@@ -106,11 +106,11 @@ class Damage
   end
 
   def getWeapons
-    return @type
+    return @weapons
   end
 
   def to_s
-   "El daño es "+@nWeapons.to_s+" armas, y "+@nShields.to_s+" escudos, la coleccion de armas es "+@type.to_s
+   "El daño es "+@nWeapons.to_s+" armas, y "+@nShields.to_s+" escudos, la coleccion de armas es "+@weapons.to_s
 
   end
 

@@ -7,11 +7,11 @@ module Deepspace
 class Loot
 # no sé si lo que he hecho estará bien
   def initialize (nSupplies,nWeapons,nShields,nHangars,nMedals)
-    @nSupplies = nSupplies
-    @nWeapons = nWeapons
-    @nShields = nShields
-    @nHangars = nHangars
-    @nMedals = nMedals
+    @nSupplies = nSupplies   #int
+    @nWeapons = nWeapons    #int
+    @nShields = nShields #int
+    @nHangars = nHangars #int
+    @nMedals = nMedals #int
   end
 
   def nSupplies

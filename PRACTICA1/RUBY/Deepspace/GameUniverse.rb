@@ -1,5 +1,7 @@
 #encoding:utf-8
-
+require'./Dice.rb'
+require './GameStateController'
+require'./EnemyStarShip'
 module Deepspace
 
 
@@ -10,12 +12,13 @@ class GameUniverse
 # Hay que crear un dado
 # controlador de estados?
   def initialize
-    @currentStationIndex #int   # no sé que hay que poner
+    @currentStationIndex #int   # no sé que hay que poner   Es lo mismo que currentStation?
     @turns = 0 #int
-    @dado = Dice::Dice.new #Dice     #hace falta poner new?  (poner new o no)
-    @controlador_estado  = GameStateController.new   #GameStateController  (poner new o no)
-    @est_espacial  = Array.new #Array SpaceStation  (poner new o no)
-    @enemy = EnemyStarShip.new #EnemyStarShip
+    @dice = Dice.new #Dice     #hace falta poner new?  (poner new o no)
+    @gameState  = GameStateController.new   #GameStateController  (poner new o no)
+    @spaceStations  = Array.new #Array SpaceStation  (poner new o no)
+    @currentEnemy = EnemyStarShip.new #EnemyStarShip
+    @currentStation = SpaceStation.new()  #hay que pasarle algo
 
   end
 
@@ -28,37 +31,37 @@ class GameUniverse
   end
 
   def discardHangar
-    if (@controlador_estado == INIT or @controlador_estado == AFTERCOMBAT)
-      @est_espacial[@currentStationIndex].discardHangar
+    if (@gameState == INIT or @gameState == AFTERCOMBAT)
+      @spaceStations[@currentStationIndex].discardHangar
     end
   end
 
   def discardShieldBooster(i)
-    if (@controlador_estado == INIT or @controlador_estado == AFTERCOMBAT)
-      @est_espacial[@currentStationIndex].discardShieldBooster(i)
+    if (@gameState == INIT or @gameState == AFTERCOMBAT)
+      @spaceStations[@currentStationIndex].discardShieldBooster(i)
     end
   end
 
   def discardShieldBoosterinHangar(i)
-    if (@controlador_estado == INIT or @controlador_estado == AFTERCOMBAT)
-      @est_espacial[@currentStationIndex].discardShieldBoosterinHangar(i)
+    if (@gameState == INIT or @gameState == AFTERCOMBAT)
+      @spaceStations[@currentStationIndex].discardShieldBoosterinHangar(i)
     end
   end
 
   def discardWeapon(i)
-    if (@controlador_estado == INIT or @controlador_estado == AFTERCOMBAT)
-      @est_espacial[@currentStationIndex].discardWeapon(i)
+    if (@gameState == INIT or @gameState == AFTERCOMBAT)
+      @spaceStations[@currentStationIndex].discardWeapon(i)
     end
   end
 
   def discardWeaponinHangar(i)
-    if (@controlador_estado == INIT or @controlador_estado == AFTERCOMBAT)
-      @est_espacial[@currentStationIndex].discardWeaponinHangar(i)
+    if (@gameState == INIT or @gameState == AFTERCOMBAT)
+      @spaceStations[@currentStationIndex].discardWeaponinHangar(i)
     end
   end
 
   def getState
-    return @controlador_estado
+    return @gameState
   end
 
   def getUIversion
@@ -66,7 +69,7 @@ class GameUniverse
   end
 
   def haveAWinner
-    if (@est_espacial[@currentStationIndex].nMedals == WIN)
+    if (@spaceStations[@currentStationIndex].nMedals == WIN)
       return true
     end
     return false
@@ -77,14 +80,14 @@ class GameUniverse
   end
 
   def mountShieldBooster(i)
-    if (@controlador_estado == INIT or @controlador_estado == AFTERCOMBAT)
-      @est_espacial[@currentStationIndex].mountShieldBooster(i)
+    if (@gameState == INIT or @gameState == AFTERCOMBAT)
+      @spaceStations[@currentStationIndex].mountShieldBooster(i)
     end
   end
 
   def mountWeapon(i)
-    if (@controlador_estado == INIT or @controlador_estado == AFTERCOMBAT)
-      @est_espacial[@currentStationIndex].mountWeapon(i)
+    if (@gameState == INIT or @gameState == AFTERCOMBAT)
+      @spaceStations[@currentStationIndex].mountWeapon(i)
     end
   end
 
