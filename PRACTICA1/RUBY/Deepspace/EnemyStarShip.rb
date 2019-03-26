@@ -1,6 +1,7 @@
 #encoding:utf-8
 require './Loot'
 require './Damage'
+require './ShotResult'
 module Deepspace
 
 
@@ -23,8 +24,8 @@ def getUIversion
   EnemyToUI
 end
 
-def fire
-  ammoPower
+def fire    #lo pongo con @
+  @ammoPower
 end
 
 def ammoPower
@@ -47,8 +48,8 @@ def shieldPower
   @shieldPower
 end
 
-def protection
-  shieldPower
+def protection  #lo pongo con @
+  @shieldPower
 end
 
 def receiveShot(shot)

@@ -23,9 +23,11 @@ class SpaceStation
     @weapons = Array.new    #array de Weapon
   end
 
-  def assignFuelValue(f)
+  def assignFuelValue(f)   #lo he cambiado para que si se exceda se quede el valor max, si ves que no lo vuelves a cambiar
     if (f <= @@MAXFUEL)
       @fuelUnits = f
+    else
+      @fuelUnits = @@MAXFUEL
     end
   end
 

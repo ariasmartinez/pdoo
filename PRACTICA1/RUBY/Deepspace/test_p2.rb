@@ -8,34 +8,57 @@ require './SuppliesPackage'
 require './EnemyStarShip'
 
 puts "Creamos un objeto de la clase Damage"
-array_weap = [Deepspace::WeaponType::LASER,Deepspace::WeaponType::LASER]
+array_weap = [Deepspace::WeaponType::LASER,Deepspace::WeaponType::MISSILE]
 puts array_weap.to_s
-daño = Deepspace::Damage.new(3,4, array_weap)
+daño = Deepspace::Damage.newSpecificWeapons(array_weap,2)
 daño2 = Deepspace::Damage.newCopy(daño)
 puts daño.to_s
 puts daño2.to_s
-arma = Deepspace::Weapon.new("pistola", Deepspace::WeaponType::MISSILE, 1)
-daño2.discardWeapon(arma)
-daño2.discardShieldBooster
+arma = Deepspace::Weapon.new("LASER", Deepspace::WeaponType::LASER, 1)
+#daño2.discardWeapon(arma)
+#daño2.discardShieldBooster
 puts daño2.hasNoEffect
-arma2 = Deepspace::Weapon.new("bomba",Deepspace::WeaponType::MISSILE, 2)
+arma2 = Deepspace::Weapon.new("LASER",Deepspace::WeaponType::PLASMA, 2)
 array_arma=[arma, arma2]
 pos =  daño.arrayContainsType(array_arma, Deepspace::WeaponType::MISSILE)
 puts pos
-escudo1 = Deepspace::ShieldBooster.new("uno",2,3)
-escudo2 = Deepspace::ShieldBooster.new("dos",4,3)
+escudo1 = Deepspace::ShieldBooster.new("escudo_uno",2,3)
+escudo2 = Deepspace::ShieldBooster.new("escudo_dos",4,3)
 array_escudo = [escudo1, escudo2]
+puts " "
 puts "Probamos adjust"
-daño.adjust(array_arma,array_escudo)
-puts daño.to_s
+puts "Mostramos el daño que queremos hacer: "+daño.to_s
+puts "Mostramos las armas de las que disponemos: "  +array_arma.to_s
+puts "MOstramos los escudos de los que disponemos: "+array_escudo.to_s
+puts "Mostramos el daño que podemos hacer: "
+puts daño.adjust(array_arma,array_escudo).to_s
+puts " "
+puts "Probamos la otra variante de adjust: "
+daño3 = Deepspace::Damage.newNumericWeapons(2,4)
+puts daño3.adjust(array_arma, array_escudo).to_s
 
+puts " "
 puts "Creamos un objeto damage con newNumericWeapons"
 daño_num = Deepspace::Damage.newNumericWeapons(3,2)
 puts daño_num.to_s
 puts "Creamos un objeto Damage con newSpecificWeapons"
 daño_esp = Deepspace::Damage.newSpecificWeapons(array_arma,3)
 puts daño_esp.to_s
-#FALTA PROBAR ADJUST (y mirar discard)
+
+puts " "
+puts "Probamos discard: "
+puts daño3.to_s
+daño3.discardWeapon(arma2)
+daño3.discardWeapon(arma2)
+daño3.discardWeapon(arma2)
+puts daño3.to_s
+puts " "
+puts "Probamos la otra variante de discard: "
+puts daño_esp.to_s
+daño_esp.discardWeapon(arma2)
+puts daño_esp.to_s
+puts " "
+#FALTA DISCARDWEAPON
 
 
 #puts "Creamos objeto de la clase GameUniverse"
@@ -47,6 +70,12 @@ puts "Probamos SpaceStation"
 provisiones = Deepspace::SuppliesPackage.new(2,3,4)
 estacion = Deepspace::SpaceStation.new("nave1", provisiones)
 puts estacion.to_s
+puts "assignFuelValue:"
+estacion.assignFuelValue(400)
+puts estacion.fuelUnits
+puts "cleanPendingDamage:"
+estacion.cleanPendingDamage
+puts estacion.pendingDamage
 #FALTAN COSAS POR PROBAR
 
 puts "Probamos EnemyStarShip"
@@ -54,3 +83,7 @@ bot = Deepspace::Loot.new(1,2,3,4,5)
 dan = Deepspace::Damage.newNumericWeapons(2,5)
 enemigo = Deepspace::EnemyStarShip.new("enem",3, 2, bot, dan)
 puts enemigo.to_s
+enemigo2 = Deepspace::EnemyStarShip.newCopy(enemigo)
+puts enemigo2.to_s
+puts enemigo.receiveShot(2)
+#EnemyStarShip probado y funciona

@@ -5,7 +5,7 @@ module Deepspace
 
 # @author Lucía Salamanca López, Celia Arias Martínez
 class Loot
-# no sé si lo que he hecho estará bien
+
   def initialize (nSupplies,nWeapons,nShields,nHangars,nMedals)
     @nSupplies = nSupplies   #int
     @nWeapons = nWeapons    #int

@@ -7,7 +7,7 @@ module Deepspace
 
 class Dice
 
-#No sé si es así
+
  def initialize
    @NHANGARSPROB=0.25
    @NSHIELDSPROB=0.25
@@ -16,11 +16,10 @@ class Dice
    @generator=rand
  end
 
-# Para hacer los consultores directamente no sé si funciona
-# Si no funciona el fallo está aquí
+
 attr_reader :NHANGARSPROB, :NSHIELDSPROB, :NWEAPONSPROB, :FIRSTSHOTPROB, :generator
 
-#he puesto el @ antes de los atributos, son de instancia no??
+
  def initWithNHangars
    @generator=rand
    if (@generator > @NHANGARSPROB )
@@ -56,7 +55,7 @@ attr_reader :NHANGARSPROB, :NSHIELDSPROB, :NWEAPONSPROB, :FIRSTSHOTPROB, :genera
    rand(nPlayers)
  end
 
-#le he quitado el Deepspace:: porque daba error
+
  def firstShot
    @generator=rand
    if (@generator > @FIRSTSHOTPROB )

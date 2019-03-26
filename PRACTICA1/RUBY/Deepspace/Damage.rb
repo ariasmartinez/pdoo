@@ -8,8 +8,8 @@ module Deepspace
 class Damage
 
   def initialize(w,s,t)
-    @nShields = s #int
     @nWeapons = w #int
+    @nShields = s #int
     #@weapons = t.dup #Array tipo WeaponType  DUDA !! (hay que poner new?)
     @weapons = Array.new(t) #Array tipo WeaponType
   end
@@ -20,7 +20,7 @@ class Damage
   end
 
   def self.newSpecificWeapons(wl,s) #le pasamos un arraylist de weapons y un int de shields
-    new(wl.length, s, wl)
+    new(0, s, wl)
   end
 
   def self.newCopy(d)
@@ -31,7 +31,7 @@ class Damage
     DamageToUI.new(self)
   end
 
-  def arrayContainsType(w,t)   #no entiendo que tiene que ver con la clase
+  def arrayContainsType(w,t)   #w es array de Weapons y t de tipo WeaponType
     pos = -1
     cond = false
     i = 0
@@ -45,42 +45,36 @@ class Damage
     return pos
   end
 
-  def adjust(w,s)   #no entido que hay que hacer
+  def adjust(w,s)  #w es array de Weapons y s array de SHieldbooster
     danio = Damage.newCopy(self)
-    for i in w do
-      discardWeapon(i)
+    if (danio.nWeapons == nil)
+      for i in danio.getWeapons #cada i es de tipo WeaponType
+        if (danio.arrayContainsType(w, i) == -1)
+          danio.getWeapons.delete(i)
+        end
+      end
+    else
+      if (danio.nWeapons > w.length)
+        (danio.nWeapons-w.length).times do
+          danio.discardWeapon(w[0])    #bastante chapucero pero no se me ocurria otra cosa
+        end
+      end
     end
-    for j in s do
-      discardShieldBooster
+
+    if (danio.nShields > s.length)
+      (danio.nShields-s.length).times do
+        danio.discardShieldBooster
+      end
     end
 
-
-
-
-
-    #danio.each do i
-      #if (danio[i].)
-    #  nelem = w.count(@weapons[i])
-#      if (nelem == 0)
-#        @weapons.remove(@weapons[i])  #los elimina todos o uno?
-#        @nWeapons = @nWeapons -1
-#      end
-#    end
-
+  return danio
   end
 
   def discardWeapon(w)
-    if (@weapons.length != 0)
-      num = @weapons.count(w.type)
-      @weapons.delete(w.type)
-      if ((@nWeapons - num) >= 0)
-          @nWeapons = @nWeapons -num
-      else
-          @nWeapons = 0
-      end
-    end
-    if (@nWeapons != 0)
-      @nWeapons = @nWeapons-1
+    if (@nWeapons == 0)
+        @weapons.delete(w.type)
+    else
+        @nWeapons = @nWeapons-1
     end
   end
 
