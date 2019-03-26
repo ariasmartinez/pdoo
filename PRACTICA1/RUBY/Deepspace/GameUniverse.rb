@@ -31,31 +31,31 @@ class GameUniverse
   end
 
   def discardHangar
-    if (@gameState == INIT or @gameState == AFTERCOMBAT)
+    if (@gameState == GameState::INIT or @gameState == GameState::AFTERCOMBAT)
       @spaceStations[@currentStationIndex].discardHangar
     end
   end
 
   def discardShieldBooster(i)
-    if (@gameState == INIT or @gameState == AFTERCOMBAT)
+    if (@gameState == GameState::INIT or @gameState == GameState::AFTERCOMBAT)
       @spaceStations[@currentStationIndex].discardShieldBooster(i)
     end
   end
 
   def discardShieldBoosterinHangar(i)
-    if (@gameState == INIT or @gameState == AFTERCOMBAT)
+    if (@gameState == GameState::INIT or @gameState == GameState::AFTERCOMBAT)
       @spaceStations[@currentStationIndex].discardShieldBoosterinHangar(i)
     end
   end
 
   def discardWeapon(i)
-    if (@gameState == INIT or @gameState == AFTERCOMBAT)
+    if (@gameState == GameState::INIT or @gameState == GameState::AFTERCOMBAT)
       @spaceStations[@currentStationIndex].discardWeapon(i)
     end
   end
 
   def discardWeaponinHangar(i)
-    if (@gameState == INIT or @gameState == AFTERCOMBAT)
+    if (@gameState == GameState::INIT or @gameState == GameState::AFTERCOMBAT)
       @spaceStations[@currentStationIndex].discardWeaponinHangar(i)
     end
   end
@@ -69,7 +69,7 @@ class GameUniverse
   end
 
   def haveAWinner
-    if (@spaceStations[@currentStationIndex].nMedals == WIN)
+    if (@spaceStations[@currentStationIndex].nMedals == @@WIN)
       return true
     end
     return false
@@ -80,13 +80,13 @@ class GameUniverse
   end
 
   def mountShieldBooster(i)
-    if (@gameState == INIT or @gameState == AFTERCOMBAT)
+    if (@gameState == GameState::INIT or @gameState == GameState::AFTERCOMBAT)
       @spaceStations[@currentStationIndex].mountShieldBooster(i)
     end
   end
 
   def mountWeapon(i)
-    if (@gameState == INIT or @gameState == AFTERCOMBAT)
+    if (@gameState == GameState::INIT or @gameState == GameState::AFTERCOMBAT)
       @spaceStations[@currentStationIndex].mountWeapon(i)
     end
   end
