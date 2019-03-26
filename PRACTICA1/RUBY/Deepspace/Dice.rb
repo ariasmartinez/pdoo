@@ -1,3 +1,10 @@
+#encoding:utf-8
+
+module Deepspace
+
+
+# @author Lucía Salamanca López, Celia Arias Martínez
+
 class Dice
 
 #No sé si es así
@@ -74,5 +81,7 @@ attr_reader :NHANGARSPROB, :NSHIELDSPROB, :NWEAPONSPROB, :FIRSTSHOTPROB, :genera
  end
 
 
+
+end
 
 end

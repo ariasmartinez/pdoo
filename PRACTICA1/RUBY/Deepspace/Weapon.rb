@@ -1,3 +1,9 @@
+#encoding:utf-8
+
+module Deepspace
+
+
+# @author Lucía Salamanca López, Celia Arias Martínez
 class Weapon
 
   def initialize(name,type,uses)
@@ -47,4 +53,5 @@ class Weapon
 
 
 
+end
 end

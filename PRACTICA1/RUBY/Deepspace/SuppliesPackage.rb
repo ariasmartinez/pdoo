@@ -1,3 +1,9 @@
+#encoding:utf-8
+
+module Deepspace
+
+
+# @author Lucía Salamanca López, Celia Arias Martínez
 class SuppliesPackage
   def initialize(ammoPower,fuelUnits,shieldPower)
     @ammoPower = ammoPower
@@ -25,5 +31,7 @@ class SuppliesPackage
     "El SuppliesPackage tiene de municiones de energía: "+@ammoPower.to_s+", de combustible: "+@fuelUnits.to_s+" y de poder de escudo: "+@shieldPower.to_s+"."
   end
 
+
+end
 
 end

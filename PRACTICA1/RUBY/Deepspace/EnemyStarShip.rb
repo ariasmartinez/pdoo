@@ -1,3 +1,9 @@
+#encoding:utf-8
+
+module Deepspace
+
+
+# @author Lucía Salamanca López, Celia Arias Martínez
 class EnemyStarShip
 
 def initialize(n,a,s,l,d)
@@ -58,6 +64,8 @@ def to_s
       "Shield Power: #{@shieldPower}\n" + \
       "\tLoot..: #{@loot}\n" + \
       "\tDamage: #{@damage}"
+end
+
 end
 
 end

@@ -1,3 +1,9 @@
+#encoding:utf-8
+
+module Deepspace
+
+
+# @author Lucía Salamanca López, Celia Arias Martínez
 class Hangar
 
 def initialize(capacity)
@@ -74,4 +80,5 @@ def to_s
   return "Max Elements: #{@maxElements}, Weapons: [#{@weapons.join(", ")}], Shields: [#{@shieldBoosters.join(", ")}]"
 end
 
+end
 end

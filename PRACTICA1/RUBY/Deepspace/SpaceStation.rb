@@ -1,3 +1,9 @@
+#encoding:utf-8
+
+module Deepspace
+
+
+# @author Lucía Salamanca López, Celia Arias Martínez
 class SpaceStation
   @@MAXFUEL = 100
   @@SHIELDLOSSPERUNITSHOT = 0.1
@@ -201,4 +207,5 @@ class SpaceStation
     out+="------- end of Space Station >> #{@name} << -------"
     return out
   end
+end
 end

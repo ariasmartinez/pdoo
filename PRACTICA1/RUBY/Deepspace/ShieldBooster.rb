@@ -1,3 +1,9 @@
+#encoding:utf-8
+
+module Deepspace
+
+
+# @author Lucía Salamanca López, Celia Arias Martínez
 class ShieldBooster
   def initialize(name,boost,uses)
     @name = name #string
@@ -35,5 +41,7 @@ class ShieldBooster
     end
 
   end
+
+end
 
 end

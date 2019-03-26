@@ -1,18 +1,26 @@
+#encoding:utf-8
+
+module Deepspace
+
+
+# @author Lucía Salamanca López, Celia Arias Martínez
+
 class Damage
 
   def initialize(w,s,t)
     @nShields = s #int
     @nWeapons = w #int
-    @type = t.dup #Array tipo WeaponType  DUDA !! (hay que poner new?)
-
+    #@type = t.dup #Array tipo WeaponType  DUDA !! (hay que poner new?)
+    @type = Array.new(t) #Array tipo WeaponType
   end
 
-  def self.newNumericWeapons()
-
+  def self.newNumericWeapons(w,s)  #le pasamos un int(de weapons) y otro int (de shields)
+    vacio = Array.new
+    new(w,s, vacio)
   end
 
-  def self.newSpecificWeapons(wl,s)
-
+  def self.newSpecificWeapons(wl,s) #le pasamos un arraylist de weapons y un int de shields
+    new(wl.length, s, wl)
   end
 
   def self.newCopy(d)
@@ -38,7 +46,7 @@ class Damage
   end
 
   def adjust(w,s)   #no entido que hay que hacer
-    danio = Damage.new(@nShields, @nWeapons, @type)  #utilizar el de copia?
+    danio = Damage.newCopy(self)
     for i in w do
       discardWeapon(i)
     end
@@ -105,5 +113,7 @@ class Damage
    "El daño es "+@nWeapons.to_s+" armas, y "+@nShields.to_s+" escudos, la coleccion de armas es "+@type.to_s
 
   end
+
+end
 
 end

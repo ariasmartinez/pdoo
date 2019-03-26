@@ -1,3 +1,9 @@
+#encoding:utf-8
+
+module Deepspace
+
+
+# @author Lucía Salamanca López, Celia Arias Martínez
 class GameUniverse
   @@WIN = 10
 
@@ -6,10 +12,10 @@ class GameUniverse
   def initialize
     @currentStationIndex #int   # no sé que hay que poner
     @turns = 0 #int
-    @dado #Dice     #hace falta poner new?  (poner new o no)
-    @controlador_estado     #GameStateController  (poner new o no)
-    @est_espacial   #Array SpaceStation  (poner new o no)
-    @enemy #EnemyStarShip
+    @dado = Dice::Dice.new #Dice     #hace falta poner new?  (poner new o no)
+    @controlador_estado  = GameStateController.new   #GameStateController  (poner new o no)
+    @est_espacial  = Array.new #Array SpaceStation  (poner new o no)
+    @enemy = EnemyStarShip.new #EnemyStarShip
 
   end
 
@@ -92,5 +98,7 @@ class GameUniverse
     out +="Enemigo actual --> #{@currentEnemy}"
     return out
   end
+
+end
 
 end

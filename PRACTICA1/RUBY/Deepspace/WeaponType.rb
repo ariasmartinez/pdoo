@@ -1,3 +1,9 @@
+#encoding:utf-8
+
+module Deepspace
+
+
+# @author Lucía Salamanca López, Celia Arias Martínez
 module WeaponType
   class Type
     def initialize(power)
@@ -14,4 +20,5 @@ module WeaponType
   MISSILE = Type.new(3.0)
   PLASMA = Type.new(4.0)
 
+end
 end
