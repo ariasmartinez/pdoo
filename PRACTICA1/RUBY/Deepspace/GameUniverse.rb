@@ -17,8 +17,8 @@ class GameUniverse
     @dice = Dice.new #Dice     #hace falta poner new?  (poner new o no)
     @gameState  = GameStateController.new   #GameStateController  (poner new o no)
     @spaceStations  = Array.new #Array SpaceStation  (poner new o no)
-    @currentEnemy = EnemyStarShip.new #EnemyStarShip
-    @currentStation = SpaceStation.new()  #hay que pasarle algo
+    @currentEnemy = nil  #EnemyStarShip   #EnemyStarShip.new   lo pongo a nil porque habria que pasarle parametros
+    @currentStation = nil # SpaceStation   lo pongo asi para que no de error SpaceStation.new()  #hay que pasarle algo
 
   end
 

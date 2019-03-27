@@ -62,10 +62,7 @@ puts " "
 #FALTA DISCARDWEAPON
 
 
-#puts "Creamos objeto de la clase GameUniverse"
-#juego = Deepspace::GameUniverse.new
-#puts juego.to_s
-#FALTAN COSAS POR PROBAR
+
 
 puts "Probamos SpaceStation"
 provisiones = Deepspace::SuppliesPackage.new(2,3,4)
@@ -181,4 +178,10 @@ puts estacion.weapons.to_s
 daño_estacion = Deepspace::Damage.newSpecificWeapons(array_arma,3)
 estacion.setPendingDamage(daño_estacion)
 puts estacion.pendingDamage
+#FALTAN COSAS POR PROBAR
+
+
+puts "Creamos objeto de la clase GameUniverse"
+juego = Deepspace::GameUniverse.new
+#puts juego.to_s
 #FALTAN COSAS POR PROBAR
