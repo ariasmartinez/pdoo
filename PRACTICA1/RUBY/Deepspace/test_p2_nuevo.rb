@@ -129,8 +129,8 @@ module Deepspace
       if(spaceStation.receiveShieldBooster(potenciador3) && spaceStation.receiveWeapon(arma4))
         #puts"\n\nDespues de anadir un potenciador y un arma\n"
         #puts spaceStation.to_s
-        spaceStation.discardWeaponinHangar(0)
-        spaceStation.discardShieldBoosterinHangar(0)
+        spaceStation.discardWeaponInHangar(0)
+        spaceStation.discardShieldBoosterInHangar(0)
         #puts"\n\nDespues de unos descartes en el hangar:\n"
         #puts spaceStation.to_s
       end

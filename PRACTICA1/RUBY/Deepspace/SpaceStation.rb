@@ -23,7 +23,7 @@ class SpaceStation
     @weapons = Array.new    #array de Weapon
   end
 
-  def assignFuelValue(f)   
+  def assignFuelValue(f)
     if (f <= @@MAXFUEL)
       @fuelUnits = f
     else
@@ -60,7 +60,7 @@ class SpaceStation
     #siguiente práctica
   end
 
-  def discardShieldBoosterinHangar(i)
+  def discardShieldBoosterInHangar(i)
     if (@hangar != nil)
       @hangar.removeShieldBooster(i)
     end
@@ -70,7 +70,7 @@ class SpaceStation
     #siguiente práctica
   end
 
-  def discardWeaponinHangar(i)
+  def discardWeaponInHangar(i)
     if (@hangar != nil)
       @hangar.removeWeapon(i)
     end
