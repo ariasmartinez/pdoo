@@ -18,7 +18,7 @@ class SpaceStation
     @nMedals = 0 #int    Lo inicializo a cero pero no se
     @shieldPower = supplies.shieldPower  #float
     @hangar = nil   #Hangar.new(0)       #Hangar 0..1   lo pongo a nil para que funcione receiveHangar
-    @pendingDamage = Damage.newNumericWeapons(3,0) # Damage 0..1   rt
+    @pendingDamage = nil # Damage 0..1   rt
     @shieldBoosters = Array.new   #array de ShieldBooster
     @weapons = Array.new    #array de Weapon
   end
