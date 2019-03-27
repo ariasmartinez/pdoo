@@ -12,7 +12,7 @@ class GameUniverse
 # Hay que crear un dado
 # controlador de estados?
   def initialize
-    @currentStationIndex #int   # no sé que hay que poner   Es lo mismo que currentStation?
+    @currentStationIndex = nil #int   # no sé que hay que poner   Es lo mismo que currentStation?
     @turns = 0 #int
     @dice = Dice.new #Dice     #hace falta poner new?  (poner new o no)
     @gameState  = GameStateController.new   #GameStateController  (poner new o no)

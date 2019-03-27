@@ -24,7 +24,7 @@ class Damage
   end
 
   def self.newCopy(d)
-    new(d.nWeapons, d.nShields, d.getWeapons)  #DUDA
+    new(d.nWeapons, d.nShields, d.weapons)  #DUDA
   end
 
   def getUIversion
@@ -47,37 +47,36 @@ class Damage
 
   def adjust(w,s)  #w es array de Weapons y s array de SHieldbooster
 
-    if (nWeapons == 0)
-      weapon_prov = Array.new(getWeapons)
-      for i in getWeapons #cada i es de tipo WeaponType
-        puts "borramos arma"
-        if (arrayContainsType(w, i) == -1)
-          weapon_prov.delete(i)
-        end
-      end
-      danio = Damage.newSpecificWeapons(weapon_prov, @nShields)
+    if (nShields > s.length)
+      shields = s.length
     else
-      danio = Damage.newNumericWeapons(nWeapons, nShields)
-      if (@nWeapons > w.length)
-        (@nWeapons-w.length).times do
-          danio.discardWeapon(w[0])    #bastante chapucero pero no se me ocurria otra cosa
+      shields = nShields
+    end
+
+    if (nWeapons == 0)
+      weapon_prov = []
+      for i in weapons
+        if (arrayContainsType(w,i)!= -1)
+          weapon_prov << i
         end
       end
-    end
 
-    if (danio.nShields > s.length)
-      (danio.nShields-s.length).times do
-        danio.discardShieldBooster
+      return Damage.newSpecificWeapons(weapon_prov,shields)
+
+    else
+      if (nWeapons > w.length)
+        return Damage.newNumericWeapons(w.length,shields)
+      else
+        return Damage.newNumericWeapons(nWeapons,shields)
       end
     end
 
-  return danio
   end
 
   def discardWeapon(w)
-    if (@nWeapons == 0)
+    if (@weapons.length!=0 and arrayContainsType(@weapons,w.type)!=-1)
         @weapons.delete(w.type)
-    else
+    elsif (@weapons!=0)
         @nWeapons = @nWeapons-1
     end
   end
@@ -89,7 +88,7 @@ class Damage
   end
 
   def hasNoEffect
-   if (@nShields == 0 && @nWeapons == 0)
+   if (@nShields == 0 && @nWeapons == 0 && @weapons.lenght == 0)
       return true
    end
    return false
@@ -103,14 +102,15 @@ class Damage
     @nWeapons
   end
 
-  def getWeapons
+  def weapons
     return @weapons
   end
 
   def to_s
-   "El daño es "+@nWeapons.to_s+" armas, y "+@nShields.to_s+" escudos, la coleccion de armas es "+@weapons.to_s
+   "El daño es #{@nWeapons} armas, y  #{@nShields} escudos, la coleccion de armas es "+@weapons.to_s
 
   end
+
 
 end
 
