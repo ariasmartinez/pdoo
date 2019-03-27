@@ -2,6 +2,7 @@
 
 module Deepspace
 
+require_relative "DamageToUI"
 
 # @author Lucía Salamanca López, Celia Arias Martínez
 
@@ -88,7 +89,7 @@ class Damage
   end
 
   def hasNoEffect
-   if (@nShields == 0 && @nWeapons == 0 && @weapons.lenght == 0)
+   if (@nShields == 0 && @nWeapons == 0 && @weapons.length == 0)
       return true
    end
    return false
