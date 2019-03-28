@@ -13,8 +13,17 @@ module WeaponType
     def power
       @power
     end
-
-
+    
+    def to_s
+      if (power == 2)
+        return "LASER"
+      elsif (power == 3)
+        return "MISSILE"
+      else 
+        return "PLASMA"
+      end 
+    end 
+    
   end
 
   LASER = Type.new(2.0)

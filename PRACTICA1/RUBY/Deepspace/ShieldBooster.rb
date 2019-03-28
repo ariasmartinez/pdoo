@@ -39,6 +39,11 @@ class ShieldBooster
 
   end
 
+  def to_s
+    return "Nombre: #{@name}, potenciador: #{@boost} y usos: #{@uses}\n "
+
+  end 
+
 end
 
 end

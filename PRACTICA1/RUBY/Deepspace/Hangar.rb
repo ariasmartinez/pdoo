@@ -15,14 +15,16 @@ end
 
 def self.newCopy(h)
   nuevo = new(h.maxElements)
-  max = h.weapons.length
-  for i in (0..max-1)
-    nuevo.addWeapon(h.weapons[i])
-  end
-  max_shiel = h.shieldBoosters.length
-  for i in (0..max_shiel-1)
-    nuevo.addShieldBooster(h.shieldBoosters[i])
-  end
+  if (@weapons != nil)
+    for w in @weapons
+      nuevo.addWeapon(w)
+    end 
+  end 
+  if (@shieldBoosters!=nil)
+    for sb in @shieldBoosters
+      nuevo.addShieldBooster(sb)
+    end 
+  end 
   return nuevo
 end
 
