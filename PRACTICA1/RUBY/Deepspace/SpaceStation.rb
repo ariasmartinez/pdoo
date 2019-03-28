@@ -39,16 +39,29 @@ class SpaceStation
 
 # SI PETA ES ESTO
   def cleanUpMountedItems
+    ind_armas = Array.new
+    i = 0
     for w in weapons do
       if (w.uses == 0)
-        @weapons.delete(w)
+        ind_armas << i
       end
+      i+=1
     end
-
+    ind_armas = ind_armas.sort.reverse
+    for a in ind_armas do
+      @weapons.delete_at(a)
+    end
+    ind_shield = Array.new
+    j = 0
     for sb in shieldBoosters do
       if (sb.uses == 0)
-        @shieldBoosters.delete(sb)
+        ind_shield << j
       end
+      j+=1
+    end
+    ind_shield = ind_shield.sort.reverse
+    for a in ind_shield do
+      @shieldBoosters.delete_at(a)
     end
   end
 

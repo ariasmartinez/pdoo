@@ -75,9 +75,9 @@ class Damage
   end
 
   def discardWeapon(w)
-    if (@weapons.length!=0 and arrayContainsType(@weapons,w.type)!=-1)
+    if (@weapons.length!=0)
         @weapons.delete(w.type)
-    elsif (@weapons!=0)
+    elsif (@nWeapons!=0)
         @nWeapons = @nWeapons-1
     end
   end

@@ -14,7 +14,16 @@ def initialize(capacity)
 end
 
 def self.newCopy(h)
-  new(h.maxElements)
+  nuevo = new(h.maxElements)
+  max = h.weapons.length
+  for i in (0..max-1)
+    nuevo.addWeapon(h.weapons[i])
+  end
+  max_shiel = h.shieldBoosters.length
+  for i in (0..max_shiel-1)
+    nuevo.addShieldBooster(h.shieldBoosters[i])
+  end
+  return nuevo
 end
 
 def getUIversion
