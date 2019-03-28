@@ -19,7 +19,7 @@ class Damage
     new(w,s, vacio)
   end
 
-  def self.newSpecificWeapons(wl,s) #le pasamos un arraylist de weapons y un int de shields
+  def self.newSpecificWeapons(wl,s) #le pasamos un arraylist de weaponstype y un int de shields
     new(0, s, wl)
   end
 

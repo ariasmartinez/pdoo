@@ -11,6 +11,7 @@ require './Hangar'
 puts "Creamos un objeto de la clase Damage"
 array_weap = [Deepspace::WeaponType::LASER,Deepspace::WeaponType::MISSILE]
 puts array_weap.to_s
+puts Deepspace::WeaponType::LASER.to_s
 daño = Deepspace::Damage.newSpecificWeapons(array_weap,2)
 daño2 = Deepspace::Damage.newCopy(daño)
 puts daño.to_s
@@ -37,13 +38,13 @@ puts " "
 puts "Probamos la otra variante de adjust: "
 daño3 = Deepspace::Damage.newNumericWeapons(2,4)
 puts daño3.adjust(array_arma, array_escudo).to_s
-
+array_nuevo = [Deepspace::WeaponType::PLASMA, Deepspace::WeaponType::PLASMA]
 puts " "
 puts "Creamos un objeto damage con newNumericWeapons"
 daño_num = Deepspace::Damage.newNumericWeapons(3,2)
 puts daño_num.to_s
 puts "Creamos un objeto Damage con newSpecificWeapons"
-daño_esp = Deepspace::Damage.newSpecificWeapons(array_arma,3)
+daño_esp = Deepspace::Damage.newSpecificWeapons(array_nuevo,3)
 puts daño_esp.to_s
 
 puts " "
@@ -55,9 +56,23 @@ daño3.discardWeapon(arma2)
 puts daño3.to_s
 puts " "
 puts "Probamos la otra variante de discard: "
-puts daño_esp.to_s
+j = 0
+puts "Mostramos el daño actual"
+for i in daño_esp.weapons do
+  puts i.to_s
+  j+=1
+end
+
+puts "Descartamos este arma:"
+puts arma2.to_s
+
 daño_esp.discardWeapon(arma2)
-puts daño_esp.to_s
+puts "Daño ha quedado asi:"
+j = 0
+for i in daño_esp.weapons do
+  puts i.to_s
+  j+=1
+end
 puts " "
 #FALTA DISCARDWEAPON
 
@@ -136,10 +151,10 @@ escudo_estacion = Deepspace::ShieldBooster.new("esc_estacion",3,0)
 puts estacion.receiveShieldBooster(escudo_estacion)
 puts estacion.hangar.to_s
 puts "discardShieldBoosterinHangar"
-puts estacion.discardShieldBoosterinHangar(2)
+puts estacion.discardShieldBoosterInHangar(2)
 puts estacion.hangar.to_s
 puts "discardWeaponinHangar"
-puts estacion.discardWeaponinHangar(0)
+puts estacion.discardWeaponInHangar(0)
 puts estacion.hangar.to_s
 puts "getSpeed: "
 puts estacion.getSpeed
@@ -185,3 +200,18 @@ puts "Creamos objeto de la clase GameUniverse"
 juego = Deepspace::GameUniverse.new
 #puts juego.to_s
 #FALTAN COSAS POR PROBAR
+
+
+if (Deepspace::WeaponType::LASER == Deepspace::WeaponType::LASER)
+  puts "hola"
+end
+
+array = Array.new
+array << Deepspace::WeaponType::LASER
+array << Deepspace::WeaponType::LASER
+array << Deepspace::WeaponType::MISSILE
+arma = Deepspace::Weapon.new("hol", Deepspace::WeaponType::LASER, 9)
+array.delete(arma.type)
+for i in array do
+  puts i.to_s
+end

@@ -12,15 +12,18 @@ class SpaceStation
 
 
   def initialize(n, supplies)     #string int, supplies SuppliesPackage
-    @ammoPower = supplies.ammoPower  #float
-    @fuelUnits = supplies.fuelUnits #float
+    @ammoPower = 0  #float
+    @fuelUnits = 0 #float
     @name = n #string
     @nMedals = 0 #int
-    @shieldPower = supplies.shieldPower  #float
+    @shieldPower = 0  #float
     @hangar = nil   #Hangar
     @pendingDamage = nil # Damage
     @shieldBoosters = Array.new   #array de ShieldBooster
     @weapons = Array.new    #array de Weapon
+
+    receiveSupplies(supplies)
+
   end
 
   def assignFuelValue(f)
@@ -32,8 +35,10 @@ class SpaceStation
   end
 
   def cleanPendingDamage
-    if (pendingDamage.hasNoEffect)
-      @pendingDamage = nil
+    if (pendingDamage != nil)
+      if (pendingDamage.hasNoEffect)
+        @pendingDamage = nil
+      end
     end
   end
 
@@ -186,7 +191,7 @@ class SpaceStation
   end
 
   def receiveSupplies(s)
-    @fuelUnits += s.fuelUnits
+    assignFuelValue(@fuelUnits+s.fuelUnits)
     @ammoPower += s.ammoPower
     @shieldPower += s.shieldPower
   end
@@ -204,6 +209,7 @@ class SpaceStation
   end
 
   def setPendingDamage(d)
+
     @pendingDamage = d.adjust(@weapons, @shieldBoosters)
   end
 
