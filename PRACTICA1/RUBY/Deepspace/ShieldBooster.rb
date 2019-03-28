@@ -28,9 +28,6 @@ class ShieldBooster
   end
 
 
-
-
-  #pongo el @ antes de los atributos
   def useIt
 
     if (@uses > 0)

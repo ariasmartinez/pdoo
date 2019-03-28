@@ -24,7 +24,7 @@ def getUIversion
   EnemyToUI
 end
 
-def fire    #lo pongo con @
+def fire
   @ammoPower
 end
 
@@ -48,7 +48,7 @@ def shieldPower
   @shieldPower
 end
 
-def protection  #lo pongo con @
+def protection  
   @shieldPower
 end
 

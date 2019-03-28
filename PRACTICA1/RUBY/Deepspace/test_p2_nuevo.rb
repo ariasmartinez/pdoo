@@ -163,6 +163,7 @@ module Deepspace
       spaceStation.mountWeapon(0)
       spaceStation.setPendingDamage(Damage.newSpecificWeapons([WeaponType::PLASMA, WeaponType::LASER, WeaponType::MISSILE], 3))
       puts spaceStation.to_s
+
       spaceStation.discardShieldBooster(0)
       spaceStation.discardWeapon(0)
       puts spaceStation.to_s

@@ -84,7 +84,7 @@ def removeWeapon(w)
   end
 end
 
-# Esto lo he puesto igual que el HangarToUI
+
 def to_s
   return "Max Elements: #{@maxElements}, Weapons: [#{@weapons.join(", ")}], Shields: [#{@shieldBoosters.join(", ")}]"
 end

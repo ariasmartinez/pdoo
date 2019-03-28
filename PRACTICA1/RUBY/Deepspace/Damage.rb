@@ -11,7 +11,6 @@ class Damage
   def initialize(w,s,t)
     @nWeapons = w #int
     @nShields = s #int
-    #@weapons = t.dup #Array tipo WeaponType  DUDA !! (hay que poner new?)
     @weapons = Array.new(t) #Array tipo WeaponType
   end
 

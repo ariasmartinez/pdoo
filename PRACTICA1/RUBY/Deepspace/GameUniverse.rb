@@ -9,16 +9,14 @@ module Deepspace
 class GameUniverse
   @@WIN = 10
 
-# Hay que crear un dado
-# controlador de estados?
   def initialize
-    @currentStationIndex = nil #int   # no sé que hay que poner   Es lo mismo que currentStation?
+    @currentStationIndex = nil #int
     @turns = 0 #int
-    @dice = Dice.new #Dice     #hace falta poner new?  (poner new o no)
-    @gameState  = GameStateController.new   #GameStateController  (poner new o no)
-    @spaceStations  = Array.new #Array SpaceStation  (poner new o no)
-    @currentEnemy = nil  #EnemyStarShip   #EnemyStarShip.new   lo pongo a nil porque habria que pasarle parametros
-    @currentStation = nil # SpaceStation   lo pongo asi para que no de error SpaceStation.new()  #hay que pasarle algo
+    @dice = Dice.new #Dice
+    @gameState  = GameStateController.new   #GameStateController
+    @spaceStations  = Array.new #Array SpaceStation
+    @currentEnemy = nil  #EnemyStarShip
+    @currentStation = nil # SpaceStation
 
   end
 
@@ -95,7 +93,7 @@ class GameUniverse
 #siguiente práctica
   end
 
-  #lo he puesto igual que el toUI
+
   def to_s
     out = "Estación actual -> #{@currentStation}\n"
     out +="Enemigo actual --> #{@currentEnemy}"

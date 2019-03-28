@@ -10,15 +10,15 @@ class SpaceStation
   @@MAXFUEL = 100
   @@SHIELDLOSSPERUNITSHOT = 0.1
 
- # las medallas como coño se saben
+
   def initialize(n, supplies)     #string int, supplies SuppliesPackage
     @ammoPower = supplies.ammoPower  #float
     @fuelUnits = supplies.fuelUnits #float
     @name = n #string
-    @nMedals = 0 #int    Lo inicializo a cero pero no se
+    @nMedals = 0 #int
     @shieldPower = supplies.shieldPower  #float
-    @hangar = nil   #Hangar.new(0)       #Hangar 0..1   lo pongo a nil para que funcione receiveHangar
-    @pendingDamage = nil # Damage 0..1   rt
+    @hangar = nil   #Hangar
+    @pendingDamage = nil # Damage
     @shieldBoosters = Array.new   #array de ShieldBooster
     @weapons = Array.new    #array de Weapon
   end
@@ -37,7 +37,7 @@ class SpaceStation
     end
   end
 
-# SI PETA ES ESTO
+
   def cleanUpMountedItems
     ind_armas = Array.new
     i = 0
