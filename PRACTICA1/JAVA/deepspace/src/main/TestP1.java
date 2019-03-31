@@ -3,7 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package deepspace;
+package main;
+
+import deepspace.Dice;
+import deepspace.GameCharacter;
+import deepspace.Loot;
+import deepspace.ShieldBooster;
+import deepspace.SuppliesPackage;
+import deepspace.Weapon;
+import deepspace.WeaponType;
 
 /**
  *
@@ -12,7 +20,7 @@ package deepspace;
 public class TestP1 {
     public static void main(String [] args){
                 // LOOT
-		Loot botin = new Loot(8,4,3,5,6);
+		deepspace.Loot botin = new deepspace.Loot(8,4,3,5,6);
 		System.out.println("Botín: ");
 		System.out.println("Suministros: "+botin.getNSupplies());
 		System.out.println("Armas : "+botin.getNWeapons());
@@ -21,7 +29,7 @@ public class TestP1 {
 		System.out.println("Medallas: "+botin.getNMedals());
 
                 // SUPPLIESPACKAGE
-		SuppliesPackage PaqueteSum = new SuppliesPackage(24.5f,22.5f,23.2f);
+		deepspace.SuppliesPackage PaqueteSum = new SuppliesPackage(24.5f,22.5f,23.2f);
 		System.out.println("Suministros: ");
 		System.out.println("Municiones: "+PaqueteSum.getAmmoPower());
 		System.out.println("Combustible: "+PaqueteSum.getFuelUnits());

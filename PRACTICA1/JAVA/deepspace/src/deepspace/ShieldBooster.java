@@ -26,11 +26,11 @@ class ShieldBooster {
         uses = otro.uses;
     }
     
-    float getBoost(){
+    public float getBoost(){
         return boost;
     }
     
-    int getUses(){
+    public int getUses(){
         return uses;
     }
     

@@ -26,11 +26,11 @@ class Weapon {
        uses = otro.uses;
    }
    
-   WeaponType getType(){
+   public WeaponType getType(){
        return type;
    }
    
-   int getUses(){
+   public int getUses(){
        return uses;
    }
    
