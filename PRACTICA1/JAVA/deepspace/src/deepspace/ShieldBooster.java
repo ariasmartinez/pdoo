@@ -46,7 +46,8 @@ class ShieldBooster {
         String mensaje = "El ShieldBooster se llama "+name+", tiene de potenciador "+boost+" y tiene "+uses+" usos.";
         return mensaje;
     }
-    EnemyToUI getUIversion(){
+    //CAMBIO ENEMYTOUI
+    ShieldToUI getUIversion(){
        throw new UnsupportedOperationException(); 
     }
 }

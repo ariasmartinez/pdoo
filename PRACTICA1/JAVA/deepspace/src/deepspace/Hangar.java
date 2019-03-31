@@ -12,9 +12,8 @@ import java.util.ArrayList;
  */
 public class Hangar {
     private int maxElements;
-    //mirar (arrays?)
-    private ArrayList<ShieldBooster> aum_escudo;
-    private ArrayList<Weapon> arma;
+    private ArrayList<ShieldBooster> shieldBoosters;
+    private ArrayList<Weapon> weapons;
     
     Hangar(int capacity){
         maxElements = capacity;
@@ -23,11 +22,11 @@ public class Hangar {
         throw new UnsupportedOperationException();
     }
     HangarToUI getUIversion(){
-        throw new UnsupportedOperationException();
+        return new HangarToUI(this);
     }
-    /*la suma ha sido cosa mia puede petar*/
+    
     public boolean spaceAvailable(){
-       if ((aum_escudo.size()+arma.size()) < maxElements)
+       if ((shieldBoosters.size()+weapons.size()) < maxElements)
                return true;
        return false;
     }
@@ -35,7 +34,7 @@ public class Hangar {
     
     public boolean addWeapon(Weapon w){
         if(spaceAvailable()){
-            arma.add(w);
+            weapons.add(w);
             return true;
         }
         return false;
@@ -43,7 +42,7 @@ public class Hangar {
     
     public boolean addShieldBooster(ShieldBooster s){
          if(spaceAvailable()){
-            aum_escudo.add(s);
+            shieldBoosters.add(s);
             return true;
         }
         return false;
@@ -52,20 +51,20 @@ public class Hangar {
         return maxElements;
     }
     public ArrayList<ShieldBooster> getShieldBoosters(){
-        throw new UnsupportedOperationException();
+        return shieldBoosters;
     }
     //cambio Weapon[] por Arraylist
     public ArrayList<Weapon> getWeapons(){
-        return arma;
+        return weapons;
     }
     public ShieldBooster removeShieldBooster(int s){
-          if (s > aum_escudo.size())
+          if (s > (shieldBoosters.size()-1))
             return null;
-        return aum_escudo.remove(s);
+        return shieldBoosters.remove(s);
     }
     public Weapon removeWeapon(int w){
-        if (w > arma.size())
+        if (w > (weapons.size()-1))
             return null;
-        return arma.remove(w);
+        return weapons.remove(w);
     }
 }

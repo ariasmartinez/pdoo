@@ -31,7 +31,9 @@ public class Damage {
     private int arrayContainsType(Weapon[] w, WeaponType t){
         throw new UnsupportedOperationException();
     }
-    public Damage adjust(Weapon[] w, ShieldBooster[] s){
+    
+    //cambio Weapon[] por ArrayList<Weapon>
+    public Damage adjust(ArrayList<Weapon> w, ArrayList<ShieldBooster> s){
         throw new UnsupportedOperationException();
     }
     public void discardWeapon(Weapon w){

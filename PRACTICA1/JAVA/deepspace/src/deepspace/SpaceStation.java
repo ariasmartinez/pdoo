@@ -20,55 +20,69 @@ public class SpaceStation {
     private String name;
     private int nMedals;
     private float shieldPower;
-    private Damage daño;
-    private ShieldBooster[] aum_escudo;
-    private Weapon [] arma;
-    private Hangar hang;
+    private Damage pendingDamage;
+    private ArrayList<ShieldBooster> shieldBoosters ;
+    private ArrayList<Weapon> weapons;
+    private Hangar hangar;
     
-    // VER SI HAY QUE PONER EL SHIELDBOOSTER[] Y WEAPON[] Y COMO SE PONE
+    // Weapons[] y shieldBOosters[] o con ArrayList??
     
     
     
     private void assignFuelValue(float f){
-        assert(f <= MAXFUEL);
-        fuelUnits = f;
+        if (f < MAXFUEL)
+            fuelUnits = f;
+        else
+            fuelUnits = MAXFUEL;
     }
-    /*si el daño pendiente no tiene efecto fija la referencia al mismo a null*/
+    
     private void cleanPendingDamage(){
         if (getPendingDamage().hasNoEffect())
-            daño = null; //ESTO NO ESTA CLARO
+            pendingDamage = null; 
     }
     
     SpaceStation(String n, SuppliesPackage supplies){
         name = n;
         ammoPower = supplies.getAmmoPower();
-        fuelUnits = supplies.getFuelUnits();
         shieldPower = supplies.getShieldPower();
+        assignFuelValue(supplies.getFuelUnits());
+        ArrayList<ShieldBooster> shieldBoosters = new ArrayList();
+        ArrayList<Weapon> weapons = new ArrayList();
+        hangar = null;
     }
-    //ME HE RAYADO PORQUE NO SE SI QUITARLO DEL HANGAR O DE DONDE
-    //¿¿ES NECESARIO TENER LOS ARRAYS DE WEAPON Y HANGAR? RT EN CLASE HANGAR
+   
     public void cleanUpMountedItems(){
-       /* for (int i = 0; i < arma.size(); i++){
-            if(arma[i].getUses() == 0)
-                
-        }*/
+ 
+       for (int i = 0; i < weapons.size(); i++){
+           if (weapons.get(i).getUses() == 0){
+               weapons.remove(i);
+               i = i-1;
+           }
+       }
+       
+       for (int i = 0; i < shieldBoosters.size();  i++){
+           if (shieldBoosters.get(i).getUses() == 0){
+               shieldBoosters.remove(i);
+               i = i-1;
+           }
+       }
     }
     public void discardHangar(){
-        hang = null;
+        hangar = null;
     }
     public void discardShieldBooster(int i){
         throw new UnsupportedOperationException();
     }
     public void discardShieldBoosterInHangar(int i){
-        if (hang != null)
-            hang.removeShieldBooster(i);
+        if (hangar != null)
+            hangar.removeShieldBooster(i);
     }
     public void discardWeapon(int i){
         throw new UnsupportedOperationException();
     }
     public void discardWeaponInHangar(int i){
-        if (hang != null)
-           hang.removeWeapon(i);
+        if (hangar != null)
+           hangar.removeWeapon(i);
     }
     public float fire(){
         throw new UnsupportedOperationException();
@@ -80,7 +94,7 @@ public class SpaceStation {
         return fuelUnits;
     }
     public Hangar getHangar(){
-        return hang;
+        return hangar;
     }
     public String getName(){
         return name;
@@ -89,44 +103,47 @@ public class SpaceStation {
         return nMedals;
     }
     
-    // HAY QUE HACERLO PERO NO SE DONDE ESTA EL PENDING DAMAGE
+    
     public Damage getPendingDamage(){
-        throw new UnsupportedOperationException();
+        return pendingDamage;
     }
     
-    //depende de si lo ponemos como atributo o no
-    public ShieldBooster[] getShieldBoosters(){
-        throw new UnsupportedOperationException();
+    //cambio ShieldBooster[] por array
+    public ArrayList<ShieldBooster> getShieldBoosters(){
+        return shieldBoosters;
     }
     public float getShieldPower(){
         return shieldPower;
     }
+    
+    //mirar lo de float
     public float getSpeed(){
         return (fuelUnits/MAXFUEL);
     }
     
-    //llamar al constructor y ya??
+    
     public SpaceStationToUI getUIversion(){
-        throw new UnsupportedOperationException();
+         return new SpaceStationToUI(this);
     }
     
     // lo mismo que con  shieldbooster[]
-    public Weapon[] getWeapons(){
-        throw new UnsupportedOperationException();
+    public ArrayList<Weapon> getWeapons(){
+        return weapons;
     }
     public void mountShieldBooster(int i){
-        if (hang != null){
-            ShieldBooster esc = hang.removeShieldBooster(i);
-            if (esc != null){}
-                
-            //aniador el arma a arma[] ¿puede ser arrayist??
+        if (hangar != null){
+            ShieldBooster esc = hangar.removeShieldBooster(i);
+            if (esc != null){
+                shieldBoosters.add(esc);
+            }
         }
     }
     public void mountWeapon(int i){
-        if (hang != null){
-            Weapon arma_aux = hang.removeWeapon(i);
-            if (arma_aux != null){}
-            //aniador el arma a arma[] ¿puede ser arrayist??
+        if (hangar != null){
+            Weapon arma_aux = hangar.removeWeapon(i);
+            if (arma_aux != null){
+                weapons.add(arma_aux);
+            }
         }
     }
     public void move(){
@@ -137,12 +154,12 @@ public class SpaceStation {
         throw new UnsupportedOperationException();
     }
     public void receiveHangar(Hangar h){
-        if (hang == null)
-            hang = h; // CONSTRUCTOR DE COPIA PUEDE PETAR
+        if (hangar == null)
+            hangar = h; // CONSTRUCTOR DE COPIA PUEDE PETAR
     }
     public boolean receiveShieldBooster(ShieldBooster s){
-        if (hang != null) //PUEDE PETAR
-            return hang.addShieldBooster(s);
+        if (hangar != null) 
+            return hangar.addShieldBooster(s);
         return false;
     }
     public ShotResult receiveShotResult(float shot){
@@ -151,23 +168,24 @@ public class SpaceStation {
     
     public void receiveSupplies(SuppliesPackage s){
         ammoPower+= s.getAmmoPower();
-        fuelUnits+= s.getFuelUnits();
+        assignFuelValue(s.getFuelUnits());
         shieldPower+= s.getShieldPower();
     }
-     /*si se dispone de hangar devuelve el resultado de intentar añadir el hangar al mismo*/
+     
     public boolean receiveWeapon(Weapon w){
-        if (hang != null) // PUEDE PETAR
-            return hang.addWeapon(w);
+        if (hangar != null) // PUEDE PETAR
+            return hangar.addWeapon(w);
         return false;
     }
     public void setLoot(Loot loot){
         throw new UnsupportedOperationException();
     }
     
+    //cambio def de funcion en Damage
     public void setPendingDamage(Damage d){
-        daño = d.adjust(arma, aum_escudo);
+        pendingDamage = d.adjust(weapons, shieldBoosters);
     }
-    public boolean validState(){  // revisar condiciones que me lio con las dobles negaciones xd
+    public boolean validState(){  
         if ( getPendingDamage() == null || getPendingDamage().hasNoEffect())
             return true;
         return false;
