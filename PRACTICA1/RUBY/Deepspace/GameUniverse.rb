@@ -29,31 +29,31 @@ class GameUniverse
   end
 
   def discardHangar
-    if (@gameState == GameState::INIT or @gameState == GameState::AFTERCOMBAT)
+    if (@gameState.state == GameState::INIT or @gameState.state == GameState::AFTERCOMBAT)
       @spaceStations[@currentStationIndex].discardHangar
     end
   end
 
   def discardShieldBooster(i)
-    if (@gameState == GameState::INIT or @gameState == GameState::AFTERCOMBAT)
+    if (@gameState.state == GameState::INIT or @gameState.state == GameState::AFTERCOMBAT)
       @spaceStations[@currentStationIndex].discardShieldBooster(i)
     end
   end
 
   def discardShieldBoosterinHangar(i)
-    if (@gameState == GameState::INIT or @gameState == GameState::AFTERCOMBAT)
+    if (@gameState.state == GameState::INIT or @gameState.state == GameState::AFTERCOMBAT)
       @spaceStations[@currentStationIndex].discardShieldBoosterinHangar(i)
     end
   end
 
   def discardWeapon(i)
-    if (@gameState == GameState::INIT or @gameState == GameState::AFTERCOMBAT)
+    if (@gameState.state == GameState::INIT or @gameState.state == GameState::AFTERCOMBAT)
       @spaceStations[@currentStationIndex].discardWeapon(i)
     end
   end
 
   def discardWeaponinHangar(i)
-    if (@gameState == GameState::INIT or @gameState == GameState::AFTERCOMBAT)
+    if (@gameState.state == GameState::INIT or @gameState.state == GameState::AFTERCOMBAT)
       @spaceStations[@currentStationIndex].discardWeaponinHangar(i)
     end
   end
@@ -78,13 +78,13 @@ class GameUniverse
   end
 
   def mountShieldBooster(i)
-    if (@gameState == GameState::INIT or @gameState == GameState::AFTERCOMBAT)
+    if (@gameState.state == GameState::INIT or @gameState == GameState::AFTERCOMBAT)
       @spaceStations[@currentStationIndex].mountShieldBooster(i)
     end
   end
 
   def mountWeapon(i)
-    if (@gameState == GameState::INIT or @gameState == GameState::AFTERCOMBAT)
+    if (@gameState.state == GameState::INIT or @gameState == GameState::AFTERCOMBAT)
       @spaceStations[@currentStationIndex].mountWeapon(i)
     end
   end
