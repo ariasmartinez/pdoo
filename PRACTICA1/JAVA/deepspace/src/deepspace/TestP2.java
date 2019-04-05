@@ -14,7 +14,7 @@ public class TestP2 {
     public static void main(String [] args){
         int cap = 3;
         System.out.println("Probamos Hangar");
-        Hangar hang ;
+        deepspace.Hangar hang ;
         hang = new Hangar(3);
         
     }

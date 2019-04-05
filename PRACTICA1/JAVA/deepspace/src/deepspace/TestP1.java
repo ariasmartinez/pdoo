@@ -5,13 +5,6 @@
  */
 package main;
 
-import deepspace.Dice;
-import deepspace.GameCharacter;
-import deepspace.Loot;
-import deepspace.ShieldBooster;
-import deepspace.SuppliesPackage;
-import deepspace.Weapon;
-import deepspace.WeaponType;
 
 /**
  *
