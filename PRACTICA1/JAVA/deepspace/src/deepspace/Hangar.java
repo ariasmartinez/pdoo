@@ -19,7 +19,14 @@ public class Hangar {
         maxElements = capacity;
     }
     Hangar(Hangar h){
-        throw new UnsupportedOperationException();
+        maxElements = h.maxElements;
+        shieldBoosters = new ArrayList<ShieldBooster>();
+        for(int i=0; i<h.shieldBoosters.size(); i++){
+            shieldBoosters.add(h.shieldBoosters.get(i));
+        }
+        for(int j=0; j<h.weapons.size(); j++){
+            weapons.add(h.weapons.get(j));
+        }
     }
     HangarToUI getUIversion(){
         return new HangarToUI(this);
