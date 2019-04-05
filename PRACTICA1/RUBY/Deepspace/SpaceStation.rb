@@ -21,7 +21,6 @@ class SpaceStation
     @pendingDamage = nil # Damage
     @shieldBoosters = Array.new   #array de ShieldBooster
     @weapons = Array.new    #array de Weapon
-
     receiveSupplies(supplies)
 
   end
@@ -74,8 +73,15 @@ class SpaceStation
     @hangar = nil
   end
 
-  def discardShieldBooster(i)
-    #siguiente práctica
+#igual que discardWeapon
+  def discardShieldBooster(i)  #devuelve void
+    if (i >= 0 and i < @shieldPower.length)
+      sh = @shieldBoosters.delete_at(i)
+      if (@pendingDamage != nil)
+        @pendingDamage.discardShieldBooster(sh)
+        cleanPendingDamage()
+      end
+    end
   end
 
   def discardShieldBoosterInHangar(i)
@@ -84,8 +90,16 @@ class SpaceStation
     end
   end
 
-  def discardWeapon(i)
-    #siguiente práctica
+
+  #MIRAR
+  def discardWeapon(i)   #devuelve void
+    if (i >= 0 and i < @weapons.length)
+      w = @weapons.delete_at(i)
+      if (@pendingDamage != nil)
+        @pendingDamage.discardWeapon(w)
+        cleanPendingDamage()
+      end
+    end
   end
 
   def discardWeaponInHangar(i)
@@ -94,8 +108,16 @@ class SpaceStation
     end
   end
 
+  #Realiza un disparo y se devuelve la energía o potencia del mismo. Para ello se multiplica
+#la potencia de disparo por los factores potenciadores proporcionados por todas las armas.
+
+#REVISAR
   def fire
-    #práctica siguiente
+    factor = 1
+    for w in weapons do
+      factor*= w.useIt()
+    end
+    return @ammoPower*factor
   end
 
   def ammoPower
@@ -168,8 +190,15 @@ class SpaceStation
     end
   end
 
+
+
+#REVISAR
   def protection
-    #siguiente práctica
+    factor = 1
+    for sh in @shieldBoosters do
+      factor*=sh.useIt
+    end
+    return factor*@shieldPower
   end
 
   def receiveHangar(h)
@@ -186,8 +215,19 @@ class SpaceStation
     end
   end
 
-  def receiveShot(shot)
-    #siguiente práctica
+
+ #MIRAR QUE FUNCIONA EL MAX_BY
+  def receiveShot(shot)   #shot es un float
+    myProtection = protection()
+    if (myProtection >= shot)
+      @shieldPower-=SHIELDLOSSPERUNITSHOT*shot
+      serie = [0.0, @shieldPower]
+      @shieldPower = serie.max_by{|serie| serie}
+      return ShotResult::RESIST
+    else
+      @shieldPower = 0.0
+      return ShotResult::DONOTRESIST
+    end
   end
 
   def receiveSupplies(s)
@@ -204,8 +244,31 @@ class SpaceStation
     end
   end
 
-  def setLoot(loot)
-    # Siguiente práctica
+#mirar
+  def setLoot(loot)   #no devuelve nada
+    dealer = CardDealer.instance
+    h = loot.nHangars
+    if (h > 0)
+      hangar = dealer.nextHangar
+      receiveHangar(hangar)
+    end
+    elements = loot.nSupplies
+    for i in (1..elements) do
+      sup = dealer.nextSuppliesPackage()
+      receiveSupplies(sup)
+    end
+    elements = loot.nWeapons
+    for i in (1..elements) do
+      weap = dealer.nextWeapon()
+      receiveWeapon(weap)
+    end
+    elements = loot.nShields
+    for i in (1..elements) do
+      sh = dealer.nextShieldBooster()
+      receiveShieldBooster(sh)
+    end
+    medals = l.nMedals
+    nMedals+=medals
   end
 
   def setPendingDamage(d)
