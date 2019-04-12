@@ -21,9 +21,6 @@ class GameUniverse
   end
 
   def combatGo(station, enemy)
-    state = @gameState.state 
-    if ((state == GameState::BEFORECOMBAT) || (state == GameState::INIT) )
-      combat(station, enemy)
       ch = @dice.firstShot 
       if (ch == GameCharacter::ENEMYSTARSHIP)
         fire = enemy.fire
@@ -59,12 +56,16 @@ class GameUniverse
       end
       @gameState.next(turns, station.length)
       return combatResult
-    else 
-      return CombatResult::NOCOMBAT
+     
   end
 
   def combat
-    combatGo(@currentStation, @currentEnemy)
+    state = @gameState.state 
+    if ((state == GameState::BEFORECOMBAT) || (state == GameState::INIT) ) 
+      combatGo(@currentStation, @currentEnemy)
+    else 
+      return CombatResult::NOCOMBAT
+    end
   end
 
   def discardHangar
