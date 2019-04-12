@@ -14,18 +14,57 @@ class GameUniverse
     @turns = 0 #int
     @dice = Dice.new #Dice
     @gameState  = GameStateController.new   #GameStateController
-    @spaceStations  = Array.new #Array SpaceStation
+    @spaceStations  = nil #Array SpaceStation  (lo cambio a nil porque se inicializa en init)
     @currentEnemy = nil  #EnemyStarShip
     @currentStation = nil # SpaceStation
 
   end
 
   def combatGo(station, enemy)
-#siguiente práctica
+    state = @gameState.state 
+    if ((state == GameState::BEFORECOMBAT) || (state == GameState::INIT) )
+      combat(station, enemy)
+      ch = @dice.firstShot 
+      if (ch == GameCharacter::ENEMYSTARSHIP)
+        fire = enemy.fire
+        result = station.receiveShot(fire)
+        if (result == ShotResult::RESIST)
+          fire = station.fire 
+          result = enemy.receiveShot(fire)
+          enemyWins = (result == ShotResult::RESIST)
+        else 
+          enemyWins = true
+        end
+      else 
+        fire = station.fire 
+        result = enemy.receiveShot(fire)
+        enemyWins = (result == ShotResult::RESIST)
+      end
+
+      if (enemyWins)
+        s = station.getSpeed
+        moves = @dice.spaceStationMoves(s)
+        if (!moves)
+          damage = enemy.damage 
+          station.setPendingDamage(damage)
+          combatResult = CombatResult::ENEMYWINS 
+        else 
+          station.move
+          combatResult = CombatResult::STATIONESCAPES
+        end 
+      else 
+        aLoot = enemy.loot
+        station.setLoot(aLoot)
+        combatResult = CombatResult::STATIONWINS
+      end
+      @gameState.next(turns, station.length)
+      return combatResult
+    else 
+      return CombatResult::NOCOMBAT
   end
 
   def combat
-#siguiente práctica
+    combatGo(@currentStation, @currentEnemy)
   end
 
   def discardHangar
@@ -73,8 +112,26 @@ class GameUniverse
     return false
   end
 
-  def init(names)
-#siguiente práctica
+  def init(names)  #names es un string, devuelve void
+      estado = @gameState.state
+      if (estado == GameState::CANNOTPLAY)
+          @spaceStations = Array.new 
+          dealer = CardDealer.instance
+          for i in names  #duda
+            supplies = dealer.nextSuppliesPackage()
+            estacion = SpaceStation.new(name, supplies)
+            @spaceStations << estacion
+            nh = @dice.initWithHangar
+            nw = @dice.initWithWeapons
+            ns = @dice.initWithSHields
+            lo = Loot.new(0, nw, ns, nh, 0)
+            estacion.setLoot(lo)
+          end
+          @currentStationIndex = @dice.whoStarts(names.length)
+          @currentStation = @spaceStations[@currentStationIndex]
+          @currentEnemy = dealer.nextEnemy
+          @gameState.next(turns, @spaceStations.length)
+      end
   end
 
   def mountShieldBooster(i)
@@ -89,8 +146,25 @@ class GameUniverse
     end
   end
 
-  def nextTurn
-#siguiente práctica
+  def nextTurn   #devuelve un boolean
+    state = @gameState.state 
+    if ( state == GameState::AFTERCOMBAT)
+      stationState = @currentStation.validState
+      if (stationState)
+        @currentStationIndex = (@currentStationIndex+1) % @spaceStations.length
+        @turns+=1
+        @currentStation = @spaceStations[@currentStationIndex]
+        @currentStation.cleanUpMountedItems
+        dealer = CardDealer.instance 
+        @currentEnemy = dealer.nextEnemy
+        @gameState.next(turns, @spaceStations.length)
+        return true
+      else 
+        return false
+      end   
+    else 
+      return false
+    end 
   end
 
 
