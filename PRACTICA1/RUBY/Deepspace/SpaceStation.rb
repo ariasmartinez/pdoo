@@ -1,7 +1,8 @@
 #encoding:utf-8
 require './Hangar'
 require './Damage'
-
+require './ShotResult'
+require './CardDealer'
 module Deepspace
 
 
@@ -11,7 +12,7 @@ class SpaceStation
   @@SHIELDLOSSPERUNITSHOT = 0.1
 
 
-  def initialize(n, supplies)     #string int, supplies SuppliesPackage
+  def initialize(n, supplies)     #string n, supplies SuppliesPackage
     @ammoPower = 0  #float
     @fuelUnits = 0 #float
     @name = n #string
@@ -108,13 +109,10 @@ class SpaceStation
     end
   end
 
-  #Realiza un disparo y se devuelve la energía o potencia del mismo. Para ello se multiplica
-#la potencia de disparo por los factores potenciadores proporcionados por todas las armas.
-
-#REVISAR
+ 
   def fire
     factor = 1
-    for w in weapons do
+    for w in @weapons do
       factor*= w.useIt()
     end
     return @ammoPower*factor
@@ -192,7 +190,7 @@ class SpaceStation
 
 
 
-#REVISAR
+
   def protection
     factor = 1
     for sh in @shieldBoosters do
@@ -216,11 +214,10 @@ class SpaceStation
   end
 
 
- #MIRAR QUE FUNCIONA EL MAX_BY
-  def receiveShot(shot)   #shot es un float
+  def receiveShot(shot)   #shot es un float, devuelve un ShotResult
     myProtection = protection()
     if (myProtection >= shot)
-      @shieldPower-=SHIELDLOSSPERUNITSHOT*shot
+      @shieldPower-=@@SHIELDLOSSPERUNITSHOT*shot
       serie = [0.0, @shieldPower]
       @shieldPower = serie.max_by{|serie| serie}
       return ShotResult::RESIST
@@ -229,6 +226,8 @@ class SpaceStation
       return ShotResult::DONOTRESIST
     end
   end
+
+
 
   def receiveSupplies(s)
     assignFuelValue(@fuelUnits+s.fuelUnits)
@@ -244,8 +243,8 @@ class SpaceStation
     end
   end
 
-#mirar
-  def setLoot(loot)   #no devuelve nada
+#mirar si sustituimos el hangar si ya tenemos uno
+  def setLoot(loot)   #recibe un Loot, no devuelve nada
     dealer = CardDealer.instance
     h = loot.nHangars
     if (h > 0)
@@ -267,12 +266,11 @@ class SpaceStation
       sh = dealer.nextShieldBooster()
       receiveShieldBooster(sh)
     end
-    medals = l.nMedals
-    nMedals+=medals
+    medals = loot.nMedals
+    @nMedals+=medals
   end
 
   def setPendingDamage(d)
-
     @pendingDamage = d.adjust(@weapons, @shieldBoosters)
   end
 
