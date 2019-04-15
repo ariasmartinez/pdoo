@@ -75,6 +75,7 @@ class CardDealer
         @suppliesPackages.add(SuppliesPackage.new(3,50,3))  
         @suppliesPackages.add(SuppliesPackage.new(40,100,40))
         @suppliesPackages.add(SuppliesPackage.new(100,100,100))
+        @suppliesPackages.add(SuppliesPackage.new(10,20,0))
     end
     
     def createWeapons() 
@@ -102,7 +103,8 @@ class CardDealer
        @weapons.add(Weapon.new("Cañón ACME",WeaponType::PLASMA,1)) 
        @weapons.add(Weapon.new("Cañón ACME",WeaponType::PLASMA,1)) 
        @weapons.add(Weapon.new("Cañón ACME",WeaponType::PLASMA,1)) 
-       @weapons.add(Weapon.new("Cañón mejorado",WeaponType::PLASMA,2))       
+       @weapons.add(Weapon.new("Cañón mejorado",WeaponType::PLASMA,2))    
+       @weapons.add(Weapon.new("Cañón nuevo", WeaponType::PLASMA, 1))   
        
     end
     
@@ -118,6 +120,7 @@ class CardDealer
        @shieldBoosters.add(ShieldBooster.new("Escudo ACME",1.5,2))
        @shieldBoosters.add(ShieldBooster.new("Escudo normal",3.0,2))
        @shieldBoosters.add(ShieldBooster.new("Escudo normal",4.0,2))
+       @shieldBoosters.add(ShieldBooster.new("Escudo monouso", 2.5, 1))
     end
                                
     def createHangars() 
@@ -130,6 +133,7 @@ class CardDealer
         @hangars.add(Hangar.new(2))
         @hangars.add(Hangar.new(1))
         @hangars.add(Hangar.new(1))
+        @hangars.add(Hangar.new(5))
     end
     
     def createEnemies() 
@@ -137,12 +141,14 @@ class CardDealer
         regularLoot1=Loot.new(1,1,2,1,1)
         badLoot=Loot.new(1,1,1,0,1)
         goodLoot=Loot.new(2,2,2,1,2)
+        newLoot=Loot.new(3,5,1,1,0)
         
         regularDamage0=Damage.newNumericWeapons(2,1) 
         regularDamage1=Damage.newNumericWeapons(1,1) 
         lowDamage0=Damage.newNumericWeapons(1,1)
         lowDamage1=Damage.newNumericWeapons(0,1)
         lowDamage2=Damage.newNumericWeapons(1,0)
+        newDamage=Damage.newNumericWeapons(2,0)
         
         regularSpecificDamage0=Damage.newSpecificWeapons([WeaponType::LASER,WeaponType::MISSILE,WeaponType::PLASMA],1)
         hardSpecificDamage0=Damage.newSpecificWeapons([WeaponType::LASER,WeaponType::LASER,WeaponType::LASER, \
@@ -180,7 +186,9 @@ class CardDealer
         @enemies.add(EnemyStarShip.new("Enemigo difícil 0",200,100,goodLoot,hardSpecificDamage0));          
         @enemies.add(EnemyStarShip.new("Enemigo difícil 1",100,200,goodLoot,hardSpecificDamage0));   
         
-        @enemies.add(EnemyStarShip.new("Enemigo imposible",500,500,goodLoot,hardSpecificDamage0));              
+        @enemies.add(EnemyStarShip.new("Enemigo imposible",500,500,goodLoot,hardSpecificDamage0)); 
+
+        @enemies.add(EnemyStarShip.new("Enemigo dgiim", 1000, 1000,newLoot, newDamage))             
     end
 end # class
 
