@@ -60,7 +60,39 @@ public class Damage {
     
     //cambio Weapon[] por ArrayList<Weapon>
     public Damage adjust(ArrayList<Weapon> w, ArrayList<ShieldBooster> s){
-        throw new UnsupportedOperationException();
+        int shields;
+        int pos;
+        
+        if (nShields > s.size())
+            shields = s.size();
+        else 
+            shields = nShields;
+        
+        if (nWeapons == 0){
+            ArrayList<Weapon> weapontype_prov = new ArrayList<Weapon>();
+            for(int i=0; i<w.size(); i++){
+                weapontype_prov.add(w.get(i));
+            }
+            
+            ArrayList<WeaponType> weapon_prov = new ArrayList<WeaponType>();
+            
+            for (int i=0; i<weapons.size(); i++){
+                pos = arrayContainsType(weapontype_prov,weapons.get(i));
+                if (pos!=-1){
+                    weapon_prov.add(weapons.get(i));
+                    weapontype_prov.remove(pos);
+                }
+            }
+            return new Damage(weapon_prov,shields);
+            
+        }
+        
+        else {
+            if (nWeapons > w.size())
+                return new Damage(w.size(),shields);
+            else 
+                return new Damage(nWeapons,shields);
+        }
     }
     public void discardWeapon(Weapon w){
         if(weapons!=null){
