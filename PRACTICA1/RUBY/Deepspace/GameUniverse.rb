@@ -2,6 +2,7 @@
 require'./Dice.rb'
 require './GameStateController'
 require'./EnemyStarShip'
+require './CombatResult'
 module Deepspace
 
 
@@ -20,7 +21,8 @@ class GameUniverse
 
   end
 
-  def combatGo(station, enemy)
+    #duda
+  def combatGo(station, enemy)   #station es una StationSpace (@current), enemy es un EnemyStarSHip (#current)
       ch = @dice.firstShot 
       if (ch == GameCharacter::ENEMYSTARSHIP)
         fire = enemy.fire
@@ -37,13 +39,13 @@ class GameUniverse
         result = enemy.receiveShot(fire)
         enemyWins = (result == ShotResult::RESIST)
       end
-
       if (enemyWins)
         s = station.getSpeed
         moves = @dice.spaceStationMoves(s)
-        if (!moves)
+        if (!moves) 
           damage = enemy.damage 
           station.setPendingDamage(damage)
+          #no habria que hacer cleanpendingDamage ??
           combatResult = CombatResult::ENEMYWINS 
         else 
           station.move
@@ -54,9 +56,8 @@ class GameUniverse
         station.setLoot(aLoot)
         combatResult = CombatResult::STATIONWINS
       end
-      @gameState.next(turns, station.length)
-      return combatResult
-     
+      @gameState.next(@turns, @spaceStations.length)
+      return combatResult    
   end
 
   def combat
@@ -118,20 +119,20 @@ class GameUniverse
       if (estado == GameState::CANNOTPLAY)
           @spaceStations = Array.new 
           dealer = CardDealer.instance
-          for i in names  #duda
+          for i in names  
             supplies = dealer.nextSuppliesPackage()
-            estacion = SpaceStation.new(name, supplies)
+            estacion = SpaceStation.new(i, supplies)
             @spaceStations << estacion
-            nh = @dice.initWithHangar
-            nw = @dice.initWithWeapons
-            ns = @dice.initWithSHields
+            nh = @dice.initWithNHangars
+            nw = @dice.initWithNWeapons
+            ns = @dice.initWithNShields
             lo = Loot.new(0, nw, ns, nh, 0)
             estacion.setLoot(lo)
           end
           @currentStationIndex = @dice.whoStarts(names.length)
           @currentStation = @spaceStations[@currentStationIndex]
           @currentEnemy = dealer.nextEnemy
-          @gameState.next(turns, @spaceStations.length)
+          @gameState.next(@turns, @spaceStations.length)
       end
   end
 
@@ -158,7 +159,7 @@ class GameUniverse
         @currentStation.cleanUpMountedItems
         dealer = CardDealer.instance 
         @currentEnemy = dealer.nextEnemy
-        @gameState.next(turns, @spaceStations.length)
+        @gameState.next(@turns, @spaceStations.length)
         return true
       else 
         return false
@@ -167,6 +168,7 @@ class GameUniverse
       return false
     end 
   end
+
 
 
   def to_s

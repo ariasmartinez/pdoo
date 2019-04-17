@@ -74,12 +74,12 @@ class SpaceStation
     @hangar = nil
   end
 
-#igual que discardWeapon
-  def discardShieldBooster(i)  #devuelve void
-    if (i >= 0 and i < @shieldPower.length)
+
+  def discardShieldBooster(i)  #i es un int, devuelve void
+    if (i >= 0 and i < @shieldBoosters.length)
       sh = @shieldBoosters.delete_at(i)
       if (@pendingDamage != nil)
-        @pendingDamage.discardShieldBooster(sh)
+        @pendingDamage.discardShieldBooster
         cleanPendingDamage()
       end
     end
@@ -244,6 +244,7 @@ class SpaceStation
   end
 
 #mirar si sustituimos el hangar si ya tenemos uno
+#mirar el receive Weapon cuando spacewins en combat
   def setLoot(loot)   #recibe un Loot, no devuelve nada
     dealer = CardDealer.instance
     h = loot.nHangars

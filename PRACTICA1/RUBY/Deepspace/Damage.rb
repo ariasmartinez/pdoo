@@ -76,6 +76,7 @@ class Damage
   end
 
   def discardWeapon(w)
+    
     if (@weapons.length!=0)
         @weapons.delete(w.type)
     elsif (@nWeapons!=0)
