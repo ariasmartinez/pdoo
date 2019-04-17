@@ -36,6 +36,7 @@ puts "SpaceStation:: Probamos setLoot"
 botin = Loot.new(1,1,1, 0, 1)
 estacion.setLoot(botin)
 puts estacion.to_s
+puts "SpaceStation: Probamos discardWeapon"
 estacion.discardWeapon(0)
 puts estacion.to_s
 

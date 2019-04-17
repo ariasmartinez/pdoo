@@ -52,15 +52,17 @@ class Damage
     else
       shields = nShields
     end
-
+    
     if (nWeapons == 0)
+      weapontype_prov = Array.new(w)
       weapon_prov = []
-      for i in weapons
-        if (arrayContainsType(w,i)!= -1)
+      for i in @weapons
+        pos = arrayContainsType(weapontype_prov,i)
+        if (pos != -1)
           weapon_prov << i
+          weapontype_prov.delete_at(pos)
         end
       end
-
       return Damage.newSpecificWeapons(weapon_prov,shields)
 
     else
