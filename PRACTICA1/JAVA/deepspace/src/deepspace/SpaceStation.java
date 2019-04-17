@@ -6,6 +6,7 @@
 package deepspace;
 
 import java.util.ArrayList;
+import java.lang.Math;
 
 /**
  *
@@ -85,8 +86,13 @@ public class SpaceStation {
            hangar.removeWeapon(i);
     }
     public float fire(){
-        throw new UnsupportedOperationException();
+        float factor = 1;
+        for(int i=0; i< weapons.size(); i++){
+                factor *= weapons.get(i).useIt();
+        }
+        return ammoPower*factor;
     }
+    
     public float getAmmoPower(){
         return ammoPower;
     }
@@ -150,8 +156,12 @@ public class SpaceStation {
         if ((fuelUnits - getSpeed()*fuelUnits) > 0)
             fuelUnits = fuelUnits - getSpeed()*fuelUnits;
     }
-    public void protection(){
-        throw new UnsupportedOperationException();
+    public float protection(){
+        float factor = 1;
+        for(int i=0; i<shieldBoosters.size(); i++)
+            factor *= shieldBoosters.get(i).useIt();
+        
+        return factor*shieldPower;
     }
     public void receiveHangar(Hangar h){
         if (hangar == null)
@@ -162,8 +172,18 @@ public class SpaceStation {
             return hangar.addShieldBooster(s);
         return false;
     }
-    public ShotResult receiveShotResult(float shot){
-        throw new UnsupportedOperationException();
+    public ShotResult receiveShot(float shot){
+        float myProtection = protection();
+        if (myProtection >= shot){
+            shieldPower-=SHIELDLOSSPERUNITSHOT*shot;
+            shieldPower = Math.max(0.0f,shieldPower);
+            return ShotResult.RESIST;
+        }
+        else {
+            shieldPower = 0.0f;
+            return ShotResult.DONOTRESIST;
+            
+        }
     }
     
     public void receiveSupplies(SuppliesPackage s){
@@ -178,7 +198,34 @@ public class SpaceStation {
         return false;
     }
     public void setLoot(Loot loot){
-        throw new UnsupportedOperationException();
+        CardDealer dealer = CardDealer.getInstance();
+        int h = loot.getNHangars();
+        
+        if (h>0){
+            Hangar hangar = dealer.nextHangar();
+            receiveHangar(hangar);
+        }
+        int elements = loot.getNSupplies();
+        for(int i=1; i<= elements; i++){
+            SuppliesPackage sup = dealer.nextSuppliesPackage();
+            receiveSupplies(sup);
+        }
+        
+        elements = loot.getNWeapons();
+        for(int i=1; i<= elements; i++){
+            Weapon weap = dealer.nextWeapon();
+            receiveWeapon(weap);
+        }
+        
+        elements = loot.getNShields();
+        for(int i=1; i<= elements; i++){
+            ShieldBooster sh = dealer.nextShieldBooster();
+            receiveShieldBooster(sh);
+        }
+        
+        int medals = loot.getNMedals();
+        nMedals += medals;
+        
     }
     
     //cambio def de funcion en Damage

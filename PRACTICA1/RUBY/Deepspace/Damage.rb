@@ -54,7 +54,11 @@ class Damage
     end
     
     if (nWeapons == 0)
-      weapontype_prov = Array.new(w)
+      weapontype_prov = []
+      for weap in w 
+        weapontype_prov << weap;
+      end 
+
       weapon_prov = []
       for i in @weapons
         pos = arrayContainsType(weapontype_prov,i)
