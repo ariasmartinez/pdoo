@@ -85,7 +85,25 @@ public class GameUniverse {
                    
     }
     public void init(String [] names){
-        throw new UnsupportedOperationException();
+        if (gameState.getState() == GameState.CANNOTPLAY){
+            spaceStations = new ArrayList<SpaceStation>();
+            CardDealer dealer = CardDealer.getInstance();
+            for(int i=1; i<=names.length; i++){
+                SuppliesPackage supplies = dealer.nextSuppliesPackage();
+                SpaceStation station = new SpaceStation(names[i], supplies);
+                spaceStations.add(station);
+                int nh = dice.initWithNHangars();
+                int nw = dice.initWithNWeapons();
+                int ns = dice.initWithNShields();
+                Loot lo = new Loot(0,nw,ns,nh,0);
+                station.setLoot(lo);
+            } 
+            
+            currentStationIndex = dice.whoStarts(names.length);
+            currentStation = spaceStations.get(currentStationIndex);
+            currentEnemy = dealer.nextEnemy();
+            gameState.next(turns,spaceStations.size());
+        }
     }
     public void mountShieldBooster(int i){
         if ((gameState.getState() == GameState.INIT) || (gameState.getState() == GameState.AFTERCOMBAT))
@@ -96,6 +114,20 @@ public class GameUniverse {
             spaceStations.get(currentStationIndex).mountWeapon(i);
     }
     public boolean nextTurn(){
-        throw new UnsupportedOperationException();
+        if(gameState.getState() == GameState.AFTERCOMBAT){
+            boolean stationState = currentStation.validState();
+            if(stationState){
+                currentStationIndex = (currentStationIndex+1)%spaceStations.size();
+                turns ++;
+                currentStation = spaceStations.get(currentStationIndex);
+                currentStation.cleanUpMountedItems();
+                CardDealer dealer = CardDealer.getInstance(); 
+                currentEnemy = dealer.nextEnemy();
+                gameState.next(turns, spaceStations.size());
+                return true;
+            }
+            return false;
+        }
+        return false;
     }    
 }
