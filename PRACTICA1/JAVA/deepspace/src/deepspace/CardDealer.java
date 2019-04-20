@@ -84,6 +84,7 @@ class CardDealer {
         suppliesPackages.add(new SuppliesPackage(3,50,3));    
         suppliesPackages.add(new SuppliesPackage(40,100,40));
         suppliesPackages.add(new SuppliesPackage(100,100,100));
+        suppliesPackages.add(new SuppliesPackage(10,20,0));
     }
     private void createWeapons() {
        weapons.add(new Weapon("Láser infinito",WeaponType.LASER,100));
@@ -110,7 +111,8 @@ class CardDealer {
        weapons.add(new Weapon("Cañón ACME",WeaponType.PLASMA,1)); 
        weapons.add(new Weapon("Cañón ACME",WeaponType.PLASMA,1)); 
        weapons.add(new Weapon("Cañón ACME",WeaponType.PLASMA,1)); 
-       weapons.add(new Weapon("Cañón mejorado",WeaponType.PLASMA,2));       
+       weapons.add(new Weapon("Cañón mejorado",WeaponType.PLASMA,2));  
+       weapons.add(new Weapon("Cañón nuevo", WeaponType.PLASMA,1));
        
     }
     private void createShieldBoosters() {
@@ -125,6 +127,7 @@ class CardDealer {
        shieldBoosters.add(new ShieldBooster("Escudo ACME",1.5f,2));
        shieldBoosters.add(new ShieldBooster("Escudo normal",3.0f,2));
        shieldBoosters.add(new ShieldBooster("Escudo normal",4.0f,2));
+       shieldBoosters.add(new ShieldBooster("Escudo monouso", 2.5f,1));
     }
     private void createHangars() {
         hangars.add(new Hangar(4));
@@ -136,18 +139,21 @@ class CardDealer {
         hangars.add(new Hangar(2));
         hangars.add(new Hangar(1));
         hangars.add(new Hangar(1));
+        hangars.add(new Hangar(5));
     }
     private void createEnemies() {
         Loot regularLoot0=new Loot(1,2,1,1,1);
         Loot regularLoot1=new Loot(1,1,2,1,1);
         Loot badLoot=new Loot(1,1,1,0,1);
         Loot goodLoot=new Loot(2,2,2,1,2);
+        Loot newLoot=new Loot(3,5,1,1,0);
         
         Damage regularDamage0=new Damage(2,1); 
         Damage regularDamage1=new Damage(1,1); 
         Damage lowDamage0=new Damage(1,1);
         Damage lowDamage1=new Damage(0,1);
         Damage lowDamage2=new Damage(1,0);
+        Damage newDamage=new Damage(2,0);
         
 
         
@@ -204,7 +210,9 @@ class CardDealer {
         enemies.add(new EnemyStarShip("Enemigo difícil 0",200,100,goodLoot,hardSpecificDamage0));          
         enemies.add(new EnemyStarShip("Enemigo difícil 1",100,200,goodLoot,hardSpecificDamage0));   
         
-        enemies.add(new EnemyStarShip("Enemigo imposible",500,500,goodLoot,hardSpecificDamage0));              
+        enemies.add(new EnemyStarShip("Enemigo imposible",500,500,goodLoot,hardSpecificDamage0));  
+        
+        enemies.add(new EnemyStarShip("Enemigo dgiim", 1000, 1000, newLoot, newDamage));
     }
 }
 

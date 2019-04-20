@@ -42,11 +42,52 @@ public class GameUniverse {
     }
     
     CombatResult combat(SpaceStation station, EnemyStarShip enemy){
-        throw new UnsupportedOperationException();
+        float fire;
+        ShotResult result;
+        boolean enemyWins;
+        CombatResult combatResult;
+        if(dice.firstShot() == GameCharacter.ENEMYSTARSHIP){
+            fire = enemy.fire();
+            result = station.receiveShot(fire);
+            if (result == ShotResult.RESIST){
+                fire = station.fire();
+                result = station.receiveShot(fire);
+                enemyWins=(result == ShotResult.RESIST);
+            }
+            else 
+                enemyWins = true;
+        }
+        else{
+            fire = station.fire();
+            result = enemy.receiveShot(fire);
+            enemyWins=(result==ShotResult.RESIST);
+        }
+        
+        if (enemyWins){
+            if (!(dice.spaceStationMoves(station.getSpeed()))){
+                station.setPendingDamage(enemy.getDamage());
+                combatResult = CombatResult.ENEMYWINS;
+            }
+            else{
+                station.move();
+                combatResult = CombatResult.STATIONESCAPES;
+            }
+        }
+        else {
+            station.setLoot(enemy.getLoot());
+            combatResult = CombatResult.STATIONWINS;
+            
+        }
+        gameState.next(turns, spaceStations.size());
+        return combatResult;
+        
     }
     
     public CombatResult combat(){
-        throw new UnsupportedOperationException();
+        if((gameState.getState() == GameState.BEFORECOMBAT) || (gameState.getState() == GameState.INIT))
+            return combat(currentStation,currentEnemy);
+        else 
+            return CombatResult.NOCOMBAT;
     }
     
     public void discardHangar(){
