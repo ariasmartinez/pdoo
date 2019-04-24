@@ -84,9 +84,9 @@ class GameUniverse
     end
   end
 
-  def discardShieldBoosterinHangar(i)
+  def discardShieldBoosterInHangar(i)
     if (@gameState.state == GameState::INIT or @gameState.state == GameState::AFTERCOMBAT)
-      @spaceStations[@currentStationIndex].discardShieldBoosterinHangar(i)
+      @spaceStations[@currentStationIndex].discardShieldBoosterInHangar(i)
     end
   end
 
@@ -96,9 +96,9 @@ class GameUniverse
     end
   end
 
-  def discardWeaponinHangar(i)
+  def discardWeaponInHangar(i)
     if (@gameState.state == GameState::INIT or @gameState.state == GameState::AFTERCOMBAT)
-      @spaceStations[@currentStationIndex].discardWeaponinHangar(i)
+      @spaceStations[@currentStationIndex].discardWeaponInHangar(i)
     end
   end
 
@@ -153,8 +153,11 @@ class GameUniverse
 
   def nextTurn   #devuelve un boolean
     state = @gameState.state 
+    puts "GameUNiverse::nextTurn  state"+state.to_s
+    
     if ( state == GameState::AFTERCOMBAT)
       stationState = @currentStation.validState
+      puts "GameUNiverse::nextTurn  stationState"+stationState.to_s
       if (stationState)
         @currentStationIndex = (@currentStationIndex+1) % @spaceStations.length
         @turns+=1
