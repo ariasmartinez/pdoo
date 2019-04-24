@@ -3,6 +3,7 @@ require './Hangar'
 require './Damage'
 require './ShotResult'
 require './CardDealer'
+require './SpaceStationToUI'
 module Deepspace
 
 

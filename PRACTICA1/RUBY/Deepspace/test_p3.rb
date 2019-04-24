@@ -64,17 +64,16 @@ puts "Probamos GameUniverse:"
 game = GameUniverse.new
 nombres = Array.new
 nombres << "Celia"
-nombres << "Lucía"
-nombres << "Jesús"
+nombres << "MJ"
+
 game.init(nombres)
 #puts game.to_s
 #puts "Probamos nextTurns"
+puts game.to_s
+puts game.combat
 game.nextTurn
 puts game.to_s
-puts "Probamos combat"
 puts game.combat
-puts game.to_s
-
 
 
 

@@ -2,6 +2,7 @@
 require './Loot'
 require './Damage'
 require './ShotResult'
+require './EnemyToUI'
 module Deepspace
 
 
@@ -21,7 +22,7 @@ def self.newCopy(e)
 end
 
 def getUIversion
-  EnemyToUI
+  EnemyToUI.new(self)
 end
 
 def fire

@@ -1,5 +1,5 @@
 #encoding:utf-8
-
+require './LootToUI'
 module Deepspace
 
 
@@ -12,6 +12,10 @@ class Loot
     @nShields = nShields #int
     @nHangars = nHangars #int
     @nMedals = nMedals #int
+  end
+
+  def getUIversion
+    LootToUI.new(self)
   end
 
   def nSupplies

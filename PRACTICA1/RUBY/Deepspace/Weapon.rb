@@ -1,5 +1,5 @@
 #encoding:utf-8
-
+require './WeaponToUI'
 module Deepspace
 
 
@@ -28,6 +28,9 @@ class Weapon
     new(orig.name, orig.type, orig.uses)
   end
 
+  def getUIversion()
+    WeaponToUI.new(self)
+  end 
 
   def power
     @type.power()

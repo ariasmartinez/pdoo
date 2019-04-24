@@ -3,6 +3,9 @@ require'./Dice.rb'
 require './GameStateController'
 require'./EnemyStarShip'
 require './CombatResult'
+require './CardDealer'
+require './SpaceStation'
+require './GameUniverseToUI'
 module Deepspace
 
 
@@ -22,7 +25,7 @@ class GameUniverse
   end
 
     #duda
-  def combatGo(station, enemy)   #station es una StationSpace (@current), enemy es un EnemyStarSHip (#current)
+  def combatGo(station, enemy)   #station es una StationSpace (@current), enemy es un EnemyStarSHip (@current)
       ch = @dice.firstShot 
       if (ch == GameCharacter::ENEMYSTARSHIP)
         fire = enemy.fire
@@ -99,12 +102,12 @@ class GameUniverse
     end
   end
 
-  def getState
-    return @gameState
+  def state
+    return @gameState.state
   end
 
   def getUIversion
-    GameUniverseToUI.new(self)
+    GameUniverseToUI.new(@currentStation, @currentEnemy)
   end
 
   def haveAWinner

@@ -1,5 +1,5 @@
 #encoding:utf-8
-
+require './ShieldToUI'
 module Deepspace
 
 
@@ -27,6 +27,9 @@ class ShieldBooster
     new(orig.name, orig.boost, orig.uses)
   end
 
+  def getUIversion()
+    ShieldToUI.new(self)
+  end 
 
   def useIt
 
