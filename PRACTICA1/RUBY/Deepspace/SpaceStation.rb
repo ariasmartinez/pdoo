@@ -274,6 +274,7 @@ class SpaceStation
 
   def setPendingDamage(d)
     @pendingDamage = d.adjust(@weapons, @shieldBoosters)
+    cleanPendingDamage()
   end
 
   def validState

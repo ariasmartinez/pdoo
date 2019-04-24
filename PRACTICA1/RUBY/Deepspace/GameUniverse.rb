@@ -153,11 +153,11 @@ class GameUniverse
 
   def nextTurn   #devuelve un boolean
     state = @gameState.state 
-    puts "GameUNiverse::nextTurn  state"+state.to_s
+    puts "GameUniverse::nextTurn  state"+state.to_s
     
     if ( state == GameState::AFTERCOMBAT)
       stationState = @currentStation.validState
-      puts "GameUNiverse::nextTurn  stationState"+stationState.to_s
+      puts "GameUniverse::nextTurn  stationState"+stationState.to_s
       if (stationState)
         @currentStationIndex = (@currentStationIndex+1) % @spaceStations.length
         @turns+=1
