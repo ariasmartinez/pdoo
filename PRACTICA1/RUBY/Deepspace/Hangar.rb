@@ -67,7 +67,7 @@ def weapons
 end
 
 def removeShieldBooster(s)
-  if (@shieldBoosters[s] != nil)
+  if ((s >= 0) && (@shieldBoosters[s] != nil))
     potenEscudo = @shieldBoosters[s]
     @shieldBoosters.delete_at(s)
     return potenEscudo
@@ -77,7 +77,7 @@ def removeShieldBooster(s)
 end
 
 def removeWeapon(w)
-  if (@weapons[w] != nil)
+  if ( (w >= 0) && (@weapons[w] != nil))
     arma = @weapons[w]
     @weapons.delete_at(w)
     return arma
