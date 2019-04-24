@@ -278,10 +278,6 @@ class SpaceStation
   end
 
   def validState
-    puts "SpaceStation::ValidState pendingDamage "+@pendingDamage.to_s #borrar
-    if (@pendingDamage != nil) #borrar
-      puts "SpaceStation:ValidState hasnoEfect "+ @pendingDamage.hasNoEffect.to_s  #borrar
-    end #borrar
     if ((@pendingDamage == nil) or @pendingDamage.hasNoEffect)
         return true
     else
