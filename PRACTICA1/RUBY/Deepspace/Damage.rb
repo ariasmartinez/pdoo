@@ -20,7 +20,7 @@ class Damage
   end
 
   def self.newSpecificWeapons(wl,s) #le pasamos un arraylist de weaponstype y un int de shields
-    new(0, s, wl)
+    new(-1, s, wl)
   end
 
   def self.newCopy(d)
@@ -53,7 +53,7 @@ class Damage
       shields = nShields
     end
     
-    if (nWeapons == 0)
+    if (nWeapons == -1)
       weapontype_prov = []
       for weap in w 
         weapontype_prov << weap;
@@ -83,7 +83,7 @@ class Damage
     
     if (@weapons.length!=0)
         @weapons.delete(w.type)
-    elsif (@nWeapons!=0)
+    elsif (@nWeapons!=-1)
         @nWeapons = @nWeapons-1
     end
   end
@@ -95,7 +95,7 @@ class Damage
   end
 
   def hasNoEffect
-   if (@nShields == 0 && @nWeapons == 0 && @weapons.length == 0)
+   if ((@nShields == 0 && @nWeapons == 0) or (@nShields == 0 && @weapons.length == 0))
       return true
    end
    return false

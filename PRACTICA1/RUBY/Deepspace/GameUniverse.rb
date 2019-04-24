@@ -147,7 +147,10 @@ class GameUniverse
 
   def mountWeapon(i)
     if (@gameState.state == GameState::INIT or @gameState == GameState::AFTERCOMBAT)
+      puts "GameUniverse::mountWeapon montamos arma" #borrar
       @spaceStations[@currentStationIndex].mountWeapon(i)
+    
+      
     end
   end
 
@@ -157,7 +160,7 @@ class GameUniverse
     
     if ( state == GameState::AFTERCOMBAT)
       stationState = @currentStation.validState
-      puts "GameUniverse::nextTurn  stationState"+stationState.to_s
+      puts "GameUniverse::nextTurn  stationState"+stationState.to_s  #borrar
       if (stationState)
         @currentStationIndex = (@currentStationIndex+1) % @spaceStations.length
         @turns+=1
