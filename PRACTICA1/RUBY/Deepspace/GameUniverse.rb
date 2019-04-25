@@ -65,7 +65,6 @@ class GameUniverse
 
   def combat
     state = state()
-    puts "GameUNiverse::combat state"+state.to_s #borrar
     if ((state == GameState::BEFORECOMBAT) || (state == GameState::INIT) ) 
       combatGo(@currentStation, @currentEnemy)
     else 
