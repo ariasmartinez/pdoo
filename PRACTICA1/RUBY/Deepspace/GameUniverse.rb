@@ -64,7 +64,7 @@ class GameUniverse
   end
 
   def combat
-    state = @gameState.state 
+    state = state 
     if ((state == GameState::BEFORECOMBAT) || (state == GameState::INIT) ) 
       combatGo(@currentStation, @currentEnemy)
     else 
@@ -73,31 +73,31 @@ class GameUniverse
   end
 
   def discardHangar
-    if (@gameState.state == GameState::INIT or @gameState.state == GameState::AFTERCOMBAT)
+    if (state == GameState::INIT or state == GameState::AFTERCOMBAT)
       @spaceStations[@currentStationIndex].discardHangar
     end
   end
 
   def discardShieldBooster(i)
-    if (@gameState.state == GameState::INIT or @gameState.state == GameState::AFTERCOMBAT)
+    if (state == GameState::INIT or state == GameState::AFTERCOMBAT)
       @spaceStations[@currentStationIndex].discardShieldBooster(i)
     end
   end
 
   def discardShieldBoosterInHangar(i)
-    if (@gameState.state == GameState::INIT or @gameState.state == GameState::AFTERCOMBAT)
+    if (state == GameState::INIT or state == GameState::AFTERCOMBAT)
       @spaceStations[@currentStationIndex].discardShieldBoosterInHangar(i)
     end
   end
 
   def discardWeapon(i)
-    if (@gameState.state == GameState::INIT or @gameState.state == GameState::AFTERCOMBAT)
+    if (state == GameState::INIT or state == GameState::AFTERCOMBAT)
       @spaceStations[@currentStationIndex].discardWeapon(i)
     end
   end
 
   def discardWeaponInHangar(i)
-    if (@gameState.state == GameState::INIT or @gameState.state == GameState::AFTERCOMBAT)
+    if (state == GameState::INIT or state == GameState::AFTERCOMBAT)
       @spaceStations[@currentStationIndex].discardWeaponInHangar(i)
     end
   end
@@ -118,7 +118,7 @@ class GameUniverse
   end
 
   def init(names)  #names es un string, devuelve void
-      estado = @gameState.state
+      estado = state
       if (estado == GameState::CANNOTPLAY)
           @spaceStations = Array.new 
           dealer = CardDealer.instance
@@ -140,23 +140,19 @@ class GameUniverse
   end
 
   def mountShieldBooster(i)
-    if (@gameState.state == GameState::INIT or @gameState == GameState::AFTERCOMBAT)
+    if (state == GameState::INIT or state == GameState::AFTERCOMBAT)
       @spaceStations[@currentStationIndex].mountShieldBooster(i)
     end
   end
 
   def mountWeapon(i)
-    if (@gameState.state == GameState::INIT or @gameState == GameState::AFTERCOMBAT)
+    if (state == GameState::INIT or state == GameState::AFTERCOMBAT)
       @spaceStations[@currentStationIndex].mountWeapon(i)
-    
-      
     end
   end
 
   def nextTurn   #devuelve un boolean
-    state = @gameState.state 
-    puts "GameUniverse::nextTurn  state"+state.to_s
-    
+    state = state     
     if ( state == GameState::AFTERCOMBAT)
       stationState = @currentStation.validState
       if (stationState)
