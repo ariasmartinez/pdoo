@@ -114,7 +114,7 @@ class Damage
   end
 
   def to_s
-   "El daño es #{@nWeapons} armas, y  #{@nShields} escudos, la coleccion de armas es "+@weapons.to_s
+   "El daño es #{@nWeapons} armas, y  #{@nShields} escudos, la coleccion de armas es #{@weapons.join(", ")}"
 
   end
 

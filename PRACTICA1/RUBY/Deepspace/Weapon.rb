@@ -57,4 +57,5 @@ class Weapon
 
 
 end
+
 end

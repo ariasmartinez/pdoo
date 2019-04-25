@@ -31,7 +31,7 @@ module P1
 			array_escudo2 << Deepspace::ShieldBooster.new("escudo2", 5,6)
 			daño2 = daño.adjust(array_armas2, array_escudo2)
 			puts "Las armas que tenemos son " 
-			puts array_armas2.to_s
+			puts array_armas2.join(", ")
 			puts daño2.to_s
 
 		end
