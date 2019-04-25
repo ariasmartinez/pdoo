@@ -18,13 +18,13 @@ class GameUniverse
     @turns = 0 #int
     @dice = Dice.new #Dice
     @gameState  = GameStateController.new   #GameStateController
-    @spaceStations  = nil #Array SpaceStation  (lo cambio a nil porque se inicializa en init)
+    @spaceStations  = nil #Array SpaceStation  
     @currentEnemy = nil  #EnemyStarShip
     @currentStation = nil # SpaceStation
 
   end
 
-    #duda
+    
   def combatGo(station, enemy)   #station es una StationSpace (@current), enemy es un EnemyStarSHip (@current)
       ch = @dice.firstShot 
       if (ch == GameCharacter::ENEMYSTARSHIP)
@@ -48,7 +48,6 @@ class GameUniverse
         if (!moves) 
           damage = enemy.damage 
           station.setPendingDamage(damage)
-          #no habria que hacer cleanpendingDamage ??
           combatResult = CombatResult::ENEMYWINS 
         else 
           station.move

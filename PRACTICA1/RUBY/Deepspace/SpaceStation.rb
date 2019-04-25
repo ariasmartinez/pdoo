@@ -93,7 +93,6 @@ class SpaceStation
   end
 
 
-  #MIRAR
   def discardWeapon(i)   #devuelve void
     if (i >= 0 and i < @weapons.length)
       w = @weapons.delete_at(i)
@@ -244,8 +243,7 @@ class SpaceStation
     end
   end
 
-#mirar si sustituimos el hangar si ya tenemos uno
-#mirar el receive Weapon cuando spacewins en combat
+
   def setLoot(loot)   #recibe un Loot, no devuelve nada
     dealer = CardDealer.instance
     h = loot.nHangars
