@@ -84,39 +84,39 @@ public class GameUniverse {
     }
     
     public CombatResult combat(){
-        if((gameState.getState() == GameState.BEFORECOMBAT) || (gameState.getState() == GameState.INIT))
+        if((getState() == GameState.BEFORECOMBAT) || (getState() == GameState.INIT))
             return combat(currentStation,currentEnemy);
         else 
             return CombatResult.NOCOMBAT;
     }
     
     public void discardHangar(){
-        if ((gameState.getState() == GameState.INIT) || (gameState.getState() == GameState.AFTERCOMBAT))
+        if ((getState() == GameState.INIT) || (getState() == GameState.AFTERCOMBAT))
             spaceStations.get(currentStationIndex).discardHangar();
     }
     
     public void discardShieldBooster(int i){
-        if ((gameState.getState() == GameState.INIT) || (gameState.getState() == GameState.AFTERCOMBAT))
+        if ((getState() == GameState.INIT) || (getState() == GameState.AFTERCOMBAT))
             spaceStations.get(currentStationIndex).discardShieldBooster(i);
     }
     
     public void discardShieldBoosterInHangar(int i){
-         if ((gameState.getState() == GameState.INIT) || (gameState.getState() == GameState.AFTERCOMBAT))
+         if ((getState() == GameState.INIT) || (getState() == GameState.AFTERCOMBAT))
             spaceStations.get(currentStationIndex).discardShieldBoosterInHangar(i);
     }
     public void discardWeapon(int i){
-        if ((gameState.getState() == GameState.INIT) || (gameState.getState() == GameState.AFTERCOMBAT))
+        if ((getState() == GameState.INIT) || (getState() == GameState.AFTERCOMBAT))
             spaceStations.get(currentStationIndex).discardWeapon(i);
     }
     public void discardWeaponInHangar(int i){
-         if ((gameState.getState() == GameState.INIT) || (gameState.getState() == GameState.AFTERCOMBAT))
+         if ((getState() == GameState.INIT) || (getState() == GameState.AFTERCOMBAT))
             spaceStations.get(currentStationIndex).discardWeaponInHangar(i);
     }
     public GameState getState(){
         return gameState.getState();
     }
     
-    public GameUniverseToUI getUIVersion(){
+    public GameUniverseToUI getUIversion(){
         return new GameUniverseToUI(currentStation, currentEnemy);
     }
     public boolean haveAWinner(){
@@ -125,13 +125,15 @@ public class GameUniverse {
         return false;
                    
     }
-    public void init(String [] names){
-        if (gameState.getState() == GameState.CANNOTPLAY){
+    
+    //CAMBIO indices for
+    public void init(ArrayList<String> names){
+        if (getState() == GameState.CANNOTPLAY){
             spaceStations = new ArrayList<SpaceStation>();
             CardDealer dealer = CardDealer.getInstance();
-            for(int i=1; i<=names.length; i++){
+            for(int i=0; i<names.size(); i++){
                 SuppliesPackage supplies = dealer.nextSuppliesPackage();
-                SpaceStation station = new SpaceStation(names[i], supplies);
+                SpaceStation station = new SpaceStation(names.get(i), supplies);
                 spaceStations.add(station);
                 int nh = dice.initWithNHangars();
                 int nw = dice.initWithNWeapons();
@@ -140,22 +142,22 @@ public class GameUniverse {
                 station.setLoot(lo);
             } 
             
-            currentStationIndex = dice.whoStarts(names.length);
+            currentStationIndex = dice.whoStarts(names.size());
             currentStation = spaceStations.get(currentStationIndex);
             currentEnemy = dealer.nextEnemy();
             gameState.next(turns,spaceStations.size());
         }
     }
     public void mountShieldBooster(int i){
-        if ((gameState.getState() == GameState.INIT) || (gameState.getState() == GameState.AFTERCOMBAT))
+        if ((getState() == GameState.INIT) || (getState() == GameState.AFTERCOMBAT))
           spaceStations.get(currentStationIndex).mountShieldBooster(i);
     }
     public void mountWeapon(int i){
-         if ((gameState.getState() == GameState.INIT) || (gameState.getState() == GameState.AFTERCOMBAT))
+         if ((getState() == GameState.INIT) || (getState() == GameState.AFTERCOMBAT))
             spaceStations.get(currentStationIndex).mountWeapon(i);
     }
     public boolean nextTurn(){
-        if(gameState.getState() == GameState.AFTERCOMBAT){
+        if(getState() == GameState.AFTERCOMBAT){
             boolean stationState = currentStation.validState();
             if(stationState){
                 currentStationIndex = (currentStationIndex+1)%spaceStations.size();

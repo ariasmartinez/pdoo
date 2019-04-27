@@ -27,7 +27,7 @@ public class Damage {
             weapons.add(wl.get(i));
        }
        nShields = s;
-       nWeapons = 0;
+       nWeapons = -1;
     }
     Damage(Damage d){
         nShields = d.nShields;
@@ -68,7 +68,7 @@ public class Damage {
         else 
             shields = nShields;
         
-        if (nWeapons == 0){
+        if (nWeapons == -1){
             ArrayList<Weapon> weapontype_prov = new ArrayList<Weapon>();
             for(int i=0; i<w.size(); i++){
                 weapontype_prov.add(w.get(i));
@@ -116,7 +116,7 @@ public class Damage {
             nShields --;
     }
     public boolean hasNoEffect(){
-        if(nShields == 0 && nWeapons == 0 && weapons == null)
+        if((nShields == 0 && nWeapons == 0) || (nShields == 0 && weapons.size() == 0))
             return true;
         else 
             return false;

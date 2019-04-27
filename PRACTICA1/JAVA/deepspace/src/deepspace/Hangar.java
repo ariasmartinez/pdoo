@@ -18,12 +18,16 @@ public class Hangar {
     Hangar(int capacity){
         maxElements = capacity;
     }
+    
+    //CAMBIO hago new del array list de weapon
     Hangar(Hangar h){
+       System.out.println(h.maxElements);
         maxElements = h.maxElements;
         shieldBoosters = new ArrayList<ShieldBooster>();
         for(int i=0; i<h.shieldBoosters.size(); i++){
             shieldBoosters.add(h.shieldBoosters.get(i));
         }
+        weapons = new ArrayList<Weapon>();
         for(int j=0; j<h.weapons.size(); j++){
             weapons.add(h.weapons.get(j));
         }
@@ -65,13 +69,15 @@ public class Hangar {
         return weapons;
     }
     public ShieldBooster removeShieldBooster(int s){
-          if (s > (shieldBoosters.size()-1))
+          if ((s<0) || (s > (shieldBoosters.size()-1)))
             return null;
         return shieldBoosters.remove(s);
     }
     public Weapon removeWeapon(int w){
-        if (w > (weapons.size()-1))
+        if ((w<0) || (w > (weapons.size()-1)))
             return null;
         return weapons.remove(w);
     }
+    
+       
 }

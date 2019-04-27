@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package main;
 
-import deepspace.*;
+
+package deepspace;
 /**
  *
  * @author celia
@@ -15,7 +15,7 @@ public class TestP2 {
         // HANGAR
         int cap = 3;
         System.out.println("Probamos Hangar");
-        deepspace.Hangar hang ;
+        Hangar hang ;
         hang = new Hangar(3);
 
         // SPACESTATION

@@ -210,12 +210,14 @@ public class SpaceStation {
             return hangar.addWeapon(w);
         return false;
     }
+    //CAMBIO Hangar hangar
     public void setLoot(Loot loot){
         CardDealer dealer = CardDealer.getInstance();
         int h = loot.getNHangars();
         
         if (h>0){
-            Hangar hangar = dealer.nextHangar();
+            Hangar prov = dealer.nextHangar();
+            Hangar hangar = new Hangar(prov);
             receiveHangar(hangar);
         }
         int elements = loot.getNSupplies();
@@ -244,6 +246,7 @@ public class SpaceStation {
     //cambio def de funcion en Damage
     public void setPendingDamage(Damage d){
         pendingDamage = d.adjust(weapons, shieldBoosters);
+        cleanPendingDamage();
     }
     public boolean validState(){  
         if ( getPendingDamage() == null || getPendingDamage().hasNoEffect())
