@@ -41,14 +41,14 @@ public class SpaceStation {
         if (getPendingDamage().hasNoEffect())
             pendingDamage = null; 
     }
-    
+    //Cambio 
     SpaceStation(String n, SuppliesPackage supplies){
         name = n;
         ammoPower = supplies.getAmmoPower();
         shieldPower = supplies.getShieldPower();
         assignFuelValue(supplies.getFuelUnits());
-        ArrayList<ShieldBooster> shieldBoosters = new ArrayList();
-        ArrayList<Weapon> weapons = new ArrayList();
+        shieldBoosters = new ArrayList();
+        weapons = new ArrayList();
         hangar = null;
     }
    
@@ -165,9 +165,12 @@ public class SpaceStation {
             }
         }
     }
+    //Cambio
     public void move(){
         if ((fuelUnits - getSpeed()*fuelUnits) > 0)
             fuelUnits = fuelUnits - getSpeed()*fuelUnits;
+        else 
+            fuelUnits = 0;
     }
     public float protection(){
         float factor = 1;
@@ -198,10 +201,10 @@ public class SpaceStation {
             
         }
     }
-    
+    //CAMBIO assignFuelValue(s.getFuelUnits())
     public void receiveSupplies(SuppliesPackage s){
         ammoPower+= s.getAmmoPower();
-        assignFuelValue(s.getFuelUnits());
+        assignFuelValue(s.getFuelUnits()+fuelUnits);
         shieldPower+= s.getShieldPower();
     }
      
@@ -211,31 +214,29 @@ public class SpaceStation {
         return false;
     }
     //CAMBIO Hangar hangar
+    //CAMBIO Hangar prov = dealer.nextHangar();
+            //Hangar hangar2 = new Hangar(prov);
+            //receiveHangar(hangar2)
     public void setLoot(Loot loot){
         CardDealer dealer = CardDealer.getInstance();
         int h = loot.getNHangars();
         
         if (h>0){
-            Hangar prov = dealer.nextHangar();
-            Hangar hangar = new Hangar(prov);
-            receiveHangar(hangar);
+            receiveHangar(dealer.nextHangar());
         }
         int elements = loot.getNSupplies();
         for(int i=1; i<= elements; i++){
-            SuppliesPackage sup = dealer.nextSuppliesPackage();
-            receiveSupplies(sup);
+            receiveSupplies(dealer.nextSuppliesPackage());
         }
         
         elements = loot.getNWeapons();
         for(int i=1; i<= elements; i++){
-            Weapon weap = dealer.nextWeapon();
-            receiveWeapon(weap);
+            receiveWeapon(dealer.nextWeapon());
         }
         
         elements = loot.getNShields();
         for(int i=1; i<= elements; i++){
-            ShieldBooster sh = dealer.nextShieldBooster();
-            receiveShieldBooster(sh);
+            receiveShieldBooster(dealer.nextShieldBooster());
         }
         
         int medals = loot.getNMedals();

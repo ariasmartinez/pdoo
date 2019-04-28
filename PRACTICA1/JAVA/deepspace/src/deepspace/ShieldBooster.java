@@ -47,7 +47,8 @@ class ShieldBooster {
         return mensaje;
     }
     //CAMBIO ENEMYTOUI
+    //AÑADO TO UI ::Lucía
     ShieldToUI getUIversion(){
-       throw new UnsupportedOperationException(); 
+       return new ShieldToUI(this); 
     }
 }

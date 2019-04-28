@@ -57,4 +57,8 @@ public class EnemyStarShip {
             return ShotResult.DONOTRESIST;
         return ShotResult.RESIST;
     }
+    public String toString(){
+        String mensaje = "Name: "+name+ ", Ammo Power: "+ammoPower+", Shield Power: "+shieldPower+"\n\tLoot..:"+loot.toString()+"\n\tDamage: "+damage.toString();
+        return mensaje;
+    }
 }

@@ -130,4 +130,9 @@ public class Damage {
     public ArrayList<WeaponType> getWeapons(){
         return weapons;
     }
+    
+    public String toString(){
+        String mensaje = "El daño es "+nWeapons+" armas, y "+nShields+" escudos, la coleccion de armas es "+weapons.toString();
+        return mensaje;
+    }
 }

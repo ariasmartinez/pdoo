@@ -173,4 +173,9 @@ public class GameUniverse {
         }
         return false;
     }    
+    
+    public String toString(){
+        String mensaje = "Estación actual -> "+currentStation.toString()+"\nEnemigo actual --> "+currentEnemy.toString();
+        return mensaje;
+    }
 }
