@@ -5,7 +5,7 @@ module Deepspace
   
 class EnemyToUI 
   
-  attr_reader :name, :ammoPower,  :shieldPower, :loot, :damage
+  attr_reader :name, :ammoPower, :shieldPower, :loot, :damage
     
   def initialize(enemy) 
     @name=enemy.name

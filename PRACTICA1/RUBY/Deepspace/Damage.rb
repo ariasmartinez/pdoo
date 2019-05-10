@@ -8,85 +8,24 @@ require_relative "DamageToUI"
 
 class Damage
 
-  def initialize(w,s,t)
-    @nWeapons = w #int
+  def initialize(s)
     @nShields = s #int
-    @weapons = Array.new(t) #Array tipo WeaponType
-  end
-
-  def self.newNumericWeapons(w,s)  #le pasamos un int(de weapons) y otro int (de shields)
-    vacio = Array.new
-    new(w,s, vacio)
-  end
-
-  def self.newSpecificWeapons(wl,s) #le pasamos un arraylist de weaponstype y un int de shields
-    new(-1, s, wl)
-  end
-
-  def self.newCopy(d)
-    new(d.nWeapons, d.nShields, d.weapons)  #DUDA
   end
 
   def getUIversion
     DamageToUI.new(self)
   end
 
-  def arrayContainsType(w,t)   #w es array de Weapons y t de tipo WeaponType
-    pos = -1
-    cond = false
-    i = 0
-    while(cond == false and  i<w.length)
-      if (w[i].type == t)
-        pos = i
-        cond = true
-      end
-      i+=1
-    end
-    return pos
-  end
-
-  def adjust(w,s)  #w es array de Weapons y s array de SHieldbooster
-
+  
+  def adjust(s)  #w es array de Weapons y s array de SHieldbooster
     if (nShields > s.length)
       shields = s.length
     else
       shields = nShields
     end
-    
-    if (nWeapons == -1)
-      weapontype_prov = []
-      for weap in w 
-        weapontype_prov << weap;
-      end 
-
-      weapon_prov = []
-      for i in @weapons
-        pos = arrayContainsType(weapontype_prov,i)
-        if (pos != -1)
-          weapon_prov << i
-          weapontype_prov.delete_at(pos)
-        end
-      end
-      return Damage.newSpecificWeapons(weapon_prov,shields)
-
-    else
-      if (nWeapons > w.length)
-        return Damage.newNumericWeapons(w.length,shields)
-      else
-        return Damage.newNumericWeapons(nWeapons,shields)
-      end
-    end
-
+    return shields
   end
-
-  def discardWeapon(w)
-    
-    if (@weapons.length!=0)
-        @weapons.delete(w.type)
-    elsif (@nWeapons!=-1)
-        @nWeapons = @nWeapons-1
-    end
-  end
+  
 
   def discardShieldBooster
     if (@nShields != 0)
@@ -95,27 +34,15 @@ class Damage
   end
 
   def hasNoEffect
-   if ((@nShields == 0 && @nWeapons == 0) or (@nShields == 0 && @weapons.length == 0))
-      return true
-   end
-   return false
+    return (nShields == 0)
   end
 
   def nShields
     @nShields
   end
 
-  def nWeapons
-    @nWeapons
-  end
-
-  def weapons
-    return @weapons
-  end
-
   def to_s
-   "El daño es #{@nWeapons} armas, y  #{@nShields} escudos, la coleccion de armas es #{@weapons.join(", ")}"
-
+   "El daño es #{@nShields} escudos, "
   end
 
 
