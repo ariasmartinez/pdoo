@@ -27,6 +27,17 @@ class SpaceStation
 
   end
 
+  def copy(base)    #copiamos uno a uno
+    @ammoPower = base.ammoPower
+    @fuelUnits = base.fuelUnits
+    @name = base.name
+    @nMedals = base.nMedals
+    @shieldPower = base.shieldPower
+    @hangar = Hangar.newCopy(base.hangar)
+    @pendingDamage = base.pendingDamage.copy
+    #copiar 
+  end
+  
   def assignFuelValue(f)
     if (f <= @@MAXFUEL)
       @fuelUnits = f
