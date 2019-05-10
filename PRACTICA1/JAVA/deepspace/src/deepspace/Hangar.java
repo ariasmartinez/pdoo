@@ -23,13 +23,17 @@ public class Hangar {
     Hangar(Hangar h){
        System.out.println(h.maxElements);
         maxElements = h.maxElements;
-        shieldBoosters = new ArrayList<ShieldBooster>();
-        for(int i=0; i<h.shieldBoosters.size(); i++){
-            shieldBoosters.add(h.shieldBoosters.get(i));
+        shieldBoosters = new ArrayList<>();
+        if (h.shieldBoosters != null){
+            for(int i=0; i<h.shieldBoosters.size(); i++){
+                shieldBoosters.add(h.shieldBoosters.get(i));
+            }
         }
-        weapons = new ArrayList<Weapon>();
-        for(int j=0; j<h.weapons.size(); j++){
-            weapons.add(h.weapons.get(j));
+        weapons = new ArrayList<>();
+        if (h.weapons!=null){
+            for(int j=0; j<h.weapons.size(); j++){
+                weapons.add(h.weapons.get(j));
+            }
         }
     }
     HangarToUI getUIversion(){

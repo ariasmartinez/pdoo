@@ -51,7 +51,8 @@ class Weapon {
        return mensaje;
    }
    //cambio EnemytoUI por WeapontoUI
+   
    WeaponToUI getUIversion(){
-       throw new UnsupportedOperationException(); 
+       return new WeaponToUI(this); 
     }
 }

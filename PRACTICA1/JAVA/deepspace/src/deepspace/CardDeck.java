@@ -46,7 +46,7 @@ class CardDeck<T> {
             shuffle();
             count=0;
         }
-        
+       
         T t=null;
         try {
             Class<T> clazz = (Class<T>) card.getClass();

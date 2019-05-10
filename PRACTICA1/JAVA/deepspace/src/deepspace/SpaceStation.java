@@ -84,10 +84,12 @@ public class SpaceStation {
         if (hangar != null)
             hangar.removeShieldBooster(i);
     }
+    // SI HAY ERROR PUEDE SER AQUÍ
     public void discardWeapon(int i){
-        if (i>=0 && i<weapons.size()){
-            Weapon w = new Weapon(weapons.get(i));
-            weapons.remove(i);
+        int size = weapons.size();
+        if (i>=0 && i<size){
+            //Weapon w = new Weapon(weapons.get(i));
+            Weapon w = weapons.remove(i);
             if (pendingDamage != null){
                 pendingDamage.discardWeapon(w);
                 cleanPendingDamage(); 
@@ -100,7 +102,8 @@ public class SpaceStation {
     }
     public float fire(){
         float factor = 1;
-        for(int i=0; i< weapons.size(); i++){
+        int size = weapons.size();
+        for(int i=0; i<size; i++){
                 factor *= weapons.get(i).useIt();
         }
         return ammoPower*factor;
@@ -217,12 +220,14 @@ public class SpaceStation {
     //CAMBIO Hangar prov = dealer.nextHangar();
             //Hangar hangar2 = new Hangar(prov);
             //receiveHangar(hangar2)
+    // voy a quitar menor o igual 
     public void setLoot(Loot loot){
         CardDealer dealer = CardDealer.getInstance();
         int h = loot.getNHangars();
         
         if (h>0){
-            receiveHangar(dealer.nextHangar());
+            Hangar hangar = dealer.nextHangar();
+            receiveHangar(hangar);
         }
         int elements = loot.getNSupplies();
         for(int i=1; i<= elements; i++){
