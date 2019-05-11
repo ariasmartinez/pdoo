@@ -25,8 +25,13 @@ public class EnemyStarShip {
         loot = new Loot(l.getNSupplies(), l.getNWeapons(), l.getNShields(), l.getNHangars(), l.getNMedals());
         damage = d;  // mirar constructor de damage
     }
+    //Cambio 
     EnemyStarShip(EnemyStarShip e){
-        e = new EnemyStarShip(e.getName(), e.getAmmoPower(), e.getShieldPower(), e.getLoot(), e.getDamage());
+       name = e.getName();
+       ammoPower = e.getAmmoPower();
+       shieldPower = e.getShieldPower();
+       loot = e.getLoot();
+       damage = e.getDamage();
     }
     EnemyToUI getUIversion(){
        return new EnemyToUI(this);
