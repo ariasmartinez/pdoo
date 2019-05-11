@@ -5,6 +5,9 @@ module Deepspace
     require'./WeaponType.rb'
     require './ShieldBooster.rb'
     require './Weapon.rb'
+    require './SpaceStation'
+    require './SpaceCity'
+    require './Loot'
     d = Damage.new(4)
     #puts d.to_s
     array = Array.new
@@ -43,5 +46,18 @@ module Deepspace
     d3.discardShieldBooster
     puts d3.to_s
     puts d3.hasNoEffect
+
+    supplies = SuppliesPackage.new(1,2,3)
+    estaciones = Array.new
+    estaciones << SpaceStation.new("a",supplies )
+    estaciones << SpaceStation.new("a",supplies )
+    estacion = SpaceStation.new("a",supplies )
+    city = SpaceCity.new(estacion, estaciones)
+    puts city.fire
+    puts city.protection
+    puts city.to_s
+
+    loot = Loot.new(1,2,3,4,5, true, true)
+    puts loot.to_s
 
 end

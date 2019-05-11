@@ -4,6 +4,7 @@ require './Damage'
 require './ShotResult'
 require './CardDealer'
 require './SpaceStationToUI'
+require './Transformation'
 module Deepspace
 
 
@@ -33,9 +34,20 @@ class SpaceStation
     @name = base.name
     @nMedals = base.nMedals
     @shieldPower = base.shieldPower
-    @hangar = Hangar.newCopy(base.hangar)
-    @pendingDamage = base.pendingDamage.copy
-    #copiar 
+    if (base.hangar != nil)   
+      @hangar = Hangar.newCopy(base.hangar)
+    else @hangar = nil
+    end
+    if (base.pendingDamage != nil) 
+      @pendingDamage = base.pendingDamage.copy
+    else @pendingDamage = nil 
+    end
+    for i in base.shieldBoosters
+      @shieldBoosters << i 
+    end 
+    for i in base.weapons
+      @weapons << i 
+    end
   end
   
   def assignFuelValue(f)
@@ -255,7 +267,7 @@ class SpaceStation
   end
 
 
-  def setLoot(loot)   #recibe un Loot, no devuelve nada
+  def setLoot(loot)   #recibe un Loot, devuelve Transformation (mirar el final)
     dealer = CardDealer.instance
     h = loot.nHangars
     if (h > 0)
@@ -279,6 +291,13 @@ class SpaceStation
     end
     medals = loot.nMedals
     @nMedals+=medals
+    if (loot.getEfficient)
+      return Transformation::GETEFFICIENT 
+    elsif(loot.spaceCity)
+      return Transformation::SPACECITY 
+    else
+      return Transformation::NOTRANSFORM
+    end
   end
 
   def setPendingDamage(d)

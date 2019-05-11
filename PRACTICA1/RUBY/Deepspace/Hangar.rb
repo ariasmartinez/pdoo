@@ -13,18 +13,19 @@ def initialize(capacity)
 
 end
 
+#no se si poner una comprobacion de que h no sea nil
 def self.newCopy(h)
-  nuevo = new(h.maxElements)
-  if (@weapons != nil)
-    for w in @weapons
-      nuevo.addWeapon(w)
+    nuevo = new(h.maxElements)
+    if (@weapons != nil)
+      for w in @weapons
+        nuevo.addWeapon(w)
+      end 
     end 
-  end 
-  if (@shieldBoosters!=nil)
-    for sb in @shieldBoosters
-      nuevo.addShieldBooster(sb)
+    if (@shieldBoosters!=nil)
+      for sb in @shieldBoosters
+        nuevo.addShieldBooster(sb)
+      end 
     end 
-  end 
   return nuevo
 end
 

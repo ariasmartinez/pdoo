@@ -21,6 +21,7 @@ class GameUniverse
     @spaceStations  = nil #Array SpaceStation  
     @currentEnemy = nil  #EnemyStarShip
     @currentStation = nil # SpaceStation
+    @haveSpaceCity = false #boolean      #poner a false por defecto?
 
   end
 
@@ -171,8 +172,17 @@ class GameUniverse
     end 
   end
 
+  #mirar, ¿estacion espacial beta?
+  def makeStationEfficient  #no devuelve nada
+    if (@dice.extraEfficient)
+      @currentStation = PowerEfficientSpaceStation.new(@currentStation)
+    end
+  end 
 
+  def createSpaceCity  #no devuelve nada
+    if (@haveSpaceCity == false)
 
+  end 
   def to_s
     out = "Estación actual -> #{@currentStation}\n"
     out +="Enemigo actual --> #{@currentEnemy}"

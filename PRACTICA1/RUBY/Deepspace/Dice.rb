@@ -13,6 +13,7 @@ class Dice
    @NSHIELDSPROB=0.25
    @NWEAPONSPROB=0.33
    @FIRSTSHOTPROB=0.5
+   @EXTRAEFFICIENCYPROB=0.8
    @generator=rand
  end
 
@@ -73,6 +74,11 @@ attr_reader :NHANGARSPROB, :NSHIELDSPROB, :NWEAPONSPROB, :FIRSTSHOTPROB, :genera
    else
      return true
    end
+ end
+
+ def extraEfficiency
+  @generator = rand 
+  return (@generator < @EXTRAEFFICIENCYPROB)
  end
 
  def to_s
