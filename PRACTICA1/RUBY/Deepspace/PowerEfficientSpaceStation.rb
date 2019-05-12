@@ -15,7 +15,7 @@ class PowerEfficientSpaceStation < SpaceStation
     end
 
     #mirar
-    def fire 
+    def fire    #devuelve un float
         return PowerEfficientSpaceStation*super
     end
     #mirar
