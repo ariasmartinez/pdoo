@@ -175,14 +175,20 @@ class GameUniverse
   #mirar, ¿estacion espacial beta?
   def makeStationEfficient  #no devuelve nada
     if (@dice.extraEfficient)
-      @currentStation = PowerEfficientSpaceStation.new(@currentStation)
+      @currentStation = PowerEfficientSpaceStationBeta.new(@currentStation)
+    else 
+      @currentStation =  PowerEfficientSpaceStation.new(@currentStation)
     end
   end 
 
   def createSpaceCity  #no devuelve nada
     if (@haveSpaceCity == false)
-
+      @currentStation = SpaceCity.new(@currentStation, @spaceStations)
+      @haveSpaceCity = true
+    end
   end 
+
+  
   def to_s
     out = "Estación actual -> #{@currentStation}\n"
     out +="Enemigo actual --> #{@currentEnemy}"
