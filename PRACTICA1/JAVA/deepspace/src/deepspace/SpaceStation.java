@@ -13,7 +13,7 @@ import java.lang.Math;
  * @author Lucía Salamanca López
  *         Celia Arias Martínez
  */
-public class SpaceStation {
+public class SpaceStation implements SpaceFighter{
     private static final int MAXFUEL = 100;
     private static final double SHIELDLOSSPERUNITSHOT = 0.1;
     private float ammoPower;
@@ -51,7 +51,43 @@ public class SpaceStation {
         weapons = new ArrayList();
         hangar = null;
     }
-   
+    public SpaceStation(SpaceStation station) {
+        weapons=new ArrayList<>();
+        shieldBoosters=new ArrayList<>();         
+        
+        name=station.getName();
+        nMedals=station.getNMedals();
+        
+        ammoPower=station.getAmmoPower();
+        fuelUnits=station.getFuelUnits();
+        shieldPower=station.getShieldPower();
+        
+        for (Weapon w:station.getWeapons()) {
+            weapons.add(w);
+        }
+        
+        for(ShieldBooster s:station.getShieldBoosters()) {
+            shieldBoosters.add(s);
+        }
+        
+        Hangar h=station.getHangar();
+        if (h!=null) {
+            hangar=h;
+        }
+        else {
+            hangar=null;
+        }
+        
+        // MIGUEL: Añadido de  pendingDamage  y su consultor
+        
+        Damage d = station.getPendingDamage();
+        if (d != null) {
+          pendingDamage = d;
+        } else {
+          pendingDamage = null;
+        }
+            
+    }
     public void cleanUpMountedItems(){
  
        for (int i = 0; i < weapons.size(); i++){
@@ -100,6 +136,7 @@ public class SpaceStation {
         if (hangar != null)
            hangar.removeWeapon(i);
     }
+    @Override
     public float fire(){
         float factor = 1;
         int size = weapons.size();
@@ -175,6 +212,7 @@ public class SpaceStation {
         else 
             fuelUnits = 0;
     }
+    @Override
     public float protection(){
         float factor = 1;
         for(int i=0; i<shieldBoosters.size(); i++)
@@ -191,6 +229,7 @@ public class SpaceStation {
             return hangar.addShieldBooster(s);
         return false;
     }
+    @Override
     public ShotResult receiveShot(float shot){
         float myProtection = protection();
         if (myProtection >= shot){
@@ -221,7 +260,7 @@ public class SpaceStation {
             //Hangar hangar2 = new Hangar(prov);
             //receiveHangar(hangar2)
     // voy a quitar menor o igual 
-    public void setLoot(Loot loot){
+    public Transformation setLoot(Loot loot){
         CardDealer dealer = CardDealer.getInstance();
         int h = loot.getNHangars();
         
@@ -247,6 +286,12 @@ public class SpaceStation {
         int medals = loot.getNMedals();
         nMedals += medals;
         
+        if (loot.getEfficient())
+           return Transformation.GETEFFICIENT;
+        else if (loot.spaceCity())
+           return Transformation.SPACECITY;
+        else 
+           return Transformation.NOTRANSFORM;
     }
     
     //cambio def de funcion en Damage

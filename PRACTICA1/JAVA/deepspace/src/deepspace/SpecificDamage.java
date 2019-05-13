@@ -60,7 +60,7 @@ public class SpecificDamage extends Damage{
         }
         return new SpecificDamage(weapon_prov,shields);
     }
-    
+    @Override
     public void discardWeapon(Weapon w){
         int pos = -1;
         boolean cond = false;

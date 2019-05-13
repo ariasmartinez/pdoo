@@ -32,6 +32,7 @@ public class NumericDamage extends Damage{
             return new NumericDamage(nWeapons,shields);
     }
     
+    @Override
     public void discardWeapon(Weapon w){
         if (nWeapons>0)
             nWeapons --;

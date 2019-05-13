@@ -9,7 +9,7 @@ package deepspace;
  *
  * @author celia
  */
-class Weapon {
+class Weapon implements CombatElement{
    private String name;
    private WeaponType type;
    private int uses;
@@ -29,7 +29,7 @@ class Weapon {
    public WeaponType getType(){
        return type;
    }
-   
+   @Override
    public int getUses(){
        return uses;
    }
@@ -37,7 +37,7 @@ class Weapon {
    public float power(){
        return type.getPower();
    }
-   
+   @Override
    public float useIt(){
        if (uses > 0){
            uses--;

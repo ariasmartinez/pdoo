@@ -7,8 +7,8 @@ package deepspace;
 
 /**
  *
- * @author celia
+ * @author Celia Arias Martínez, Lucía Salamanca López
  */
-public enum CombatResult {
-    ENEMYWINS, NOCOMBAT, STATIONESCAPES, STATIONWINS, STATIONWINSANDCONVERTS
+public enum Transformation {
+    NOTRANSFORM, GETEFFICIENT, SPACECITY
 }

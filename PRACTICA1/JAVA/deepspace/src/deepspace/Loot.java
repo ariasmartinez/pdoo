@@ -7,7 +7,7 @@ package deepspace;
 
 /**
  *
- * @author celia
+ * @author Celia Arias Martínez, Lucía Salamanca López
  */
 class Loot {
     private int nSupplies;
@@ -15,13 +15,17 @@ class Loot {
     private int nShields;
     private int nHangars;
     private int nMedals;
+    private boolean getEfficient;
+    private boolean spaceCity;
     
-    Loot (int sum, int armas, int escudos, int hang, int med){
-        nSupplies = sum;
-        nWeapons = armas;
-        nShields = escudos;
-        nHangars = hang;
-        nMedals = med;
+    Loot (int nsu, int nw, int nsh, int nh, int nm, boolean ef, boolean city){
+        nSupplies = nsu;
+        nWeapons = nw;
+        nShields = nsh;
+        nHangars = nh;
+        nMedals = nm;
+        getEfficient = ef;
+        spaceCity = city;
     }
     
     public int getNSupplies(){
@@ -44,8 +48,16 @@ class Loot {
         return nMedals;
     }
     
+    public boolean getEfficient(){
+        return getEfficient;
+    }
+    
+    public boolean spaceCity(){
+        return spaceCity;
+    }
+    
     public String toString(){
-        String mensaje = "El botín tiene "+nSupplies+" suministros, "+nWeapons+" armas, "+nShields+" escudos, "+nHangars+" hangares y "+nMedals+" medallas";
+        String mensaje = "El botín tiene "+nSupplies+" suministros, "+nWeapons+" armas, "+nShields+" escudos, "+nHangars+" hangares "+nMedals+" medallas, eficiencia: "+getEfficient+" spaceCity: "+spaceCity;
         return mensaje;
     }
     LootToUI getUIversion(){

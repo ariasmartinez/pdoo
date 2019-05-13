@@ -7,8 +7,10 @@ package deepspace;
 
 /**
  *
- * @author celia
+ * @author Celia Arias Martínez, Lucía Salamanca López 
  */
-public enum CombatResult {
-    ENEMYWINS, NOCOMBAT, STATIONESCAPES, STATIONWINS, STATIONWINSANDCONVERTS
+public interface SpaceFighter {
+    public float fire();
+    public float protection();
+    public ShotResult receiveShot(float shot);
 }

@@ -42,4 +42,5 @@ public abstract class Damage {
         String mensaje = "El daño es "+nShields+" escudos ";
         return mensaje;
     }
+    abstract public void discardWeapon(Weapon w);
 }
