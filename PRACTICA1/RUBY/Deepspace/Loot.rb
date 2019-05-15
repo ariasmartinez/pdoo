@@ -12,7 +12,7 @@ class Loot
     @nShields = nShields #int
     @nHangars = nHangars #int
     @nMedals = nMedals #int
-    @getEfficient = getEfficient  #boolean
+    @efficient = getEfficient  #boolean
     @spaceCity = spaceCity  #boolean
   end
 
@@ -40,8 +40,8 @@ class Loot
     @nMedals
   end
 
-  def getEfficient
-    @getEfficient
+  def efficient
+    @efficient
   end
 
   def spaceCity

@@ -14,23 +14,25 @@ class SpaceCity < SpaceStation
 
     #no se si es con ammoPower o con fire
     def fire 
-        suma = @base.ammoPower
+        suma = @base.fire   #creo que es lo mismo que super.fire
         for f in collaborators
-            suma+=f.ammoPower
+            suma+=f.fire
         end
         return suma
     end 
 
+    
     def protection
-        suma = @base.shieldPower
+        suma = @base.protection  #creo que es lo mismo que super.protection
         for pr in collaborators
-            suma+=pr.shieldPower
-        end 
+            suma+=pr.protection
+        end
         return suma
     end 
 
     def setLoot(loot)  #no se si hay que poner algo?
-
+        super
+        return Transformation::NOTRANSFORM
     end
 
     def to_s  #no se puede poner @base.super ?

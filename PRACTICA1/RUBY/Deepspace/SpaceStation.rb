@@ -291,7 +291,7 @@ class SpaceStation
     end
     medals = loot.nMedals
     @nMedals+=medals
-    if (loot.getEfficient)
+    if (loot.efficient)
       return Transformation::GETEFFICIENT 
     elsif(loot.spaceCity)
       return Transformation::SPACECITY 

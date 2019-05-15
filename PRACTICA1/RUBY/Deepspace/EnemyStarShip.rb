@@ -14,7 +14,7 @@ def initialize(n,a,s,l,d)
   @ammoPower = a   #float
   @shieldPower = s  #float
   @loot = Loot.new(l.nSupplies, l.nWeapons, l.nShields, l.nHangars, l.nMedals)  #Loot
-  @damage = Damage.newCopy(d)   #Damage
+  @damage = d.copy   #Damage
 end
 
 def self.newCopy(e)

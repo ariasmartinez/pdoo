@@ -11,16 +11,21 @@ class PowerEfficientSpaceStation < SpaceStation
     end
     
     def setLoot(loot)  #mirar si hay que poner algo
-
+        super 
+        if loot.efficient 
+            return Transformation::GETEFFICIENT
+        else
+            return Transformation::NOTRANSFORM
+        end
     end
 
     #mirar
     def fire    #devuelve un float
-        return PowerEfficientSpaceStation*super
+        return PowerEfficientSpaceStation.efficiencyFactor*super
     end
     #mirar
     def protection 
-        return PowerEfficientSpaceStation*super
+        return PowerEfficientSpaceStation.efficiencyFactor*super
     end
 
     def self.efficiencyFactor 
