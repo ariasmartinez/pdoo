@@ -6,6 +6,9 @@ require './CombatResult'
 require './CardDealer'
 require './SpaceStation'
 require './GameUniverseToUI'
+require './PowerEfficientSpaceStation'
+require './BetaPowerEfficientSpaceStation'
+require './SpaceCity'
 module Deepspace
 
 
@@ -56,7 +59,13 @@ class GameUniverse
         end 
       else 
         aLoot = enemy.loot
-        station.setLoot(aLoot)
+        transformacion = station.setLoot(aLoot)
+        puts "GameUNiverse::combat:: transformation "+transformacion.to_s  #borrar
+        if (transformacion == Transformation::GETEFFICIENT)
+          makeStationEfficient
+        elsif (transformacion == Transformation::SPACECITY)
+          createSpaceCity
+        end
         combatResult = CombatResult::STATIONWINS
       end
       @gameState.next(@turns, @spaceStations.length)
@@ -174,17 +183,24 @@ class GameUniverse
 
   #mirar, ¿estacion espacial beta?
   def makeStationEfficient  #no devuelve nada
-    if (@dice.extraEfficient)
-      @currentStation = PowerEfficientSpaceStationBeta.new(@currentStation)
+    puts "GameUNiverse::makeStationEfficient" #borrar
+    if (@dice.extraEfficiency)
+      puts "beta"  #borrar
+      @currentStation = BetaPowerEfficientSpaceStation.new(@currentStation)
+      
     else 
+      puts "nobeta" #borrar 
       @currentStation =  PowerEfficientSpaceStation.new(@currentStation)
     end
+    @spaceStations[@currentStationIndex] = @currentStation
   end 
 
   def createSpaceCity  #no devuelve nada
+    puts "GameUniverse::createSpaceCIty"  #borrar
     if (@haveSpaceCity == false)
       @currentStation = SpaceCity.new(@currentStation, @spaceStations)
       @haveSpaceCity = true
+      @spaceStations[@currentStationIndex] = @currentStation
     end
   end 
 

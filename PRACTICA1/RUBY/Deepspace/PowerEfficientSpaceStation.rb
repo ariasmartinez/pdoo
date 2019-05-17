@@ -1,5 +1,5 @@
 #encoding:utf-8
-require './PowerEfficientSpaceStation'
+require './PowerEfficientSpaceStationToUI'
 module Deepspace
 
 
@@ -30,6 +30,15 @@ class PowerEfficientSpaceStation < SpaceStation
 
     def self.efficiencyFactor 
         @EFFICIENCYFACTOR
+    end
+
+    def getUIversion
+        PowerEfficientSpaceStationToUI.new(self)
+      end
+
+    def to_s
+        out = "Estación espacial eficiente: "
+        out += super
     end
 
 end 

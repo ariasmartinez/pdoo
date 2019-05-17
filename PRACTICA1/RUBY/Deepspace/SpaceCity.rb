@@ -1,4 +1,5 @@
 #encoding:utf-8
+require './SpaceCityToUI'
 module Deepspace
 # @author Lucía Salamanca López, Celia Arias Martínez
 class SpaceCity < SpaceStation
@@ -33,6 +34,10 @@ class SpaceCity < SpaceStation
     def setLoot(loot)  #no se si hay que poner algo?
         super
         return Transformation::NOTRANSFORM
+    end
+
+    def getUIversion
+        SpaceCityToUI.new(self)
     end
 
     def to_s  #no se puede poner @base.super ?

@@ -6,14 +6,14 @@ module Deepspace
 # @author Lucía Salamanca López, Celia Arias Martínez
 class Loot
 
-  def initialize (nSupplies,nWeapons,nShields,nHangars,nMedals, getEfficient=false, spaceCity=false)
+  def initialize (nSupplies,nWeapons,nShields,nHangars,nMedals, ef=false, city=false)
     @nSupplies = nSupplies   #int
     @nWeapons = nWeapons    #int
     @nShields = nShields #int
     @nHangars = nHangars #int
     @nMedals = nMedals #int
-    @efficient = getEfficient  #boolean
-    @spaceCity = spaceCity  #boolean
+    @efficient = ef  #boolean
+    @spaceCity = city  #boolean
   end
 
   def getUIversion
@@ -49,7 +49,7 @@ class Loot
   end 
 
   def to_s
-    "El botín tiene "+@nSupplies.to_s+" suministros, "+@nWeapons.to_s+" armas, "+@nShields.to_s+" escudos, "+@nHangars.to_s+" hangares "+@nMedals.to_s+" medallas, valor de eficiencia "+@getEfficient.to_s  + " y opción de convertirse en una ciudad espacial "+@spaceCity.to_s+"."
+    return "Supplies: #{@nSupplies}, Weapons: #{@nWeapons}, Shields: #{@nShields}, Hangars: #{@nHangars}, Medals: #{@nHangars}, Get Efficient: #{@efficient}, Space City: #{@spaceCity}"
   end
 end
 

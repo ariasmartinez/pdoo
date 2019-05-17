@@ -5,6 +5,8 @@ require './ShotResult'
 require './CardDealer'
 require './SpaceStationToUI'
 require './Transformation'
+require './Weapon'
+require './ShieldBooster'
 module Deepspace
 
 
@@ -42,11 +44,13 @@ class SpaceStation
       @pendingDamage = base.pendingDamage.copy
     else @pendingDamage = nil 
     end
+    @shieldBoosters = Array.new
     for i in base.shieldBoosters
-      @shieldBoosters << i 
+      @shieldBoosters << ShieldBooster.newCopy(i)
     end 
+    @weapons = Array.new
     for i in base.weapons
-      @weapons << i 
+      @weapons << Weapon.newCopy(i)
     end
   end
   
@@ -291,9 +295,12 @@ class SpaceStation
     end
     medals = loot.nMedals
     @nMedals+=medals
-    if (loot.efficient)
+    ef = loot.efficient   #borrar
+    ef = false  #borrar
+    puts "SpaceStation::setLoot:: spacecity "+loot.spaceCity.to_s #borrar
+    if (ef==true)  #cambiar
       return Transformation::GETEFFICIENT 
-    elsif(loot.spaceCity)
+    elsif(loot.spaceCity==true)
       return Transformation::SPACECITY 
     else
       return Transformation::NOTRANSFORM

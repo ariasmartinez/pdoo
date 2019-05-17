@@ -1,5 +1,5 @@
 #encoding:utf-8
-require './BetaPowerEfficientSpaceStation.rb'
+require './BetaPowerEfficientSpaceStationToUI.rb'
 module Deepspace
 
 
@@ -8,7 +8,8 @@ class BetaPowerEfficientSpaceStation < PowerEfficientSpaceStation
     @EXTRAEFFICIENCY=1.2  #float, atributo de instancia de la clase
 
     def initialize(estacion)  #SpaceStation
-        super
+        puts "initialize de beta"  #borrar
+        copy(estacion)
     end 
 
     #mirar que funciona
@@ -22,6 +23,15 @@ class BetaPowerEfficientSpaceStation < PowerEfficientSpaceStation
 
     def self.extraefficiency
         @EXTRAEFFICIENCY
+    end
+
+    def getUIversion
+        BetaPowerEfficientSpaceStationToUI.new(self)
+    end
+
+    def  to_s 
+        out = "Estación espacial eficiente beta: "
+        out+= super
     end
 end 
 end

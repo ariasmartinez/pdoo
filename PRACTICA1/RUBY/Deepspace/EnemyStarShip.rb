@@ -13,7 +13,7 @@ def initialize(n,a,s,l,d)
   @name = n   #string
   @ammoPower = a   #float
   @shieldPower = s  #float
-  @loot = Loot.new(l.nSupplies, l.nWeapons, l.nShields, l.nHangars, l.nMedals)  #Loot
+  @loot = Loot.new(l.nSupplies, l.nWeapons, l.nShields, l.nHangars, l.nMedals, l.efficient, l.spaceCity)  #Loot
   @damage = d.copy   #Damage
 end
 
