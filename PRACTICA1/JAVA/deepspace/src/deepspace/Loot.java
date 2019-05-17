@@ -28,6 +28,16 @@ class Loot {
         spaceCity = city;
     }
     
+    Loot (int nsu, int nw, int nsh, int nh, int nm){
+        nSupplies = nsu;
+        nWeapons = nw;
+        nShields = nsh;
+        nHangars = nh;
+        nMedals = nm;
+        getEfficient = false;
+        spaceCity = false;
+    }
+    
     public int getNSupplies(){
         return nSupplies;
     }

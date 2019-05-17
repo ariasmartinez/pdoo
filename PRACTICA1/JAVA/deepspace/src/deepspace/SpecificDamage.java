@@ -42,7 +42,12 @@ public class SpecificDamage extends Damage{
     
     @Override
     public SpecificDamage adjust(ArrayList<Weapon> w, ArrayList<ShieldBooster> s){
-        int shields = super.adjust(s);
+        int shields;
+        if (super.getNShields() > s.size())
+            shields = s.size();
+        else 
+            shields = super.getNShields();
+        
         int pos;
         ArrayList<Weapon> weapontype_prov = new ArrayList<Weapon>();
         for(int i=0; i<w.size(); i++){
@@ -90,7 +95,8 @@ public class SpecificDamage extends Damage{
         return mensaje;
     }
      
-    SpecificDamageToUI getUIversion(){
+   @Override
+    public SpecificDamageToUI getUIversion(){
         return new SpecificDamageToUI(this);
     }
 }

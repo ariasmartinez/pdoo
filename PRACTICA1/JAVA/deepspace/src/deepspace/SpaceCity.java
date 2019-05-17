@@ -28,11 +28,21 @@ public class SpaceCity extends SpaceStation{
     
     @Override
     public float fire(){
+        float factor = super.fire();
+        for (int i=0; i<collaborators.size();i++)
+            factor+=collaborators.get(i).fire();
         
+        return factor;
     }
     
     @Override
     public float protection(){
+        float factor = super.protection();
+        for (int i=0; i<collaborators.size();i++)
+            factor+=collaborators.get(i).protection();
+        
+        return factor;
+        
         
     }
     

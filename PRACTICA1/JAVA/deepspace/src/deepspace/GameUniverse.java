@@ -20,6 +20,7 @@ public class GameUniverse {
     private ArrayList<SpaceStation> spaceStations;
     private EnemyStarShip currentEnemy;
     private SpaceStation currentStation;
+    private boolean haveSpaceCity;
     
     public GameUniverse(){
         currentStationIndex = 0;
@@ -29,6 +30,7 @@ public class GameUniverse {
         spaceStations = new ArrayList();
         currentEnemy = null;
         currentStation = null;
+        haveSpaceCity = false;
     }
     
     public GameUniverse(int csi, int turn){
@@ -74,8 +76,13 @@ public class GameUniverse {
             }
         }
         else {
-            station.setLoot(enemy.getLoot());
+            Transformation trans= station.setLoot(enemy.getLoot());
             combatResult = CombatResult.STATIONWINS;
+            
+            if(trans == Transformation.GETEFFICIENT)
+                makeStationEfficient();
+            else if (trans == Transformation.SPACECITY)
+                createSpaceCity();
             
         }
         gameState.next(turns, spaceStations.size());
@@ -173,6 +180,31 @@ public class GameUniverse {
         }
         return false;
     }    
+    
+    private void createSpaceCity(){
+        if(!haveSpaceCity){
+            ArrayList<SpaceStation> collaborators = new ArrayList<>();
+            
+            for(int i=0; i<spaceStations.size(); i++){
+                if (i!=currentStationIndex)
+                    collaborators.add(spaceStations.get(i));
+            }
+            currentStation = new SpaceCity(currentStation,collaborators);
+            haveSpaceCity = true;
+            
+            spaceStations.remove(currentStationIndex);
+            spaceStations.add(currentStationIndex, currentStation);
+        }
+    }
+    
+    private void makeStationEfficient(){
+        currentStation= new PowerEfficientSpaceStation(currentStation);
+        if (dice.extraEfficiency())
+            currentStation=new BetaPowerEfficientSpaceStation(currentStation);
+        
+        spaceStations.remove(currentStationIndex);
+        spaceStations.add(currentStationIndex, currentStation);
+    }
     
     public String toString(){
         String mensaje = "Estación actual -> "+currentStation.toString()+"\nEnemigo actual --> "+currentEnemy.toString();

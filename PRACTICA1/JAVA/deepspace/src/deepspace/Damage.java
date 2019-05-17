@@ -20,12 +20,9 @@ public abstract class Damage {
        nShields = s;
     }
     
-    public int adjust(ArrayList<ShieldBooster> s){
-        if (nShields > s.size())
-            return s.size();
-        else 
-            return nShields;
-    }
+    abstract public DamageToUI getUIversion();
+    
+    abstract public Damage adjust(ArrayList<Weapon> w,ArrayList<ShieldBooster> s);
    
     public void discardShieldBooster(){
         if (nShields != 0)

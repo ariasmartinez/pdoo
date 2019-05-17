@@ -16,6 +16,7 @@ class Dice {
     private final float NSHIELDSPROB;
     private final float NWEAPONSPROB;
     private final float FIRSTSHOTPROB;
+    private final float EXTRAEFFICIENCYPROB;
     private Random generator;
     
     Dice(){
@@ -25,6 +26,7 @@ class Dice {
         NSHIELDSPROB=0.25f;
         NWEAPONSPROB=0.33f;
         FIRSTSHOTPROB=0.5f;
+        EXTRAEFFICIENCYPROB=0.8f;
     }
     
     int initWithNHangars(){
@@ -68,6 +70,14 @@ class Dice {
         if (generator.nextFloat() < speed)
            return true;
         return false;
+    }
+    
+    public boolean extraEfficiency(){
+        if (generator.nextFloat() < EXTRAEFFICIENCYPROB)
+            return true;
+        
+        return false;
+                    
     }
     
     public String toString(){
