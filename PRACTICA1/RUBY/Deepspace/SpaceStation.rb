@@ -295,10 +295,7 @@ class SpaceStation
     end
     medals = loot.nMedals
     @nMedals+=medals
-    ef = loot.efficient   #borrar
-    ef = false  #borrar
-    puts "SpaceStation::setLoot:: spacecity "+loot.spaceCity.to_s #borrar
-    if (ef==true)  #cambiar
+    if (loot.efficient==true)  
       return Transformation::GETEFFICIENT 
     elsif(loot.spaceCity==true)
       return Transformation::SPACECITY 

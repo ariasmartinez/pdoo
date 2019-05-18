@@ -8,11 +8,9 @@ class BetaPowerEfficientSpaceStation < PowerEfficientSpaceStation
     @EXTRAEFFICIENCY=1.2  #float, atributo de instancia de la clase
 
     def initialize(estacion)  #SpaceStation
-        puts "initialize de beta"  #borrar
         copy(estacion)
     end 
 
-    #mirar que funciona
     def fire   #devuelve un float
         if (@dice.extraEfficient)
             return super*self.class.extraefficiency

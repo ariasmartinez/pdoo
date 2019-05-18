@@ -285,7 +285,6 @@ public class SpaceStation implements SpaceFighter{
         
         int medals = loot.getNMedals();
         nMedals += medals;
-        
         if (loot.getEfficient())
            return Transformation.GETEFFICIENT;
         else if (loot.spaceCity())

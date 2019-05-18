@@ -71,8 +71,8 @@ class CardDealer {
     }
     
     private void createSuppliesPackages() {
-        suppliesPackages.add(new SuppliesPackage(1,10,1));
-        suppliesPackages.add(new SuppliesPackage(1,10,1));
+        suppliesPackages.add(new SuppliesPackage(1000,1000,1000));
+        suppliesPackages.add(new SuppliesPackage(1000,1000,1000));
         suppliesPackages.add(new SuppliesPackage(1,10,1));
         suppliesPackages.add(new SuppliesPackage(2,10,2));
         suppliesPackages.add(new SuppliesPackage(2,10,2));
@@ -138,7 +138,7 @@ class CardDealer {
         hangars.add(new Hangar(1));
     }
     private void createEnemies() {
-        Loot regularLoot0=new Loot(1,2,1,1,1);
+        Loot regularLoot0=new Loot(1,2,1,1,1,false, true); //borrar
         Loot regularLoot1=new Loot(1,1,2,1,1);
         Loot badLoot=new Loot(1,1,1,0,1);
         Loot goodLoot=new Loot(2,2,2,1,2);
@@ -178,7 +178,7 @@ class CardDealer {
                                                                         WeaponType.MISSILE)),2);  
         
         enemies.add(new EnemyStarShip("Enemigo fácil -1",0,0,regularLoot0,lowDamage0));
-        enemies.add(new EnemyStarShip("Enemigo fácil -1",0,10,badLoot,lowDamage0));
+        enemies.add(new EnemyStarShip("Enemigo fácil -1",0,0,badLoot,lowDamage0));
         enemies.add(new EnemyStarShip("Enemigo fácil -1",10,0,badLoot,lowDamage0));
         enemies.add(new EnemyStarShip("Enemigo fácil 0",10,10,badLoot,lowDamage0));
         enemies.add(new EnemyStarShip("Enemigo fácil 0",10,10,badLoot,lowDamage0));

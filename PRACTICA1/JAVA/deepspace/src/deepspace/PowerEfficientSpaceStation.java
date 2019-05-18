@@ -35,4 +35,11 @@ public class PowerEfficientSpaceStation extends SpaceStation{
         else 
             return trans;      
     }
+    
+    @Override
+    public PowerEfficientSpaceStationToUI getUIversion(){
+         return new PowerEfficientSpaceStationToUI(this);
+    }
+    
+    
 }

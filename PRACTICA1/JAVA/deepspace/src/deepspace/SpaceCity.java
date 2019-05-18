@@ -14,12 +14,15 @@ import java.util.ArrayList;
 public class SpaceCity extends SpaceStation{
     
     private ArrayList<SpaceStation> collaborators=new ArrayList<>();
+    private SpaceStation base;
     
+    //añado base
     public SpaceCity(SpaceStation base, ArrayList<SpaceStation> rest){
         super(base);
         for (SpaceStation s : rest) {
          collaborators.add(new SpaceStation(s));
         }
+        base = base;
     }
     
     public ArrayList<SpaceStation> getCollaborators(){
@@ -48,9 +51,14 @@ public class SpaceCity extends SpaceStation{
     
     @Override
     public Transformation setLoot(Loot loot){
-        Transformation trans = super.setLoot(loot);
-        trans = Transformation.NOTRANSFORM;
+        super.setLoot(loot);
+        Transformation trans = Transformation.NOTRANSFORM;
         return trans;
+    }
+    
+    @Override
+    public SpaceCityToUI getUIversion(){
+         return new SpaceCityToUI(this);
     }
     
 }

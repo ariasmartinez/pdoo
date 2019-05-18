@@ -53,13 +53,14 @@ public class GameUniverse {
             result = station.receiveShot(fire);
             if (result == ShotResult.RESIST){
                 fire = station.fire();
-                result = station.receiveShot(fire);
+                result = enemy.receiveShot(fire);
                 enemyWins=(result == ShotResult.RESIST);
             }
             else 
                 enemyWins = true;
         }
         else{
+            
             fire = station.fire();
             result = enemy.receiveShot(fire);
             enemyWins=(result==ShotResult.RESIST);
@@ -78,7 +79,6 @@ public class GameUniverse {
         else {
             Transformation trans= station.setLoot(enemy.getLoot());
             combatResult = CombatResult.STATIONWINS;
-            
             if(trans == Transformation.GETEFFICIENT)
                 makeStationEfficient();
             else if (trans == Transformation.SPACECITY)

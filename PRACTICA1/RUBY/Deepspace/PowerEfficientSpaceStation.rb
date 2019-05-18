@@ -5,12 +5,12 @@ module Deepspace
 
 # @author Lucía Salamanca López, Celia Arias Martínez
 class PowerEfficientSpaceStation < SpaceStation
-    @EFFICIENCYFACTOR = 1.1 #float  #poner como atributo de instancia de la clase?
+    @EFFICIENCYFACTOR = 1.1 #float  
     def initialize(estacion)  #SpaceStation
-        copy(estacion)   #mirar
+        copy(estacion)   
     end
     
-    def setLoot(loot)  #mirar si hay que poner algo
+    def setLoot(loot) 
         super 
         if loot.efficient 
             return Transformation::GETEFFICIENT
@@ -19,11 +19,11 @@ class PowerEfficientSpaceStation < SpaceStation
         end
     end
 
-    #mirar
+    
     def fire    #devuelve un float
         return PowerEfficientSpaceStation.efficiencyFactor*super
     end
-    #mirar
+    
     def protection 
         return PowerEfficientSpaceStation.efficiencyFactor*super
     end

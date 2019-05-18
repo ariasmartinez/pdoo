@@ -24,7 +24,7 @@ class GameUniverse
     @spaceStations  = nil #Array SpaceStation  
     @currentEnemy = nil  #EnemyStarShip
     @currentStation = nil # SpaceStation
-    @haveSpaceCity = false #boolean      #poner a false por defecto?
+    @haveSpaceCity = false #boolean      
 
   end
 
@@ -60,13 +60,15 @@ class GameUniverse
       else 
         aLoot = enemy.loot
         transformacion = station.setLoot(aLoot)
-        puts "GameUNiverse::combat:: transformation "+transformacion.to_s  #borrar
         if (transformacion == Transformation::GETEFFICIENT)
           makeStationEfficient
+          combatResult = CombatResult::STATIONWINSANDCONVERTS
         elsif (transformacion == Transformation::SPACECITY)
           createSpaceCity
-        end
-        combatResult = CombatResult::STATIONWINS
+          combatResult = CombatResult::STATIONWINSANDCONVERTS
+        else
+          combatResult = CombatResult::STATIONWINS
+        end 
       end
       @gameState.next(@turns, @spaceStations.length)
       return combatResult    
@@ -181,22 +183,17 @@ class GameUniverse
     end 
   end
 
-  #mirar, ¿estacion espacial beta?
   def makeStationEfficient  #no devuelve nada
-    puts "GameUNiverse::makeStationEfficient" #borrar
     if (@dice.extraEfficiency)
-      puts "beta"  #borrar
       @currentStation = BetaPowerEfficientSpaceStation.new(@currentStation)
       
     else 
-      puts "nobeta" #borrar 
       @currentStation =  PowerEfficientSpaceStation.new(@currentStation)
     end
     @spaceStations[@currentStationIndex] = @currentStation
   end 
 
-  def createSpaceCity  #no devuelve nada
-    puts "GameUniverse::createSpaceCIty"  #borrar
+  def createSpaceCity  #no devuelve nadaS
     if (@haveSpaceCity == false)
       @currentStation = SpaceCity.new(@currentStation, @spaceStations)
       @haveSpaceCity = true
