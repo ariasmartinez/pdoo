@@ -17,7 +17,7 @@ public abstract class DamageToUI {
     }
 
     public int getNShields() {
-        return nShields;
+       return nShields;
     }
     
     public abstract String getWeaponInfo();
