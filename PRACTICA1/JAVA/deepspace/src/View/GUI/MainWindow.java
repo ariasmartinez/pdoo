@@ -12,7 +12,7 @@ package View.GUI;
 public class MainWindow extends javax.swing.JFrame implements View.View {
     private static MainWindow instance = null;
     
-    public static MainWindow instance(){
+    public static MainWindow getInstance(){
         if (instance == null)
             instance = new MainWindow();
         return instance;
@@ -27,8 +27,8 @@ public class MainWindow extends javax.swing.JFrame implements View.View {
         addWindowListener(new java.awt.event.WindowAdapter() {
         @Override
         public void windowClosing(java.awt.event.WindowEvent e) {
-        controller.Controller.getInstance().finish(0);
-}
+            controller.Controller.getInstance().finish(0);
+        }
 });
     }
 
@@ -50,17 +50,25 @@ public class MainWindow extends javax.swing.JFrame implements View.View {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        panelPruebas = new javax.swing.JPanel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(255, 255, 255)
+                .addComponent(panelPruebas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(412, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(85, 85, 85)
+                .addComponent(panelPruebas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(205, Short.MAX_VALUE))
         );
 
         pack();
@@ -70,5 +78,6 @@ public class MainWindow extends javax.swing.JFrame implements View.View {
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel panelPruebas;
     // End of variables declaration//GEN-END:variables
 }
