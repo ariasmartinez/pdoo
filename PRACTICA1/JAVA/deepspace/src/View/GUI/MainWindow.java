@@ -42,10 +42,13 @@ public class MainWindow extends javax.swing.JFrame implements View.DeepSpaceView
         this.setVisible(true);
     }
     
+    
+    //HACER
     @Override
     public ArrayList<String> readNamePlayers() {
-        //NamesCapture namesCapt = new NamesCapture(this);
-        //return namesCapt.getNames();
+        NamesCapture namesCapt = new NamesCapture(this);
+        ArrayList<String> names = namesCapt.getNames();
+        return names;
     }
     
     
@@ -82,7 +85,16 @@ public class MainWindow extends javax.swing.JFrame implements View.DeepSpaceView
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
+    public boolean confirmExitMessage(){
+        return true;
+    }
+  public void nextTurnNotAllowedMessage(){}
+  public void lostCombatMessage(){}
+  public void escapeMessage(){}
+  public void wonCombatMessage(){}
+  public void wonGameMessage(){}
+  public void conversionMessage(){}
+  public void noCombatMessage(){}
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
