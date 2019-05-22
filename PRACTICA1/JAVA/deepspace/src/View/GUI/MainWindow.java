@@ -5,11 +5,13 @@
  */
 package View.GUI;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author celia
  */
-public class MainWindow extends javax.swing.JFrame implements View.View {
+public class MainWindow extends javax.swing.JFrame implements View.DeepSpaceView {
     private static MainWindow instance = null;
     
     public static MainWindow getInstance(){
@@ -38,6 +40,12 @@ public class MainWindow extends javax.swing.JFrame implements View.View {
     
     public void showView(){
         this.setVisible(true);
+    }
+    
+    @Override
+    public ArrayList<String> readNamePlayers() {
+        //NamesCapture namesCapt = new NamesCapture(this);
+        //return namesCapt.getNames();
     }
     
     
