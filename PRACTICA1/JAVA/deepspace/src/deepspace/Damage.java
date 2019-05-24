@@ -24,6 +24,14 @@ public abstract class Damage {
     
     abstract public Damage adjust(ArrayList<Weapon> w,ArrayList<ShieldBooster> s);
    
+    protected int adjustShields(ArrayList<ShieldBooster> s){
+        int shields;
+        if (getNShields() > s.size())
+            shields = s.size();
+        else 
+            shields = getNShields();
+        return shields;
+    }
     public void discardShieldBooster(){
         if (nShields != 0)
             nShields --;

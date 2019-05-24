@@ -26,5 +26,14 @@ public enum WeaponType {
         return power;
     }
     
+    public String toString(){
+        if (power == 2.0)
+            return "LASER";
+        else if (power == 3.0)
+            return "MISSILE";
+        else
+            return "PLASMA";
+    }
+    
     
 }
