@@ -8,6 +8,7 @@ package View.GUI;
 import deepspace.HangarToUI;
 import deepspace.ShieldToUI;
 import deepspace.WeaponToUI;
+import java.awt.Component;
 import java.util.ArrayList;
 
 /**
@@ -44,6 +45,30 @@ public class Hangar extends javax.swing.JPanel {
        }
         repaint();
         revalidate();
+    }
+    
+    ArrayList<Integer> getSelectedWeapons () {
+        ArrayList<Integer> selectedWeapons = new ArrayList<>();
+        int i = 0;
+        for (Component c : panelWeapons.getComponents()) {
+            if (((Weapon) c).isSelected()) {
+                selectedWeapons.add(i);
+            }
+            i++;
+        }
+        return selectedWeapons;
+    }
+    
+    ArrayList<Integer> getSelectedShields () {
+        ArrayList<Integer> selectedShields = new ArrayList<>();
+        int i = 0;
+        for (Component c : panelShields.getComponents()) {
+            if (((ShieldBooster) c).isSelected()) {
+                selectedShields.add(i);
+            }
+            i++;
+        }
+        return selectedShields;
     }
 
     /**
