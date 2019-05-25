@@ -5,6 +5,11 @@
  */
 package View.GUI;
 
+import deepspace.HangarToUI;
+import deepspace.ShieldToUI;
+import deepspace.WeaponToUI;
+import java.util.ArrayList;
+
 /**
  *
  * @author celia
@@ -16,6 +21,29 @@ public class Hangar extends javax.swing.JPanel {
      */
     public Hangar() {
         initComponents();
+    }
+    
+    void setHangar(HangarToUI hangar){
+        panelWeapons.removeAll();
+       if (hangar != null){
+        ArrayList<WeaponToUI> weapons = hangar.getWeapons();
+        Weapon weV;
+        for (WeaponToUI we : weapons) {
+            weV = new Weapon();
+            weV.setWeapon(we);
+            panelWeapons.add(weV);
+        }
+        panelShields.removeAll();
+        ArrayList<ShieldToUI> shields = hangar.getShieldBoosters();
+        ShieldBooster shV;
+        for (ShieldToUI sh : shields) {
+            shV = new ShieldBooster();
+            shV.setShieldBooster(sh);
+            panelShields.add(shV);
+        }
+       }
+        repaint();
+        revalidate();
     }
 
     /**
@@ -29,14 +57,14 @@ public class Hangar extends javax.swing.JPanel {
 
         label1 = new java.awt.Label();
         label2 = new java.awt.Label();
-        PanelEscudos = new javax.swing.JPanel();
-        PanelArmas = new javax.swing.JPanel();
+        panelShields = new javax.swing.JPanel();
+        panelWeapons = new javax.swing.JPanel();
 
         label1.setText("Escudos: ");
 
         label2.setText("Armas: ");
 
-        PanelEscudos.setName("PanelEscudos"); // NOI18N
+        panelShields.setName("panelShields"); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -49,8 +77,8 @@ public class Hangar extends javax.swing.JPanel {
                     .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(PanelEscudos, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(PanelArmas, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(panelShields, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panelWeapons, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(117, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -62,23 +90,23 @@ public class Hangar extends javax.swing.JPanel {
                         .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(40, 40, 40)
-                        .addComponent(PanelEscudos, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(panelShields, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(88, 88, 88))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(PanelArmas, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(panelWeapons, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(47, 47, 47))))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel PanelArmas;
-    private javax.swing.JPanel PanelEscudos;
     private java.awt.Label label1;
     private java.awt.Label label2;
+    private javax.swing.JPanel panelShields;
+    private javax.swing.JPanel panelWeapons;
     // End of variables declaration//GEN-END:variables
 }

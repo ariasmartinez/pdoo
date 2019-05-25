@@ -155,7 +155,9 @@ public class GameUniverse {
             } 
             
             currentStationIndex = dice.whoStarts(names.size());
+            
             currentStation = spaceStations.get(currentStationIndex);
+            
             currentEnemy = dealer.nextEnemy();
             gameState.next(turns,spaceStations.size());
         }

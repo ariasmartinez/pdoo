@@ -30,6 +30,7 @@ public class StationView extends javax.swing.JPanel {
         jlFuelUnits.setText(Float.toString(station.getFuelUnits()));
         jlShieldPower.setText(Float.toString(station.getShieldPower()));
         jlNMedals.setText(Float.toString(station.getnMedals()));
+        
         panelWeapons.removeAll();
         ArrayList<WeaponToUI> stations = station.getWeapons();
         Weapon weV;
@@ -49,9 +50,15 @@ public class StationView extends javax.swing.JPanel {
             panelShields.add(shV);
         }
         
+        panelHangar.removeAll();
+        Hangar hangarV = new Hangar();
+        hangarV.setHangar(station.getHangar());
+        panelHangar.add(hangarV);
+        
         
         repaint();
         revalidate();
+        
     }
     
     void setPendingDamage(DamageToUI danio){
@@ -114,7 +121,6 @@ public class StationView extends javax.swing.JPanel {
 
         jlNameStation.setFont(new java.awt.Font("San Francisco Display Light", 1, 24)); // NOI18N
         jlNameStation.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlNameStation.setText("jLabel5");
 
         jpPendingDamage.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Castigo Pendiente", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 16))); // NOI18N
 
@@ -198,8 +204,8 @@ public class StationView extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(13, Short.MAX_VALUE)
-                .addComponent(jlNameStation)
+                .addContainerGap()
+                .addComponent(jlNameStation, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
