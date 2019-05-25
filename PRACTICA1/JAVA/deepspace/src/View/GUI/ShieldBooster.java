@@ -12,18 +12,24 @@ import deepspace.ShieldToUI;
  * @author celia
  */
 public class ShieldBooster extends javax.swing.JPanel {
-
+    
+    private boolean selected = false;
     /**
      * Creates new form ShieldBooster
      */
     public ShieldBooster() {
         initComponents();
+        setOpaque (selected);
     }
     
      void setShieldBooster (ShieldToUI sh) {
         etiquetaBoost.setText(Float.toString(sh.getBoost()));
         etiquetaUses.setText(Integer.toString(sh.getUses()));
         repaint();
+    }
+     
+    boolean isSelected(){
+        return selected;
     }
 
     /**
@@ -39,6 +45,13 @@ public class ShieldBooster extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         etiquetaBoost = new javax.swing.JLabel();
         etiquetaUses = new javax.swing.JLabel();
+
+        setBackground(java.awt.Color.orange);
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
 
         jLabel2.setText("Potencia:");
 
@@ -77,6 +90,12 @@ public class ShieldBooster extends javax.swing.JPanel {
                 .addContainerGap(77, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        selected = !selected;
+        setOpaque (selected);
+        repaint();
+    }//GEN-LAST:event_formMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

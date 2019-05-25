@@ -9,6 +9,7 @@ import deepspace.SpaceStationToUI;
 import deepspace.DamageToUI;
 import deepspace.ShieldToUI;
 import deepspace.WeaponToUI;
+import java.awt.Component;
 import java.util.ArrayList;
 
 /**
@@ -30,6 +31,8 @@ public class StationView extends javax.swing.JPanel {
         jlFuelUnits.setText(Float.toString(station.getFuelUnits()));
         jlShieldPower.setText(Float.toString(station.getShieldPower()));
         jlNMedals.setText(Float.toString(station.getnMedals()));
+        jlWeaponPD.setText(station.getPendingDamage().getWeaponInfo());
+        jlShieldsPD.setText(Integer.toString(station.getPendingDamage().getNShields()));
         
         panelWeapons.removeAll();
         ArrayList<WeaponToUI> stations = station.getWeapons();
@@ -61,11 +64,33 @@ public class StationView extends javax.swing.JPanel {
         
     }
     
-    void setPendingDamage(DamageToUI danio){
-        jlWeaponPD.setText(danio.getWeaponInfo());
-        jlShieldsPD.setText(Integer.toString(danio.getNShields()));
-        
+   
+    
+    ArrayList<Integer> getSelectedWeapons () {
+        ArrayList<Integer> selectedWeapons = new ArrayList<>();
+        int i = 0;
+        for (Component c : panelWeapons.getComponents()) {
+            if (((Weapon) c).isSelected()) {
+                selectedWeapons.add(i);
+            }
+            i++;
+        }
+        return selectedWeapons;
     }
+    
+    ArrayList<Integer> getSelectedShields () {
+        ArrayList<Integer> selectedShields = new ArrayList<>();
+        int i = 0;
+        for (Component c : panelShields.getComponents()) {
+            if (((ShieldBooster) c).isSelected()) {
+                selectedShields.add(i);
+            }
+            i++;
+        }
+        return selectedShields;
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
