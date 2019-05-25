@@ -7,6 +7,9 @@ package View.GUI;
 
 import deepspace.SpaceStationToUI;
 import deepspace.DamageToUI;
+import deepspace.ShieldToUI;
+import deepspace.WeaponToUI;
+import java.util.ArrayList;
 
 /**
  *
@@ -27,6 +30,28 @@ public class StationView extends javax.swing.JPanel {
         jlFuelUnits.setText(Float.toString(station.getFuelUnits()));
         jlShieldPower.setText(Float.toString(station.getShieldPower()));
         jlNMedals.setText(Float.toString(station.getnMedals()));
+        panelWeapons.removeAll();
+        ArrayList<WeaponToUI> stations = station.getWeapons();
+        Weapon weV;
+        for (WeaponToUI we : stations) {
+            weV = new Weapon();
+            weV.setWeapon(we);
+            panelWeapons.add(weV);
+        }
+        
+        
+        panelShields.removeAll();
+        ArrayList<ShieldToUI> shields = station.getShieldBoosters();
+        ShieldBooster shV;
+        for (ShieldToUI sh: shields){
+            shV = new ShieldBooster();
+            shV.setShieldBooster(sh);
+            panelShields.add(shV);
+        }
+        
+        
+        repaint();
+        revalidate();
     }
     
     void setPendingDamage(DamageToUI danio){
@@ -43,9 +68,12 @@ public class StationView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollWeapon = new javax.swing.JScrollPane();
-        jScrollShieldBooster = new javax.swing.JScrollPane();
-        jScrollHangar = new javax.swing.JScrollPane();
+        panelScrollWeapons = new javax.swing.JScrollPane();
+        panelWeapons = new javax.swing.JPanel();
+        panelScrollShields = new javax.swing.JScrollPane();
+        panelShields = new javax.swing.JPanel();
+        panelScrollHangar = new javax.swing.JScrollPane();
+        panelHangar = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -61,7 +89,12 @@ public class StationView extends javax.swing.JPanel {
         jlShieldsPD = new javax.swing.JLabel();
         jlWeaponPD = new javax.swing.JLabel();
 
-        jScrollWeapon.setName(""); // NOI18N
+        panelScrollWeapons.setName(""); // NOI18N
+        panelScrollWeapons.setViewportView(panelWeapons);
+
+        panelScrollShields.setViewportView(panelShields);
+
+        panelScrollHangar.setViewportView(panelHangar);
 
         jLabel1.setText("Potencia de Ataque: ");
 
@@ -121,7 +154,7 @@ public class StationView extends javax.swing.JPanel {
                 .addGroup(jpPendingDamageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(jlWeaponPD))
-                .addGap(76, 76, 76))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -132,13 +165,9 @@ public class StationView extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollWeapon, javax.swing.GroupLayout.PREFERRED_SIZE, 858, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollHangar, javax.swing.GroupLayout.PREFERRED_SIZE, 858, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollShieldBooster, javax.swing.GroupLayout.PREFERRED_SIZE, 858, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jlNameStation, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(29, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jlNameStation, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
@@ -156,14 +185,20 @@ public class StationView extends javax.swing.JPanel {
                                 .addComponent(jLabel1)
                                 .addGap(18, 18, 18)
                                 .addComponent(jlAmmoPower)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                         .addComponent(jpPendingDamage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(87, 87, 87))))
+                        .addContainerGap(53, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(panelScrollShields, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(panelScrollWeapons, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(panelScrollHangar, javax.swing.GroupLayout.DEFAULT_SIZE, 565, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(13, 13, 13)
+                .addContainerGap(13, Short.MAX_VALUE)
                 .addComponent(jlNameStation)
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -184,13 +219,13 @@ public class StationView extends javax.swing.JPanel {
                             .addComponent(jLabel4)
                             .addComponent(jlNMedals)))
                     .addComponent(jpPendingDamage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
-                .addComponent(jScrollWeapon, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollShieldBooster, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollHangar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48))
+                .addComponent(panelScrollWeapons, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(panelScrollShields, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelScrollHangar, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -202,9 +237,6 @@ public class StationView extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JScrollPane jScrollHangar;
-    private javax.swing.JScrollPane jScrollShieldBooster;
-    private javax.swing.JScrollPane jScrollWeapon;
     private javax.swing.JLabel jlAmmoPower;
     private javax.swing.JLabel jlFuelUnits;
     private javax.swing.JLabel jlNMedals;
@@ -213,5 +245,11 @@ public class StationView extends javax.swing.JPanel {
     private javax.swing.JLabel jlShieldsPD;
     private javax.swing.JLabel jlWeaponPD;
     private javax.swing.JPanel jpPendingDamage;
+    private javax.swing.JPanel panelHangar;
+    private javax.swing.JScrollPane panelScrollHangar;
+    private javax.swing.JScrollPane panelScrollShields;
+    private javax.swing.JScrollPane panelScrollWeapons;
+    private javax.swing.JPanel panelShields;
+    private javax.swing.JPanel panelWeapons;
     // End of variables declaration//GEN-END:variables
 }

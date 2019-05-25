@@ -5,6 +5,8 @@
  */
 package View.GUI;
 
+import deepspace.ShieldToUI;
+
 /**
  *
  * @author celia
@@ -17,6 +19,12 @@ public class ShieldBooster extends javax.swing.JPanel {
     public ShieldBooster() {
         initComponents();
     }
+    
+     void setShieldBooster (ShieldToUI sh) {
+        etiquetaBoost.setText(Float.toString(sh.getBoost()));
+        etiquetaUses.setText(Integer.toString(sh.getUses()));
+        repaint();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,15 +35,18 @@ public class ShieldBooster extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-
-        jLabel1.setText("Nombre: ");
+        etiquetaBoost = new javax.swing.JLabel();
+        etiquetaUses = new javax.swing.JLabel();
 
         jLabel2.setText("Potencia:");
 
         jLabel3.setText("Usos: ");
+
+        etiquetaBoost.setText("jLabel4");
+
+        etiquetaUses.setText("jLabel5");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -44,27 +55,33 @@ public class ShieldBooster extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel1))
-                .addContainerGap(200, Short.MAX_VALUE))
+                    .addComponent(jLabel3))
+                .addGap(39, 39, 39)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(etiquetaBoost, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
+                    .addComponent(etiquetaUses, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addComponent(jLabel1)
-                .addGap(35, 35, 35)
-                .addComponent(jLabel2)
-                .addGap(34, 34, 34)
-                .addComponent(jLabel3)
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addGap(59, 59, 59)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(etiquetaBoost))
+                .addGap(42, 42, 42)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(etiquetaUses))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel etiquetaBoost;
+    private javax.swing.JLabel etiquetaUses;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables

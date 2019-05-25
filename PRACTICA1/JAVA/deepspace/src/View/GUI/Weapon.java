@@ -20,7 +20,7 @@ public class Weapon extends javax.swing.JPanel {
         initComponents();
     }
 
-     void Weapon (WeaponToUI we) {
+    void setWeapon (WeaponToUI we) {
         etiquetaTipo.setText(we.getType().toString());
         etiquetaUsos.setText(Integer.toString(we.getUses()));
         etiquetaPotencia.setText(Float.toString(we.getPower()));

@@ -5,6 +5,8 @@
  */
 package View.GUI;
 
+import deepspace.LootToUI;
+
 /**
  *
  * @author celia
@@ -18,6 +20,15 @@ public class Loot extends javax.swing.JPanel {
         initComponents();
     }
 
+    void Loot(LootToUI l){
+        etiquetaSupplies.setText(Integer.toString(l.getnSupplies()));
+        etiquetaNWeapons.setText(Integer.toString(l.getnWeapons()));
+        etiquetaNShields.setText(Integer.toString(l.getnShields()));
+        etiquetaNHangars.setText(Integer.toString(l.getnHangars()));
+        etiquetaNMedals.setText(Integer.toString(l.getnMedals()));
+        etiquetaGetEfficient.setText(Boolean.toString(l.isGetEfficient()));
+        etiquetaSupplies.setText(Boolean.toString(l.isSpaceCity()));
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -34,6 +45,13 @@ public class Loot extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        etiquetaSupplies = new javax.swing.JLabel();
+        etiquetaNWeapons = new javax.swing.JLabel();
+        etiquetaNShields = new javax.swing.JLabel();
+        etiquetaNHangars = new javax.swing.JLabel();
+        etiquetaNMedals = new javax.swing.JLabel();
+        etiquetaGetEfficient = new javax.swing.JLabel();
+        etiquetaSpaceCity = new javax.swing.JLabel();
 
         jLabel1.setText("Suministros: ");
 
@@ -49,6 +67,18 @@ public class Loot extends javax.swing.JPanel {
 
         jLabel7.setText("Ciudad Espacial");
 
+        etiquetaSupplies.setText("jLabel8");
+
+        etiquetaNWeapons.setText("jLabel9");
+
+        etiquetaNShields.setText("jLabel10");
+
+        etiquetaNHangars.setText("jLabel11");
+
+        etiquetaNMedals.setText("jLabel12");
+
+        etiquetaSpaceCity.setText("jLabel14");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -56,38 +86,68 @@ public class Loot extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel5)
                     .addComponent(jLabel1)
+                    .addComponent(jLabel2)
                     .addComponent(jLabel3)
                     .addComponent(jLabel4)
-                    .addComponent(jLabel2))
-                .addContainerGap(254, Short.MAX_VALUE))
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel7))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(etiquetaSupplies, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(etiquetaNWeapons, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(etiquetaNShields, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(etiquetaNHangars, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(etiquetaNMedals, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(etiquetaGetEfficient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(etiquetaSpaceCity, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(167, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(etiquetaSupplies))
                 .addGap(26, 26, 26)
-                .addComponent(jLabel2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(etiquetaNWeapons))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel3)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(etiquetaNShields))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel4)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(etiquetaNHangars))
                 .addGap(26, 26, 26)
-                .addComponent(jLabel5)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(etiquetaNMedals))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(etiquetaGetEfficient))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel7)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(etiquetaSpaceCity))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel etiquetaGetEfficient;
+    private javax.swing.JLabel etiquetaNHangars;
+    private javax.swing.JLabel etiquetaNMedals;
+    private javax.swing.JLabel etiquetaNShields;
+    private javax.swing.JLabel etiquetaNWeapons;
+    private javax.swing.JLabel etiquetaSpaceCity;
+    private javax.swing.JLabel etiquetaSupplies;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
