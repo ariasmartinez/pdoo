@@ -31,16 +31,27 @@ public class StationView extends javax.swing.JPanel {
         jlFuelUnits.setText(Float.toString(station.getFuelUnits()));
         jlShieldPower.setText(Float.toString(station.getShieldPower()));
         jlNMedals.setText(Float.toString(station.getnMedals()));
-        jlWeaponPD.setText(station.getPendingDamage().getWeaponInfo());
-        jlShieldsPD.setText(Integer.toString(station.getPendingDamage().getNShields()));
+       
+        //station.getPendingDamage().getWeaponInfo();
+        if (station.getPendingDamage() != null){
+            jlWeaponPD.setText(station.getPendingDamage().getWeaponInfo());
+            jlShieldsPD.setText(Integer.toString(station.getPendingDamage().getNShields()));
+        }
+        else{
+            jlWeaponPD.setText("");
+            jlShieldsPD.setText("");
+        }
+        
         
         panelWeapons.removeAll();
         ArrayList<WeaponToUI> stations = station.getWeapons();
         Weapon weV;
+        
         for (WeaponToUI we : stations) {
             weV = new Weapon();
             weV.setWeapon(we);
             panelWeapons.add(weV);
+            
         }
         
         
@@ -255,8 +266,8 @@ public class StationView extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(panelScrollShields, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelScrollHangar, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30))
+                .addComponent(panelScrollHangar, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 

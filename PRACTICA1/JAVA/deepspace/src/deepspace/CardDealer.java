@@ -40,7 +40,7 @@ class CardDealer {
  
     public SuppliesPackage nextSuppliesPackage() { 
         return suppliesPackages.next();
-
+        
     }
     
     public Weapon nextWeapon() {

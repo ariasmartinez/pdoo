@@ -98,8 +98,8 @@
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="panelScrollShields" min="-2" pref="80" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="panelScrollHangar" min="-2" pref="65" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+              <Component id="panelScrollHangar" min="-2" pref="83" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

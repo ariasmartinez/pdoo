@@ -27,7 +27,9 @@ public class Hangar extends javax.swing.JPanel {
     void setHangar(HangarToUI hangar){
         panelWeapons.removeAll();
        if (hangar != null){
+        
         ArrayList<WeaponToUI> weapons = hangar.getWeapons();
+        
         Weapon weV;
         for (WeaponToUI we : weapons) {
             weV = new Weapon();

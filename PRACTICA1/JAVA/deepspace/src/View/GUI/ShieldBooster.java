@@ -26,6 +26,7 @@ public class ShieldBooster extends javax.swing.JPanel {
         etiquetaBoost.setText(Float.toString(sh.getBoost()));
         etiquetaUses.setText(Integer.toString(sh.getUses()));
         repaint();
+        revalidate();
     }
      
     boolean isSelected(){

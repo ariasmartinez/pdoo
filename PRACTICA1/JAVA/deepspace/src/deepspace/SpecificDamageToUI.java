@@ -29,6 +29,7 @@ public class SpecificDamageToUI extends DamageToUI{
     
     @Override
     public String getWeaponInfo() {
+        System.out.println("specific");
         String aux = weapons.toString();
         return aux.substring(1, aux.length()-1);
     }

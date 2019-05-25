@@ -44,7 +44,7 @@ public class MainWindow extends javax.swing.JFrame implements View.DeepSpaceView
     public void updateView(){
         stationView.setStation(Controller.getInstance().getUIversion().getCurrentStation());
        // jbSpendChecks.setEnabled(Controller.getInstance().getAppState() == AppState.PERSONCANSPEND);
-       // personView.setPerson(Controller.getInstance().getModelToUI().getCurrent());
+       
     }
     
     public void showView(){
@@ -73,51 +73,64 @@ public class MainWindow extends javax.swing.JFrame implements View.DeepSpaceView
         panelPruebas = new javax.swing.JPanel();
         panelSpaceStation = new javax.swing.JPanel();
         panelEnemy = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        botonCombatir = new javax.swing.JButton();
+        botonMontarArmas = new javax.swing.JButton();
+        botonDescartarEscudo = new javax.swing.JButton();
+        botonDescartarArmaHangar = new javax.swing.JButton();
+        botonDescartarArma = new javax.swing.JButton();
+        botonDescartarEscudoHangar = new javax.swing.JButton();
+        botonDescartarHangar = new javax.swing.JButton();
+        botonMontarEscudos = new javax.swing.JButton();
+        botonSiguienteTurno = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Combatir!");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        botonCombatir.setText("Combatir!");
+        botonCombatir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                botonCombatirActionPerformed(evt);
             }
         });
-        panelEnemy.add(jButton1);
+        panelEnemy.add(botonCombatir);
 
-        jButton2.setText("Montar Armas");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        botonMontarArmas.setText("Montar Armas");
+        botonMontarArmas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                botonMontarArmasActionPerformed(evt);
             }
         });
-        panelEnemy.add(jButton2);
+        panelEnemy.add(botonMontarArmas);
 
-        jButton6.setText("Descartar Escudo");
-        panelEnemy.add(jButton6);
+        botonDescartarEscudo.setText("Descartar Escudo");
+        panelEnemy.add(botonDescartarEscudo);
 
-        jButton7.setText("Descartar Arma del Hangar");
-        panelEnemy.add(jButton7);
+        botonDescartarArmaHangar.setText("Descartar Arma del Hangar");
+        panelEnemy.add(botonDescartarArmaHangar);
 
-        jButton4.setText("Descartar Arma");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        botonDescartarArma.setText("Descartar Arma");
+        botonDescartarArma.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                botonDescartarArmaActionPerformed(evt);
             }
         });
 
-        jButton8.setText("Descartar Escudo del Hangar");
+        botonDescartarEscudoHangar.setText("Descartar Escudo del Hangar");
 
-        jButton9.setText("Descartar Hangar");
+        botonDescartarHangar.setText("Descartar Hangar");
+        botonDescartarHangar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonDescartarHangarActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("MontarEscudos");
+        botonMontarEscudos.setText("MontarEscudos");
+
+        botonSiguienteTurno.setText("Siguiente Turno");
+        botonSiguienteTurno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonSiguienteTurnoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -131,23 +144,28 @@ public class MainWindow extends javax.swing.JFrame implements View.DeepSpaceView
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(panelSpaceStation, javax.swing.GroupLayout.PREFERRED_SIZE, 739, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(panelEnemy, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(21, 21, 21))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton8)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addComponent(botonSiguienteTurno)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(botonMontarEscudos)
                         .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton3)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton4)
-                        .addGap(21, 21, 21))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton9)
-                        .addGap(41, 41, 41))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(panelEnemy, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(21, 21, 21))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(botonDescartarEscudoHangar)
+                                .addContainerGap())
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(botonDescartarArma)
+                                .addGap(21, 21, 21))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(botonDescartarHangar)
+                                .addGap(84, 84, 84))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -157,17 +175,17 @@ public class MainWindow extends javax.swing.JFrame implements View.DeepSpaceView
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(panelEnemy, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton8)
+                        .addComponent(botonDescartarEscudoHangar)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton3)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(botonMontarEscudos)
+                            .addComponent(botonSiguienteTurno))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton9))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(panelSpaceStation, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(botonDescartarArma)
+                        .addGap(32, 32, 32)
+                        .addComponent(botonDescartarHangar))
+                    .addComponent(panelSpaceStation, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(panelPruebas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -175,17 +193,28 @@ public class MainWindow extends javax.swing.JFrame implements View.DeepSpaceView
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void botonCombatirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCombatirActionPerformed
+        Controller.getInstance().combat();
+        updateView();
+    }//GEN-LAST:event_botonCombatirActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void botonMontarArmasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMontarArmasActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_botonMontarArmasActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void botonDescartarArmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDescartarArmaActionPerformed
+        
+    }//GEN-LAST:event_botonDescartarArmaActionPerformed
+
+    private void botonSiguienteTurnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSiguienteTurnoActionPerformed
+        Controller.getInstance().nextTurn();
+        updateView();
+    }//GEN-LAST:event_botonSiguienteTurnoActionPerformed
+
+    private void botonDescartarHangarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDescartarHangarActionPerformed
+        Controller.getInstance().discardHangar();
+        updateView();
+    }//GEN-LAST:event_botonDescartarHangarActionPerformed
 
     public boolean confirmExitMessage(){
         return true;
@@ -200,14 +229,15 @@ public class MainWindow extends javax.swing.JFrame implements View.DeepSpaceView
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
+    private javax.swing.JButton botonCombatir;
+    private javax.swing.JButton botonDescartarArma;
+    private javax.swing.JButton botonDescartarArmaHangar;
+    private javax.swing.JButton botonDescartarEscudo;
+    private javax.swing.JButton botonDescartarEscudoHangar;
+    private javax.swing.JButton botonDescartarHangar;
+    private javax.swing.JButton botonMontarArmas;
+    private javax.swing.JButton botonMontarEscudos;
+    private javax.swing.JButton botonSiguienteTurno;
     private javax.swing.JPanel panelEnemy;
     private javax.swing.JPanel panelPruebas;
     private javax.swing.JPanel panelSpaceStation;
