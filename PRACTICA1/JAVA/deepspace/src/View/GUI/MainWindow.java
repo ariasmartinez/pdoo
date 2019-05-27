@@ -50,6 +50,7 @@ public class MainWindow extends javax.swing.JFrame implements View.DeepSpaceView
     public void updateView(){
         stationView.setStation(Controller.getInstance().getUIversion().getCurrentStation());
         enemyView.setEnemy(Controller.getInstance().getUIversion().getCurrentEnemy());
+        
        // jbSpendChecks.setEnabled(Controller.getInstance().getAppState() == AppState.PERSONCANSPEND);
        
     }
