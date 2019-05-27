@@ -7,6 +7,7 @@ package View.GUI;
 
 import controller.Controller;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -220,7 +221,7 @@ public class MainWindow extends javax.swing.JFrame implements View.DeepSpaceView
     }//GEN-LAST:event_botonSiguienteTurnoActionPerformed
 
     private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
-        // TODO add your handling code here:
+        Controller.getInstance().finish(0);
     }//GEN-LAST:event_botonSalirActionPerformed
 
     private void botonDescartarHangarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDescartarHangarActionPerformed
@@ -232,16 +233,32 @@ public class MainWindow extends javax.swing.JFrame implements View.DeepSpaceView
        // Controller.getInstance().discard(ALLBITS, weapons, shields);
     }//GEN-LAST:event_botonDescartarActionPerformed
 
-    public boolean confirmExitMessage(){
-        return true;
+    
+    @Override
+    public boolean confirmExitMessage() {
+        return (JOptionPane.showConfirmDialog(this, "¿Estás segur@ que deseas salir?", "Deepspace", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION);
     }
-  public void nextTurnNotAllowedMessage(){}
-  public void lostCombatMessage(){}
-  public void escapeMessage(){}
-  public void wonCombatMessage(){}
-  public void wonGameMessage(){}
-  public void conversionMessage(){}
-  public void noCombatMessage(){}
+    
+  public void nextTurnNotAllowedMessage(){
+      JOptionPane.showMessageDialog(this, "\n No puedes avanzar de turno, no has cumplido tu castigo", "Deepspace", JOptionPane.INFORMATION_MESSAGE);
+  }
+  public void lostCombatMessage(){
+    JOptionPane.showMessageDialog(this, "Has PERDIDO el combate. \tCumple tu castigo.", "Deepspace", JOptionPane.INFORMATION_MESSAGE);}
+  public void escapeMessage(){
+      JOptionPane.showMessageDialog(this, "Has logrado escapar. \tEres una Gallina Espacial.", "Deepspace", JOptionPane.INFORMATION_MESSAGE);
+  }
+  public void wonCombatMessage(){
+    JOptionPane.showMessageDialog(this, "Has GANADO el combate. \tDisfruta de tu botín.", "Deepspace", JOptionPane.INFORMATION_MESSAGE);
+  }
+  public void wonGameMessage(){
+    JOptionPane.showMessageDialog(this, "\n\tHAS GANADO LA PARTIDA", "Deepspace", JOptionPane.INFORMATION_MESSAGE);
+  }
+  public void conversionMessage(){
+      JOptionPane.showMessageDialog(this, "Has GANADO el combate. \nAdemás te has CONVERTIDO. \nDisfruta de tu botín", "Deepspace", JOptionPane.INFORMATION_MESSAGE);
+  }
+  public void noCombatMessage(){
+      JOptionPane.showMessageDialog(this, "No puedes combatir en este momento", "Deepspace", JOptionPane.INFORMATION_MESSAGE);
+  }
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

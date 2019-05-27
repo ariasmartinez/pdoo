@@ -26,8 +26,8 @@ public class Loot extends javax.swing.JPanel {
         etiquetaNShields.setText(Integer.toString(l.getnShields()));
         etiquetaNHangars.setText(Integer.toString(l.getnHangars()));
         etiquetaNMedals.setText(Integer.toString(l.getnMedals()));
-        etiquetaGetEfficient.setText(Boolean.toString(l.isGetEfficient()));
-        etiquetaSupplies.setText(Boolean.toString(l.isSpaceCity()));
+        //etiquetaGetEfficient.setText(Boolean.toString(l.isGetEfficient()));
+        //etiquetaSupplies.setText(Boolean.toString(l.isSpaceCity()));
     }
     /**
      * This method is called from within the constructor to initialize the form.
