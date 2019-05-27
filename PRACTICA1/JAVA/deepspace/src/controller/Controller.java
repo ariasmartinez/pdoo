@@ -113,7 +113,7 @@ public class Controller {
         game.mountShieldBooster(i);
       }
     }
-    
+    //CAMBIO, quito un else if
     public void discard (int places, ArrayList<Integer> weapons, ArrayList<Integer> shields) {
       invertArray(weapons);
       invertArray(shields);
@@ -122,7 +122,7 @@ public class Controller {
         for (int i : weapons) {
           game.discardWeapon(i);
         }
-      } else if ((places & SHIELD) == SHIELD) {
+      }  if ((places & SHIELD) == SHIELD) {
         for (int i : shields) {
           game.discardShieldBooster(i);
         }

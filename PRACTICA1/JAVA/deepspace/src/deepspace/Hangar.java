@@ -21,7 +21,6 @@ public class Hangar {
     
     //CAMBIO hago new del array list de weapon
     Hangar(Hangar h){
-       System.out.println(h.maxElements);
         maxElements = h.maxElements;
         shieldBoosters = new ArrayList<>();
         if (h.shieldBoosters != null){
@@ -68,7 +67,7 @@ public class Hangar {
     public ArrayList<ShieldBooster> getShieldBoosters(){
         return shieldBoosters;
     }
-    //cambio Weapon[] por Arraylist
+
     public ArrayList<Weapon> getWeapons(){
         return weapons;
     }

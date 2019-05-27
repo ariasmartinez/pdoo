@@ -51,11 +51,11 @@
                       <Component id="jpPendingDamage" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="panelScrollShields" alignment="0" max="32767" attributes="0"/>
-                          <Component id="panelScrollWeapons" alignment="0" max="32767" attributes="0"/>
-                          <Component id="panelScrollHangar" pref="565" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="panelScrollWeapons" alignment="0" min="-2" pref="565" max="-2" attributes="0"/>
+                          <Component id="panelScrollHangar" alignment="0" min="-2" pref="565" max="-2" attributes="0"/>
+                          <Component id="panelScrollShields" alignment="0" min="-2" pref="565" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
@@ -94,12 +94,11 @@
                   <Component id="jpPendingDamage" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-              <Component id="panelScrollWeapons" min="-2" pref="71" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="panelScrollShields" min="-2" pref="80" max="-2" attributes="0"/>
+              <Component id="panelScrollWeapons" min="-2" pref="96" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="panelScrollHangar" min="-2" pref="170" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+              <Component id="panelScrollShields" min="-2" pref="107" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="panelScrollHangar" min="-2" pref="151" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
