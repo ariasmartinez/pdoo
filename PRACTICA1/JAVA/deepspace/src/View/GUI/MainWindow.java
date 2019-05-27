@@ -6,6 +6,7 @@
 package View.GUI;
 
 import controller.Controller;
+import deepspace.GameState;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -50,7 +51,11 @@ public class MainWindow extends javax.swing.JFrame implements View.DeepSpaceView
     public void updateView(){
         stationView.setStation(Controller.getInstance().getUIversion().getCurrentStation());
         enemyView.setEnemy(Controller.getInstance().getUIversion().getCurrentEnemy());
-        
+        botonDescartar.setEnabled(Controller.getInstance().getState()!=GameState.BEFORECOMBAT);
+        botonDescartarHangar.setEnabled(Controller.getInstance().getState()!=GameState.BEFORECOMBAT);
+        botonSiguienteTurno.setEnabled(Controller.getInstance().getState()!=GameState.BEFORECOMBAT);
+        botonEquipar.setEnabled(Controller.getInstance().getState()!=GameState.BEFORECOMBAT);
+        botonCombatir.setEnabled(Controller.getInstance().getState()!=GameState.AFTERCOMBAT);
        // jbSpendChecks.setEnabled(Controller.getInstance().getAppState() == AppState.PERSONCANSPEND);
        
     }
