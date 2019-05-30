@@ -271,7 +271,7 @@ class SpaceStation
   end
 
 
-  def setLoot(loot)   #recibe un Loot, devuelve Transformation (mirar el final)
+  def setLoot(loot)   #recibe un Loot, devuelve Transformation 
     dealer = CardDealer.instance
     h = loot.nHangars
     if (h > 0)

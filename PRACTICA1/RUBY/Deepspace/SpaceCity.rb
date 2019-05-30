@@ -4,9 +4,17 @@ module Deepspace
 # @author Lucía Salamanca López, Celia Arias Martínez
 class SpaceCity < SpaceStation
     def initialize(base, rest)   #base es SpaceStation original y rest es Array de SpaceStation (las demás estaciones)
-        copy(base)  
-        @base = base
-        @collaborators = rest #array de SpaceStation, queremos el puntero
+        
+
+        copy(base)
+        @base=base
+        @collaborators=Array.new
+        rest.each{|station|
+            if station.name != base.name
+            @collaborators << station
+            end
+        }
+    
     end 
 
     def collaborators 
@@ -15,7 +23,8 @@ class SpaceCity < SpaceStation
 
     
     def fire 
-        suma = super  #creo que es lo mismo que super.fire
+         
+        suma = @base.fire
         @collaborators.each{ |f| 
             suma+=f.fire
         }
@@ -24,7 +33,7 @@ class SpaceCity < SpaceStation
 
     
     def protection
-        suma = super  #creo que es lo mismo que super.protection
+        suma = super  
         @collaborators.each{ |pr|
             suma+=pr.protection
         }

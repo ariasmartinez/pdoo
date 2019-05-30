@@ -193,7 +193,7 @@ class GameUniverse
     @spaceStations[@currentStationIndex] = @currentStation
   end 
 
-  def createSpaceCity  #no devuelve nadaS
+  def createSpaceCity  #no devuelve nada
     if (@haveSpaceCity == false)
       @currentStation = SpaceCity.new(@currentStation, @spaceStations)
       @haveSpaceCity = true

@@ -15,6 +15,7 @@ end
 
 #no se si poner una comprobacion de que h no sea nil
 def self.newCopy(h)
+  
     nuevo = new(h.maxElements)
     if (@weapons != nil)
       for w in @weapons

@@ -122,7 +122,7 @@ class CardDealer
     end
                                
     def createHangars() 
-        @hangars.add(Hangar.new(4))
+        @hangars.add(Hangar.new(0))
         @hangars.add(Hangar.new(4))
         @hangars.add(Hangar.new(3))
         @hangars.add(Hangar.new(3))
@@ -154,8 +154,8 @@ class CardDealer
         softSpecificDamage2=SpecificDamage.new([WeaponType::PLASMA],1)  
         mediumSpecificDamage0=SpecificDamage.new([WeaponType::LASER,WeaponType::MISSILE],2)  
         
-        transformLoot0=Loot.new(1,1,1,0,1,true,true)  #borrar
-        transformLoot1=Loot.new(1,1,1,0,1,true,true)  #borrar
+        transformLoot0=Loot.new(1,1,1,0,1,false,true)  #borrar
+        transformLoot1=Loot.new(1,1,1,0,1,false,true)  #borrar
         @enemies.add(EnemyStarShip.new("Enemigo transforma 1",100,200,transformLoot1,regularDamage1))  #borrar
         @enemies.add(EnemyStarShip.new("Enemigo transforma 0",200,100,transformLoot0,regularDamage0))  #borrar
         @enemies.add(EnemyStarShip.new("Enemigo fácil -1",0,0,regularLoot0,lowDamage0));

@@ -24,7 +24,7 @@ class CardDeck
   def next ()
     if (!@ready) then
       @ready=true;
-     shuffle();  
+    ## shuffle();  
     end
       
     card=@cards.delete_at(0);

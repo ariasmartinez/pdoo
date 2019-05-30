@@ -55,7 +55,7 @@ class SpecificDamage < Damage
     end
 
 
-    def discardWeapon(w)  #mirar que no peta si esta vacio
+    def discardWeapon(w)  
         @weapons.delete(w.type)
     end
 
