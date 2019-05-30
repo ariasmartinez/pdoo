@@ -227,6 +227,7 @@ public class MainWindow extends javax.swing.JFrame implements View.DeepSpaceView
 
     private void botonDescartarHangarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDescartarHangarActionPerformed
         Controller.getInstance().discardHangar();
+       
         updateView();
     }//GEN-LAST:event_botonDescartarHangarActionPerformed
 

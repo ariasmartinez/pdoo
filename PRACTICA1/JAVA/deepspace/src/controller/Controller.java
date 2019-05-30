@@ -138,5 +138,6 @@ public class Controller {
     
     public void discardHangar () {
         game.discardHangar();
+        
     }
 }

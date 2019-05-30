@@ -32,7 +32,7 @@ public class StationView extends javax.swing.JPanel {
         jlFuelUnits.setText(Float.toString(station.getFuelUnits()));
         jlShieldPower.setText(Float.toString(station.getShieldPower()));
         jlNMedals.setText(Float.toString(station.getnMedals()));
-       
+        
        
         if (station.getPendingDamage() != null){
             jlWeaponPD.setText(station.getPendingDamage().getWeaponInfo());
@@ -67,7 +67,12 @@ public class StationView extends javax.swing.JPanel {
         
         panelHangar.removeAll();
         Hangar hangarV = new Hangar();
+        if (station.getHangar() != null){
         hangarV.setHangar(station.getHangar());
+        etiquetaTamHangar.setText(Integer.toString(station.getHangar().getMaxElements()));
+        }
+        else
+            etiquetaTamHangar.setText("0");
         panelHangar.add(hangarV);
         
         
@@ -141,6 +146,8 @@ public class StationView extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         jlShieldsPD = new javax.swing.JLabel();
         jlWeaponPD = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        etiquetaTamHangar = new javax.swing.JLabel();
 
         panelScrollWeapons.setName(""); // NOI18N
         panelScrollWeapons.setViewportView(panelWeapons);
@@ -209,6 +216,10 @@ public class StationView extends javax.swing.JPanel {
                 .addContainerGap(42, Short.MAX_VALUE))
         );
 
+        jLabel7.setText("Tamaño de Hangar: ");
+
+        etiquetaTamHangar.setText("Label");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -218,7 +229,7 @@ public class StationView extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jlNameStation, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(258, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -226,17 +237,22 @@ public class StationView extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jlShieldPower))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jlNMedals)
-                                    .addComponent(jlFuelUnits)))
-                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addGap(18, 18, 18)
-                                .addComponent(jlAmmoPower)))
+                                .addComponent(jlAmmoPower))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(jLabel7)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(etiquetaTamHangar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel3)
+                                        .addComponent(jLabel4))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jlNMedals)
+                                        .addComponent(jlFuelUnits)))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jpPendingDamage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -269,7 +285,11 @@ public class StationView extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
-                            .addComponent(jlNMedals)))
+                            .addComponent(jlNMedals))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(etiquetaTamHangar)))
                     .addComponent(jpPendingDamage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(panelScrollWeapons, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -282,12 +302,14 @@ public class StationView extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel etiquetaTamHangar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jlAmmoPower;
     private javax.swing.JLabel jlFuelUnits;
     private javax.swing.JLabel jlNMedals;
