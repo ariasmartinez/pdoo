@@ -4,12 +4,13 @@
  * and open the template in the editor.
  */
 package deepspace;
-// buscado en internet
+
 import java.util.Random;
 
 /**
  *
- * @author celia
+ * @author Lucía Salamanca López
+ *         Celia Arias Martínez
  */
 class Dice {
     private final float NHANGARSPROB;

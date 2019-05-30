@@ -9,7 +9,8 @@ import deepspace.EnemyToUI;
 
 /**
  *
- * @author lucia
+ * @author Celia Arias Martínez
+ *         Lucía Salamanca López
  */
 public class EnemyView extends javax.swing.JPanel {
 
@@ -24,11 +25,7 @@ public class EnemyView extends javax.swing.JPanel {
         jlEnemy.setText(enemigo.getName());
         jlEAmmoPower.setText(Float.toString(enemigo.getAmmoPower()));
         jlEShieldP.setText(Float.toString(enemigo.getShieldPower()));
-        /*jlLFuel.setText(Integer.toString(enemigo.getLoot().getnSupplies()));
-        jlLHangar.setText(Integer.toString(enemigo.getLoot().getnHangars()));
-        jlLMedals.setText(Integer.toString(enemigo.getLoot().getnMedals()));
-        jlLShields.setText(Integer.toString(enemigo.getLoot().getnShields()));
-        jlLWeapon.setText(Integer.toString(enemigo.getLoot().getnWeapons()));*/
+        
         panelLoot.removeAll();
         Loot lootV = new Loot();
         lootV.setLoot(enemigo.getLoot());

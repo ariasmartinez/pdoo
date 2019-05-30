@@ -9,7 +9,8 @@ import java.util.ArrayList;
 
 /**
  *
- * @author lucia
+ * @author Lucía Salamanca López
+ *         Celia Arias Martínez
  */
 public class NamesCapture extends javax.swing.JDialog {
     
@@ -19,7 +20,7 @@ public class NamesCapture extends javax.swing.JDialog {
      */
     public NamesCapture(java.awt.Frame parent) {
         super(parent, true);
-        //initComponents();
+
         names = new ArrayList<>();
         initComponents();
         setLocationRelativeTo (null);
@@ -31,7 +32,7 @@ public class NamesCapture extends javax.swing.JDialog {
                 System.exit(0);
             }
         });
-    }  //copiado de guion de practicas, tambn se puede borrar xd
+    }  
 
     ArrayList<String> getNames() {
         setVisible(true);

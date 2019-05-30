@@ -9,7 +9,8 @@ import deepspace.LootToUI;
 
 /**
  *
- * @author celia
+ * @author Lucía Salamanca López
+ *         Celia Arias Martínez
  */
 public class Loot extends javax.swing.JPanel {
 

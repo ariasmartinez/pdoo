@@ -26,7 +26,7 @@ public class SpaceStation implements SpaceFighter{
     private ArrayList<Weapon> weapons;
     private Hangar hangar;
     
-    // Weapons[] y shieldBOosters[] o con ArrayList??
+    
     
     
     
@@ -41,7 +41,7 @@ public class SpaceStation implements SpaceFighter{
         if (getPendingDamage().hasNoEffect())
             pendingDamage = null; 
     }
-    //Cambio 
+     
     SpaceStation(String n, SuppliesPackage supplies){
         name = n;
         ammoPower = supplies.getAmmoPower();
@@ -77,8 +77,7 @@ public class SpaceStation implements SpaceFighter{
         else {
             hangar=null;
         }
-        
-        // MIGUEL: Añadido de  pendingDamage  y su consultor
+      
         
         Damage d = station.getPendingDamage();
         if (d != null) {
@@ -120,11 +119,11 @@ public class SpaceStation implements SpaceFighter{
         if (hangar != null)
             hangar.removeShieldBooster(i);
     }
-    // SI HAY ERROR PUEDE SER AQUÍ
+    
     public void discardWeapon(int i){
         int size = weapons.size();
         if (i>=0 && i<size){
-            //Weapon w = new Weapon(weapons.get(i));
+            
             Weapon w = weapons.remove(i);
             if (pendingDamage != null){
                 pendingDamage.discardWeapon(w);
@@ -167,7 +166,7 @@ public class SpaceStation implements SpaceFighter{
         return pendingDamage;
     }
     
-    //cambio ShieldBooster[] por array
+    
     public ArrayList<ShieldBooster> getShieldBoosters(){
         return shieldBoosters;
     }
@@ -175,7 +174,7 @@ public class SpaceStation implements SpaceFighter{
         return shieldPower;
     }
     
-    //mirar lo de float
+    
     public float getSpeed(){
         return (fuelUnits/MAXFUEL);
     }
@@ -185,7 +184,7 @@ public class SpaceStation implements SpaceFighter{
          return new SpaceStationToUI(this);
     }
     
-    // lo mismo que con  shieldbooster[]
+    
     public ArrayList<Weapon> getWeapons(){
         return weapons;
     }
@@ -205,7 +204,7 @@ public class SpaceStation implements SpaceFighter{
             }
         }
     }
-    //Cambio
+    
     public void move(){
         if ((fuelUnits - getSpeed()*fuelUnits) > 0)
             fuelUnits = fuelUnits - getSpeed()*fuelUnits;
@@ -222,7 +221,7 @@ public class SpaceStation implements SpaceFighter{
     }
     public void receiveHangar(Hangar h){
         if (hangar == null)
-            hangar = h; // CONSTRUCTOR DE COPIA PUEDE PETAR
+            hangar = h;
     }
     public boolean receiveShieldBooster(ShieldBooster s){
         if (hangar != null) 
@@ -243,7 +242,7 @@ public class SpaceStation implements SpaceFighter{
             
         }
     }
-    //CAMBIO assignFuelValue(s.getFuelUnits())
+    
     public void receiveSupplies(SuppliesPackage s){
         ammoPower+= s.getAmmoPower();
         assignFuelValue(s.getFuelUnits()+fuelUnits);
@@ -251,15 +250,11 @@ public class SpaceStation implements SpaceFighter{
     }
      
     public boolean receiveWeapon(Weapon w){
-        if (hangar != null) // PUEDE PETAR
+        if (hangar != null) 
             return hangar.addWeapon(w);
         return false;
     }
-    //CAMBIO Hangar hangar
-    //CAMBIO Hangar prov = dealer.nextHangar();
-            //Hangar hangar2 = new Hangar(prov);
-            //receiveHangar(hangar2)
-    // voy a quitar menor o igual 
+    
     public Transformation setLoot(Loot loot){
         CardDealer dealer = CardDealer.getInstance();
         int h = loot.getNHangars();
@@ -293,7 +288,7 @@ public class SpaceStation implements SpaceFighter{
            return Transformation.NOTRANSFORM;
     }
     
-    //cambio def de funcion en Damage
+  
     public void setPendingDamage(Damage d){
         pendingDamage = d.adjust(weapons, shieldBoosters);
         cleanPendingDamage();

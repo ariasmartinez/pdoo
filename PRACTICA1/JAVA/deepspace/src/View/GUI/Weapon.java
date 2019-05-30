@@ -9,7 +9,8 @@ import deepspace.WeaponToUI;
 
 /**
  *
- * @author celia
+ * @author Lucía Salamanca López
+ *         Celia Arias Martínez
  */
 public class Weapon extends javax.swing.JPanel {
     private boolean selected = false;

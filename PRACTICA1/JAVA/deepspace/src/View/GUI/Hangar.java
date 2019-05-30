@@ -13,7 +13,8 @@ import java.util.ArrayList;
 
 /**
  *
- * @author celia
+ * @author Lucía Salamanca López
+ *         Celia Arias Martínez
  */
 public class Hangar extends javax.swing.JPanel {
 

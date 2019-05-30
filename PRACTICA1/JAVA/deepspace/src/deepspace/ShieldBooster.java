@@ -7,7 +7,8 @@ package deepspace;
 
 /**
  *
- * @author celia
+    * @author Lucía Salamanca López
+    *         Celia Arias Martínez
  */
 class ShieldBooster implements CombatElement{
     private String name;
@@ -48,8 +49,7 @@ class ShieldBooster implements CombatElement{
         String mensaje = "El ShieldBooster se llama "+name+", tiene de potenciador "+boost+" y tiene "+uses+" usos.";
         return mensaje;
     }
-    //CAMBIO ENEMYTOUI
-    //AÑADO TO UI ::Lucía
+    
     ShieldToUI getUIversion(){
        return new ShieldToUI(this); 
     }

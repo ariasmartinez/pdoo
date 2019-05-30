@@ -7,7 +7,8 @@ package deepspace;
 
 /**
  *
- * @author celia
+ * @author Lucía Salamanca López
+ *         Celia Arias Martínez
  */
 class Weapon implements CombatElement{
    private String name;
@@ -50,7 +51,7 @@ class Weapon implements CombatElement{
        String mensaje = "El arma se llama: "+name+", es de tipo: "+type+" y tiene "+uses+" usos.";
        return mensaje;
    }
-   //cambio EnemytoUI por WeapontoUI
+ 
    
    WeaponToUI getUIversion(){
        return new WeaponToUI(this); 

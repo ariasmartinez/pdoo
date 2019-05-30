@@ -9,7 +9,8 @@ import java.util.ArrayList;
 
 /**
  *
- * @author celia
+ * @author Lucía Salamanca López
+ *         Celia Arias Martínez
  */
 public class GameUniverse {
     private static final int WIN = 10;
@@ -138,7 +139,7 @@ public class GameUniverse {
                    
     }
     
-    //CAMBIO indices for
+   
     public void init(ArrayList<String> names){
         if (getState() == GameState.CANNOTPLAY){
             spaceStations = new ArrayList<SpaceStation>();

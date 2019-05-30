@@ -33,7 +33,7 @@ class CardDeck<T> {
     public T next() {
         if (!ready) {
             ready=true;
-            shuffle();  //borrar (descomentar)
+            shuffle();  
         }
 
         T card=cards.remove(0);

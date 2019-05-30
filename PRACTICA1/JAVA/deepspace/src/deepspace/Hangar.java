@@ -19,7 +19,7 @@ public class Hangar {
         maxElements = capacity;
     }
     
-    //CAMBIO hago new del array list de weapon
+    
     Hangar(Hangar h){
         maxElements = h.maxElements;
         shieldBoosters = new ArrayList<>();

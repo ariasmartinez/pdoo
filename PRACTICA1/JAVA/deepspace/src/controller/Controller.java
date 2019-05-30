@@ -113,7 +113,7 @@ public class Controller {
         game.mountShieldBooster(i);
       }
     }
-    //CAMBIO, quito un else if
+    //cambio el segundo elseif por un if 
     public void discard (int places, ArrayList<Integer> weapons, ArrayList<Integer> shields) {
       invertArray(weapons);
       invertArray(shields);

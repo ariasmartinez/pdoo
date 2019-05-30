@@ -23,7 +23,6 @@ public class NumericDamageToUI extends DamageToUI{
     
     @Override
     public String getWeaponInfo() {
-        System.out.println("numeric");
         return ""+nWeapons;
     }
 }

@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class SpecificDamageToUI extends DamageToUI{
     private ArrayList<WeaponType> weapons;
-//    private int nShields;
+
 
     SpecificDamageToUI(SpecificDamage d) {
         super(d);
@@ -29,7 +29,6 @@ public class SpecificDamageToUI extends DamageToUI{
     
     @Override
     public String getWeaponInfo() {
-        System.out.println("specific");
         String aux = weapons.toString();
         return aux.substring(1, aux.length()-1);
     }

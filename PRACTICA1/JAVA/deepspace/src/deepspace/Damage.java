@@ -9,7 +9,8 @@ import java.util.ArrayList;
 
 /**
  *
- * @author celia
+    * @author Lucía Salamanca López
+    *         Celia Arias Martínez
  */
 public abstract class Damage {
     private int nShields;

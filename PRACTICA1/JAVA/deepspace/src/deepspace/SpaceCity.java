@@ -16,7 +16,7 @@ public class SpaceCity extends SpaceStation{
     private ArrayList<SpaceStation> collaborators=new ArrayList<>();
     private SpaceStation base;
     
-    //añado base
+    
     public SpaceCity(SpaceStation base, ArrayList<SpaceStation> rest){
         super(base);
         for (SpaceStation s : rest) {

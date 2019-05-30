@@ -7,10 +7,10 @@ package deepspace;
 
 /**
  *
- * @author celia
+ * @author Lucía Salamanca López
+ *         Celia Arias Martínez
  */
 public enum WeaponType {
-    // la f sirve para convertir de double a float
     LASER (2.0f), MISSILE(3.0f), PLASMA(4.0f);
     private float power;
     

@@ -9,7 +9,8 @@ import deepspace.ShieldToUI;
 
 /**
  *
- * @author celia
+ * @author Lucía Salamanca López
+ *         Celia Arias Martínez
  */
 public class ShieldBooster extends javax.swing.JPanel {
     

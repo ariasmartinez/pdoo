@@ -14,7 +14,8 @@ import java.util.ArrayList;
 
 /**
  *
- * @author lucia
+ * @author Lucía Salamanca López
+ *         Celia Arias Martínez
  */
 public class StationView extends javax.swing.JPanel {
 
@@ -32,7 +33,7 @@ public class StationView extends javax.swing.JPanel {
         jlShieldPower.setText(Float.toString(station.getShieldPower()));
         jlNMedals.setText(Float.toString(station.getnMedals()));
        
-        //station.getPendingDamage().getWeaponInfo();
+       
         if (station.getPendingDamage() != null){
             jlWeaponPD.setText(station.getPendingDamage().getWeaponInfo());
             jlShieldsPD.setText(Integer.toString(station.getPendingDamage().getNShields()));

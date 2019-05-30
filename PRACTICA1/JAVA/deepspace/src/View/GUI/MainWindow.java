@@ -12,7 +12,8 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author celia
+ * @author Lucía Salamanca López
+ *         Celia Arias Martínez
  */
 public class MainWindow extends javax.swing.JFrame implements View.DeepSpaceView {
     private static MainWindow instance = null;
@@ -57,10 +58,7 @@ public class MainWindow extends javax.swing.JFrame implements View.DeepSpaceView
         botonSiguienteTurno.setEnabled(estado!=GameState.BEFORECOMBAT);
         botonEquipar.setEnabled(estado!=GameState.BEFORECOMBAT);
         botonCombatir.setEnabled(estado!=GameState.AFTERCOMBAT);
-       // jbSpendChecks.setEnabled(Controller.getInstance().getAppState() == AppState.PERSONCANSPEND);
         panelEnemy.setVisible((estado != GameState.BEFORECOMBAT) && (estado != GameState.INIT));
-        //panelEnemy.setVisible(false);
-        //panelSpaceStation.setVisible(false);
        
     }
     
@@ -70,7 +68,7 @@ public class MainWindow extends javax.swing.JFrame implements View.DeepSpaceView
     
     
     
-    //HACER
+    
     @Override
     public ArrayList<String> readNamePlayers() {
         NamesCapture namesCapt = new NamesCapture(this);

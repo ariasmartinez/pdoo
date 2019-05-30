@@ -7,7 +7,8 @@ package deepspace;
 
 /**
  *
- * @author celia
+ * @author Lucía Salamanca López
+ *         Celia Arias Martínez
  */
 class SuppliesPackage {
     private float ammoPower;
