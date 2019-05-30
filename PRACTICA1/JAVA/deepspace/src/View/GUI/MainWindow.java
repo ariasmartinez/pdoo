@@ -59,7 +59,8 @@ public class MainWindow extends javax.swing.JFrame implements View.DeepSpaceView
         botonEquipar.setEnabled(estado!=GameState.BEFORECOMBAT);
         botonCombatir.setEnabled(estado!=GameState.AFTERCOMBAT);
         panelEnemy.setVisible((estado != GameState.BEFORECOMBAT) && (estado != GameState.INIT));
-       
+        if (estado == GameState.INIT)
+            botonSiguienteTurno.setEnabled(false);
     }
     
     public void showView(){
