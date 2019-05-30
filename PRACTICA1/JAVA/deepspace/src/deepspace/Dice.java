@@ -20,7 +20,6 @@ class Dice {
     private Random generator;
     
     Dice(){
-        //lo dice internet
         generator = new Random(System.currentTimeMillis());
         NHANGARSPROB=0.25f;
         NSHIELDSPROB=0.25f;
@@ -30,8 +29,6 @@ class Dice {
     }
     
     int initWithNHangars(){
-        //no se si hay que ponerlo
-        //generator.setSeed(System.currentTimeMillis());
         if (generator.nextFloat() < NHANGARSPROB)
             return 0;
         return 1;

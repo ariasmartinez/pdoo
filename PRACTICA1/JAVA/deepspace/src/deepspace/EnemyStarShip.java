@@ -17,15 +17,15 @@ public class EnemyStarShip implements SpaceFighter{
     private Damage damage;
     private Loot loot;
     
-    //CAMBIO pongo loot
+
     EnemyStarShip(String n, float a, float s, Loot l, Damage d){
-        name = n; // no se si funcionará
+        name = n; 
         ammoPower = a;
         shieldPower = s;
         loot = new Loot(l.getNSupplies(), l.getNWeapons(), l.getNShields(), l.getNHangars(), l.getNMedals(), l.getEfficient(), l.spaceCity()); 
-        damage = d;  // mirar constructor de damage
+        damage = d; 
     }
-    //Cambio 
+
     EnemyStarShip(EnemyStarShip e){
        name = e.getName();
        ammoPower = e.getAmmoPower();

@@ -49,14 +49,18 @@ public class MainWindow extends javax.swing.JFrame implements View.DeepSpaceView
     }
 
     public void updateView(){
+        GameState estado = Controller.getInstance().getState();
         stationView.setStation(Controller.getInstance().getUIversion().getCurrentStation());
         enemyView.setEnemy(Controller.getInstance().getUIversion().getCurrentEnemy());
-        botonDescartar.setEnabled(Controller.getInstance().getState()!=GameState.BEFORECOMBAT);
-        botonDescartarHangar.setEnabled(Controller.getInstance().getState()!=GameState.BEFORECOMBAT);
-        botonSiguienteTurno.setEnabled(Controller.getInstance().getState()!=GameState.BEFORECOMBAT);
-        botonEquipar.setEnabled(Controller.getInstance().getState()!=GameState.BEFORECOMBAT);
-        botonCombatir.setEnabled(Controller.getInstance().getState()!=GameState.AFTERCOMBAT);
+        botonDescartar.setEnabled(estado!=GameState.BEFORECOMBAT);
+        botonDescartarHangar.setEnabled(estado!=GameState.BEFORECOMBAT);
+        botonSiguienteTurno.setEnabled(estado!=GameState.BEFORECOMBAT);
+        botonEquipar.setEnabled(estado!=GameState.BEFORECOMBAT);
+        botonCombatir.setEnabled(estado!=GameState.AFTERCOMBAT);
        // jbSpendChecks.setEnabled(Controller.getInstance().getAppState() == AppState.PERSONCANSPEND);
+        panelEnemy.setVisible((estado != GameState.BEFORECOMBAT) && (estado != GameState.INIT));
+        //panelEnemy.setVisible(false);
+        //panelSpaceStation.setVisible(false);
        
     }
     
@@ -84,7 +88,6 @@ public class MainWindow extends javax.swing.JFrame implements View.DeepSpaceView
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelPruebas = new javax.swing.JPanel();
         panelSpaceStation = new javax.swing.JPanel();
         panelEnemy = new javax.swing.JPanel();
         botonDescartar = new javax.swing.JButton();
@@ -95,6 +98,11 @@ public class MainWindow extends javax.swing.JFrame implements View.DeepSpaceView
         botonEquipar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Deepspace");
+
+        panelSpaceStation.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Estación Espacial", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 14))); // NOI18N
+
+        panelEnemy.setBorder(javax.swing.BorderFactory.createTitledBorder("Enemigo"));
 
         botonDescartar.setText("Descartar");
         botonDescartar.addActionListener(new java.awt.event.ActionListener() {
@@ -143,32 +151,28 @@ public class MainWindow extends javax.swing.JFrame implements View.DeepSpaceView
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(panelSpaceStation, javax.swing.GroupLayout.PREFERRED_SIZE, 739, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(panelPruebas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(panelSpaceStation, javax.swing.GroupLayout.PREFERRED_SIZE, 739, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(panelEnemy, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addGap(47, 47, 47)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(botonDescartarHangar)
-                                    .addComponent(botonSiguienteTurno))
+                                .addComponent(botonEquipar)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(botonSiguienteTurno)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(botonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(35, 35, 35))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(botonEquipar)
-                                    .addComponent(botonDescartar))
+                                    .addComponent(botonDescartar)
+                                    .addComponent(botonDescartarHangar))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(botonCombatir, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(93, 93, 93))))))
@@ -179,26 +183,25 @@ public class MainWindow extends javax.swing.JFrame implements View.DeepSpaceView
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(panelEnemy, javax.swing.GroupLayout.PREFERRED_SIZE, 448, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(panelSpaceStation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(panelEnemy, javax.swing.GroupLayout.PREFERRED_SIZE, 489, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(71, 71, 71)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(botonCombatir, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(40, 40, 40)
                                 .addComponent(botonSalir))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(56, 56, 56)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(botonEquipar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(botonDescartar)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(botonDescartarHangar)
-                                .addGap(18, 18, 18)
-                                .addComponent(botonSiguienteTurno))))
-                    .addComponent(panelSpaceStation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(panelPruebas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(botonSiguienteTurno)))
+                        .addGap(28, 28, 28))))
         );
 
         pack();
@@ -275,7 +278,6 @@ public class MainWindow extends javax.swing.JFrame implements View.DeepSpaceView
     private javax.swing.JButton botonSalir;
     private javax.swing.JButton botonSiguienteTurno;
     private javax.swing.JPanel panelEnemy;
-    private javax.swing.JPanel panelPruebas;
     private javax.swing.JPanel panelSpaceStation;
     // End of variables declaration//GEN-END:variables
 }

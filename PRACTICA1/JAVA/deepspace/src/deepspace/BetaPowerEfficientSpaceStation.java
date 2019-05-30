@@ -7,7 +7,7 @@ package deepspace;
 
 /**
  *
- * @author lucia
+ * @author Lucía Salamanca López
  */
 public class BetaPowerEfficientSpaceStation extends PowerEfficientSpaceStation {
    
