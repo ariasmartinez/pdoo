@@ -5,7 +5,7 @@ module Deepspace
 
 # @author Lucía Salamanca López, Celia Arias Martínez
 class PowerEfficientSpaceStation < SpaceStation
-    @EFFICIENCYFACTOR = 1.1 #float  
+    @@EFFICIENCYFACTOR = 1.1 #float  
     def initialize(estacion)  #SpaceStation
         copy(estacion)   
     end
@@ -29,7 +29,7 @@ class PowerEfficientSpaceStation < SpaceStation
     end
 
     def self.efficiencyFactor 
-        @EFFICIENCYFACTOR
+        @@EFFICIENCYFACTOR
     end
 
     def getUIversion

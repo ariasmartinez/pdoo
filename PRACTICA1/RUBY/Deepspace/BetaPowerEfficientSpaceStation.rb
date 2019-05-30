@@ -5,22 +5,22 @@ module Deepspace
 
     # @author Lucía Salamanca López, Celia Arias Martínez
 class BetaPowerEfficientSpaceStation < PowerEfficientSpaceStation
-    @EXTRAEFFICIENCY=1.2  #float, atributo de instancia de la clase
+    @@EXTRAEFFICIENCY=1.2  #float, atributo de instancia de la clase
 
     def initialize(estacion)  #SpaceStation
-        copy(estacion)
+        super(estacion)
     end 
 
     def fire   #devuelve un float
-        if (@dice.extraEfficient)
-            return super*self.class.extraefficiency
+        if (Dice.new().extraEfficiency)
+            return super*@@EXTRAEFFICIENCY
         else
             return super 
         end
     end
 
     def self.extraefficiency
-        @EXTRAEFFICIENCY
+        @@EXTRAEFFICIENCY
     end
 
     def getUIversion

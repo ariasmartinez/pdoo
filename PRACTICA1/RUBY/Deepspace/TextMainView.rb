@@ -332,6 +332,10 @@ class TextMainView
     puts "No puedes combatir en este momento"
   end
   
+  def conversionMessage()
+    puts "Has GANADO el combate. \nAdemás te has CONVERTIDO. \tDisfruta de tu botín"
+  end 
+
   def showStation(station) 
     out = ""
 
