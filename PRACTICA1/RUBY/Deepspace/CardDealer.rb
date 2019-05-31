@@ -63,8 +63,7 @@ class CardDealer
     end
     
     def createSuppliesPackages()  
-        @suppliesPackages.add(SuppliesPackage.new(1000,1000,1000))   #borrar
-        @suppliesPackages.add(SuppliesPackage.new(1000,10000,1000))   #borrar
+        
         @suppliesPackages.add(SuppliesPackage.new(1,10,1))
         @suppliesPackages.add(SuppliesPackage.new(2,10,2))
         @suppliesPackages.add(SuppliesPackage.new(2,10,2))
@@ -154,10 +153,8 @@ class CardDealer
         softSpecificDamage2=SpecificDamage.new([WeaponType::PLASMA],1)  
         mediumSpecificDamage0=SpecificDamage.new([WeaponType::LASER,WeaponType::MISSILE],2)  
         
-        transformLoot0=Loot.new(1,1,1,0,1,false,true)  #borrar
-        transformLoot1=Loot.new(1,1,1,0,1,false,true)  #borrar
-        @enemies.add(EnemyStarShip.new("Enemigo transforma 1",100,200,transformLoot1,regularDamage1))  #borrar
-        @enemies.add(EnemyStarShip.new("Enemigo transforma 0",200,100,transformLoot0,regularDamage0))  #borrar
+       
+        
         @enemies.add(EnemyStarShip.new("Enemigo fácil -1",0,0,regularLoot0,lowDamage0));
         @enemies.add(EnemyStarShip.new("Enemigo fácil -1",0,10,badLoot,lowDamage0));
         @enemies.add(EnemyStarShip.new("Enemigo fácil -1",10,0,badLoot,lowDamage0));
